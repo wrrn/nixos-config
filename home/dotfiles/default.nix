@@ -8,7 +8,7 @@
     };
     
     emacs = {
-      source = ${dotfiles.emacs}/.emacs.d;
+      source = "${dotfiles.emacs}/.emacs.d";
       target = ".emacs.d";
       recursive = true;
     };
@@ -20,18 +20,18 @@
     };
 
     starship = {
-      source = ${dotfiles.starship}/.config/starship;
+      source = "${dotfiles.starship}/.config/starship";
       target = ".config/starship";
       recursive = true;
     };
 
     wezterm = {
-      source = ${dotfiles.wezterm}/.wezterm.lua;
+      source = "${dotfiles.wezterm}/.wezterm.lua";
       target= ".wezterm.lua";
     };
 
     tridactyl = {
-      source = ${dotfiles.tridactyl}/.config/tridactyl;
+      source = "${dotfiles.tridactyl}/.config/tridactyl";
       target = ".config/tridactyl";
       recursive = true;
     };
