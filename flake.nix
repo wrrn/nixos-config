@@ -17,7 +17,7 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      dotfiles = dotfiles.packages.${system};
+      dotfiles = ${dotfiles}.packages.${system};
     in
     {
       nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
