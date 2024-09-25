@@ -14,7 +14,7 @@
     };
 
     bat = {
-      source = ${dotfiles.bat}/.config/bat;
+      source = "${dotfiles.bat}/.config/bat";
       target = ".config/bat";
       recursive = true;
     };
