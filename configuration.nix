@@ -120,6 +120,17 @@
     emacs
     ripgrep
     cmake
+    bison
+    flex
+    fontforge
+    makeWrapper
+    pkg-config
+    gnumake
+    gcc
+    libiconv
+    autoconf
+    automake
+    libtool
   ];
 
   environment.variables.EDITOR = "emacs";
