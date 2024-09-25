@@ -1,4 +1,10 @@
-{pkgs, config, userChrome ...}: {
+{
+  pkgs,
+  config,
+  userChrome,
+  ...
+}:
+{
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-devedition;
@@ -12,8 +18,18 @@
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
         containers = {
-          personal = { id = 1; color = "green"; icon = "circle"; name = "personal"; };
-          banking =  { id = 2; color = "purple"; icon = "circle"; name = "banking"; };
+          personal = {
+            id = 1;
+            color = "green";
+            icon = "circle";
+            name = "personal";
+          };
+          banking = {
+            id = 2;
+            color = "purple";
+            icon = "circle";
+            name = "banking";
+          };
         };
         userChrome = userChrome;
       };
