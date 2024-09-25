@@ -9,7 +9,7 @@
     enable = true;
     # package = pkgs.firefox-devedition-bin;
     profiles = {
-      dev-edition-default = {
+      default = {
         id = 1;
         containersForce = true;
         isDefault = true;
