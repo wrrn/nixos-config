@@ -1,6 +1,6 @@
 # We need to pull in the dotfiles
 {dotfiles, ...}: {
-  home.file {
+  home.file = {
     fish = {
       source = ${dotfiles.fish}/.config/fish; # This should be path the fish config directory.
       target = ".config/fish";
