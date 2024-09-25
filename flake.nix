@@ -27,7 +27,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manger.backupFileExtension = ".bak";
+            home-manager.backupFileExtension = ".bak";
             home-manager.users.warren = import ./home/default.nix;
             home-manager.extraSpecialArgs = {
               username = "warren";
