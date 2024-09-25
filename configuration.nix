@@ -97,12 +97,9 @@
       "wheel"
     ];
     packages = with pkgs; [
-      #  thunderbird
+
     ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -121,6 +118,7 @@
     curl
     git
     emacs
+    ripgrep
   ];
 
   environment.variables.EDITOR = "emacs";
