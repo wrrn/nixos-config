@@ -2,7 +2,7 @@
   description = "A simple NixOS Configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     dotfiles.url = "sourcehut:~warren/dotfiles/master";
   };
