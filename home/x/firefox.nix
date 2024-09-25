@@ -31,7 +31,7 @@
             name = "banking";
           };
         };
-        #        userChrome = userChrome;
+        userChrome = userChrome;
       };
     };
   };
