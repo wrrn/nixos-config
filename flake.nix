@@ -17,7 +17,6 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      dotfiles = {dotfiles}.packages.${system};
     in
     {
       nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
@@ -32,7 +31,9 @@
             home-manager.extraSpecialArgs = {
               username = "warren";
               inherit dotfiles;
-              userChrome = builtins.readFile "${dotfiles.packages.${system}.tridactyl}/.config/tridactyl/better-firefox-chrome.css";
+              userChrome = builtins.readFile "${
+                dotfiles.packages.${system}.tridactyl
+              }/.config/tridactyl/better-firefox-chrome.css";
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
             };
