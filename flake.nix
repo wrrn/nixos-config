@@ -4,7 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    dotfiles.url = "sr.ht:warren/dotfiles/master"
+    dotfiles.url = "sr.ht:warren/dotfiles/master";
   };
 
   outputs =
