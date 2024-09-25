@@ -15,9 +15,13 @@
       dotfiles,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+      dotfiles = dotfiles.packages.${system};
+    in
     {
       nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
