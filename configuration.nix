@@ -119,6 +119,7 @@
     git
     emacs
     ripgrep
+    cmake
   ];
 
   environment.variables.EDITOR = "emacs";
