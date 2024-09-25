@@ -9,8 +9,7 @@
     enable = true;
     package = pkgs.firefox-devedition;
     profiles = {
-      dev-edition-warren = {
-        name = "dev-edition-warren";
+      dev-edition-default = {
         id = 1;
         containersForce = true;
         isDefault = true;
