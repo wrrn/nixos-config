@@ -5,11 +5,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./dnsmasq.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./dnsmasq.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -18,9 +18,14 @@
   networking.hostName = "redwall"; # Define your hostname.
   networking.nameservers = [ "127.0.0.1" ];
   networking.stevenblack = {
-  			 enable = true;
-  			 block = [ "fakenews" "gambling" "porn" "social" ];
-			 };
+    enable = true;
+    block = [
+      "fakenews"
+      "gambling"
+      "porn"
+      "social"
+    ];
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -82,15 +87,17 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.warren = {
     isNormalUser = true;
     description = "Warren";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -99,9 +106,12 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
+
   # Enable the Flasks feature and accompanying new nix cli.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -112,7 +122,7 @@
     git
     emacs
   ];
-  
+
   environment.variables.EDITOR = "emacs";
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -127,12 +137,12 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  
+
   programs.steam = {
-  	enable = true;
-  	remotePlay.openFirewall = true;
-  	dedicatedServer.openFirewall = true;
-  	localNetworkGameTransfers.openFirewall = true;
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
   # Open ports in the firewall.
