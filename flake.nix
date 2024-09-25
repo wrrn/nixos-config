@@ -30,7 +30,7 @@
             home-manager.users.warren = import ./home/default.nix;
             home-manager.extraSpecialArgs = {
               username = "warren";
-              dotfiles = dotfiles.packages.${system}
+              dotfiles = dotfiles.packages.${system};
               userChrome = builtins.readFile "${
                 dotfiles.packages.${system}.tridactyl
               }/.config/tridactyl/better-firefox-chrome.css";
