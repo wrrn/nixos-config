@@ -29,8 +29,9 @@
               username = "warren";
               inherit dotfiles;
               userChrome = builtins.readFile "${dotfiles.tridactyl}/.config/tridactyl/better-firefox-chrome.css";
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            };
           }
         ];
       };
