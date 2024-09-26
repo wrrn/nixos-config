@@ -5,6 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     dotfiles.url = "sourcehut:~warren/dotfiles/master";
+    fonts.url = "sourcehut:~warren/fonts/master";
   };
 
   outputs =
@@ -32,6 +33,7 @@
             home-manager.extraSpecialArgs = {
               username = "warren";
               dotfiles = dotfiles.packages.${system};
+              fonts = fonts.packages.${system};
               userChrome = builtins.readFile "${
                 dotfiles.packages.${system}.tridactyl
               }/.config/tridactyl/better-firefox-chrome.css";
