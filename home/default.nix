@@ -4,5 +4,6 @@
     ./x
     ./coreutils
     ./dotfiles
+    ./fonts
   ];
 }
