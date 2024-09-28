@@ -1,5 +1,14 @@
-_: {
-  programs.hyprland.enable = true; # enable Hyprland
+{
+  pkgs,
+  inputs,
+  unstable,
+  ...
+}:
+{
+  programs.hyprland = {
+    enable = true; # enable Hyprland
+    package = unstable.hyprland;
+  };
 
   environment.systemPackages = [
     pkgs.kitty # required for the default Hyprland config

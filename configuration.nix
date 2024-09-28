@@ -9,6 +9,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./dnsmasq.nix
+    ./fonts/default.nix
+    ./hyprland.nix
   ];
 
   # Bootloader.
@@ -23,14 +25,10 @@
       "fakenews"
       "gambling"
       "porn"
-      "social"
+      # "social"
     ];
   };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -57,8 +55,12 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -85,8 +87,7 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  security.polkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.warren = {
@@ -96,9 +97,7 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-
-    ];
+    shell = pkgs.fish;
   };
 
   # Allow unfree packages
@@ -131,6 +130,9 @@
     autoconf
     automake
     libtool
+    zoxide
+    firefoxpwa
+    polkit-kde-agent # For adding auth when an app needs to sudo.
   ];
 
   environment.variables.EDITOR = "emacs";
@@ -155,11 +157,7 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  programs.fish.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -168,5 +166,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

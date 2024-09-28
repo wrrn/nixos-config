@@ -1,4 +1,5 @@
-{pkgs, config, ...}: {
+{ pkgs, config, ... }:
+{
   home.packages = with pkgs; [
     bat
     ripgrep
@@ -11,6 +12,10 @@
     minikube
     kubectl
     rsync
+    nixfmt-rfc-style
+    difftastic
+    delta
+    direnv
   ];
 
   programs = {
@@ -18,9 +23,13 @@
       enable = true;
     };
 
+    starship = {
+      enable = true;
+    };
+
     zoxide = {
       enable = true;
-      enableFishIntegration = true;
+      enableBashIntegration = true;
     };
   };
 }
