@@ -1,26 +1,35 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   environment.systemPackages = with pkgs; [
     xwayland-satellite-unstable
     xwayland
   ];
-  systemd.user.services.xwayland-satellite = {
-    description = "Xwayland outside your Wayland";
 
-    wantedBy = [ "graphical-session.target" ];
-    bindsTo = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    requisite = [ "graphical-session.target" ];
+  home-manager.users.${username}.systemd.user = {
+    enable = true;
+    services.xwayland-satellite = {
+      Unit = {
+        Description = "Xwayland outside your Wayland";
+      };
 
-    serviceConfig = {
-      Type = "notify";
-      NotifyAccess = "all";
-      ExecStart = "/${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-      StandardOutput = "journal";
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+        BindsTo = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+        Requisite = [ "graphical-session.target" ];
 
-      Restart = "on-failure";
-      RestartSec = "1s";
+      };
+
+      Service = {
+        Type = "notify";
+        NotifyAccess = "all";
+        ExecStart = "/${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+        StandardOutput = "journal";
+
+        Restart = "on-failure";
+        RestartSec = "1s";
+      };
     };
   };
 }
