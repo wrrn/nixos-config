@@ -61,7 +61,7 @@
           niri.nixosModules.niri
           lix.nixosModules.default
           ./configuration.nix
-          ./modules/niri.nix
+          ./modules/niri
           ./modules/emacs.nix
           {
             _module.args = {

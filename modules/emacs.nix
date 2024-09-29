@@ -1,9 +1,12 @@
 {
   username,
-  dotfiles,
   pkgs,
+  inputs,
   ...
 }:
+let
+  inherit (inputs) dotfiles;
+in
 {
   services.emacs = {
     enable = true;
