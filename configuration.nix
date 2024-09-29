@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ./dnsmasq.nix
     ./fonts/default.nix
-    ./hyprland.nix
+    # ./hyprland.nix
   ];
 
   # Bootloader.
@@ -57,6 +57,7 @@
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
+
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -66,7 +67,11 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+    options = "ctrl:swapcaps";
+
   };
+
+  console.useXkbConfig = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -116,7 +121,6 @@
     wget
     curl
     git
-    emacs
     ripgrep
     cmake
     bison
@@ -134,8 +138,6 @@
     firefoxpwa
     polkit-kde-agent # For adding auth when an app needs to sudo.
   ];
-
-  environment.variables.EDITOR = "emacs";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

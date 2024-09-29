@@ -1,6 +1,9 @@
 { inputs, pkgs, ... }:
 {
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   programs.niri = {
     enable = true;
@@ -29,5 +32,5 @@
 
   services.mako = {
     enable = true;
-  }
+  };
 }

@@ -10,9 +10,7 @@
 }:
 
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
@@ -25,6 +23,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.kernelParams = [ "i915.force_probe=5917" ];
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5a39caf0-00ce-4cab-b053-894f49c46cb9";
     fsType = "ext4";
@@ -49,4 +48,5 @@
   # networking.interfaces.wlp58s0.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.graphics.extraPackages = [ pkgs.intel-media-sdk ];
 }

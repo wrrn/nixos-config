@@ -1,16 +1,31 @@
 {
   description = "A simple NixOS Configuration";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dotfiles.url = "sourcehut:~warren/dotfiles/master";
     fonts.url = "git+ssh://git@git.sr.ht/~warren/fonts";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      rev = "918d8340afd652b011b937d29d5eea0be08467f5";
+      submodules = true;
+    };
+
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,6 +36,8 @@
       dotfiles,
       fonts,
       unstable,
+      niri,
+      lix,
       ...
     }@inputs:
     let
@@ -41,10 +58,14 @@
       nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
         system = system;
         modules = [
+          niri.nixosModules.niri
+          lix.nixosModules.default
           ./configuration.nix
+          ./modules/niri.nix
+          ./modules/emacs.nix
           {
             _module.args = {
-              inherit fonts unstable;
+              inherit fonts unstable username;
               inputs = newInputs;
             };
           }

@@ -8,12 +8,6 @@
       recursive = true;
     };
 
-    emacs = {
-      source = "${dotfiles.emacs}/.emacs.d";
-      target = ".emacs.d";
-      recursive = true;
-    };
-
     bat = {
       source = "${dotfiles.bat}/.config/bat";
       target = ".config/bat";

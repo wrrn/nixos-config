@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  username,
+  ...
+}:
 {
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   environment.sessionVariables = {
@@ -24,8 +29,11 @@
     lidSwitch = "suspend";
   };
 
-  home-manager.users.${conf.username} = {
-    home.packages = with pkgs; [ swayidle ];
+  home-manager.users.${username} = {
+    home.packages = with pkgs; [
+      swayidle
+      kitty
+    ];
 
     programs.fuzzel = {
       enable = true;
