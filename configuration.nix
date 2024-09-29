@@ -17,22 +17,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "redwall"; # Define your hostname.
-  networking.nameservers = [ "127.0.0.1" ];
-  networking.stevenblack = {
-    enable = true;
-    block = [
-      "fakenews"
-      "gambling"
-      "porn"
-      # "social"
-    ];
-  };
-  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -53,15 +37,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -135,7 +110,6 @@
     automake
     libtool
     zoxide
-    firefoxpwa
     polkit-kde-agent # For adding auth when an app needs to sudo.
   ];
 
@@ -151,15 +125,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
-  programs.fish.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -62,7 +62,12 @@
           lix.nixosModules.default
           ./configuration.nix
           ./modules/niri
-          ./modules/emacs.nix
+          ./modules/steam
+          ./modules/emacs
+          ./modules/firefox
+          ./modules/1password
+          ./modules/shell
+          ./modules/fonts
           {
             _module.args = {
               inherit fonts unstable username;
