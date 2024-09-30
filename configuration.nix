@@ -8,8 +8,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./dnsmasq.nix
-    ./fonts/default.nix
     # ./hyprland.nix
   ];
 
@@ -77,7 +75,6 @@
       "networkmanager"
       "wheel"
     ];
-    shell = pkgs.fish;
   };
 
   # Allow unfree packages

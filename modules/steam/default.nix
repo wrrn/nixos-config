@@ -1,5 +1,5 @@
 { pkgs, username, ... }:
-{
+let
   holo-script = pkgs.writeShellApplication {
     name = "holo-script";
     runtimeInputs = [
@@ -16,7 +16,8 @@
     desktopName = "Holo";
     exec = "${holo-script}/bin/holo-script";
   };
-
+in
+{
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

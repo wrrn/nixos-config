@@ -1,6 +1,11 @@
-{ dotfiles.bat, ... }:
 {
-  home-manager.user.${username} = {
+  dotfiles,
+  pkgs,
+  username,
+  ...
+}:
+{
+  home-manager.users.${username} = {
     home.packages = [ pkgs.bat ];
     home.file.dot-bat = {
       source = "${dotfiles.bat}/.config/bat";

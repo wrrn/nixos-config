@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  import = [
+  imports = [
     ./dnsmasq.nix
   ];
 

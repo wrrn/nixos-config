@@ -1,10 +1,15 @@
-{ dotfiles, ... }:
+{
+  dotfiles,
+  username,
+  pkgs,
+  ...
+}:
 {
   environment.systemPackages = [
     pkgs.firefoxpwa
   ];
 
-  home-manager.user.${username} = {
+  home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
       policies = {

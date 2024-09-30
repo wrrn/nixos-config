@@ -61,16 +61,23 @@
           niri.nixosModules.niri
           lix.nixosModules.default
           ./configuration.nix
-          ./modules/niri
-          ./modules/steam
+          ./modules/1password
           ./modules/emacs
           ./modules/firefox
-          ./modules/1password
-          ./modules/shell
           ./modules/fonts
+          ./modules/networking
+          ./modules/niri
+          ./modules/shell
+          ./modules/steam
+
           {
             _module.args = {
-              inherit fonts unstable username;
+              inherit
+                fonts
+                unstable
+                username
+                dotfiles
+                ;
               inputs = newInputs;
             };
           }

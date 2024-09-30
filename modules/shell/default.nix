@@ -6,7 +6,7 @@
     ./bat.nix
   ];
 
-  home-manager.user.${username} = {
+  home-manager.users.${username} = {
     home.packages = with pkgs; [
       bat
       ripgrep
