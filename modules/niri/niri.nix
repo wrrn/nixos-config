@@ -1,10 +1,13 @@
 {
+  config,
   inputs,
   pkgs,
-  username,
-  dotfiles,
   ...
 }:
+let
+  inherit (inputs) dotfiles;
+  inherit (config.build-conf) username;
+in
 {
 
   environment.sessionVariables = {

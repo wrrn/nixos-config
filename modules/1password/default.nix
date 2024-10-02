@@ -1,4 +1,7 @@
-{ pkgs, username, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config.build-conf) username;
+in
 {
   home-manager.users.${username} = {
     home.packages = [

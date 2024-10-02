@@ -1,13 +1,27 @@
 {
   description = "A simple NixOS Configuration";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Official flakes
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Third party flakes
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Personal flakes
     dotfiles = {
       url = "sourcehut:~warren/dotfiles/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,23 +32,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      rev = "918d8340afd652b011b937d29d5eea0be08467f5";
-      submodules = true;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -42,74 +39,98 @@
       self,
       nixpkgs,
       home-manager,
+      flake-utils,
+      niri,
       dotfiles,
       fonts,
-      unstable,
-      niri,
-      lix,
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
-      username = "warren";
-      dotfiles = inputs.dotfiles.packages.${system};
-      fonts = inputs.fonts.packages.${system};
-      unstable = import inputs.unstable { inherit system; };
-      hyprland = inputs.hyprland.packages.${system};
-      newInputs = nixpkgs.lib.mergeAttrs inputs {
-        dotfiles = dotfiles;
-        fonts = fonts;
-        hyprland = hyprland;
-      };
+      inherit (flake-utils) systems;
+      systemInputs =
+        origInputs: system:
+        nixpkgs.lib.mergeAttrs inputs {
+          dotfiles = origInputs.dotfiles.packages.${system};
+          fonts = origInputs.fonts.packages.${system};
+        };
     in
     {
-      nixpkgs.config.allowUnfree = true;
-      nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [
-          niri.nixosModules.niri
-          # lix.nixosModules.default
-          ./configuration.nix
-          ./modules/1password
-          ./modules/emacs
-          ./modules/firefox
-          ./modules/fonts
-          ./modules/networking
-          ./modules/niri
-          ./modules/shell
-          ./modules/steam
-          ./modules/sddm
-          {
+      nixosConfigurations = {
+        redwall =
+          let
+            system = systems.x86_64-linux;
+            inputs = systemInputs system;
+          in
+          nixpkgs.lib.nixosSystem {
+            modules = [
+              ./modules/1password
+              ./modules/audio
+              ./modules/coreutils
+              ./modules/emacs
+              ./modules/firefox
+              ./modules/fonts
+              ./modules/git
+              ./modules/home-manager
+              ./modules/keyboard
+              ./modules/locale
+              ./modules/networking
+              ./modules/niri
+              ./modules/sddm
+              ./modules/shell
+              ./modules/steam
+              ./modules/user
+            ];
             _module.args = {
-              inherit
-                fonts
-                unstable
-                username
-                dotfiles
-                ;
-              inputs = newInputs;
+              inputs = systemInputs;
             };
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = ".bak";
-            home-manager.users.warren = import ./home/default.nix;
-            home-manager.extraSpecialArgs = {
-              inherit
-                dotfiles
-                username
-                fonts
-                unstable
-                ;
-              inputs = newInputs;
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            };
-          }
-        ];
+          };
       };
     };
 }
+#     {
+#       nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
+#         system = system;
+#         modules = [
+#           niri.nixosModules.niri
+#           # lix.nixosModules.default
+#           ./modules/1password
+#           ./modules/audio
+#           ./modules/emacs
+#           ./modules/firefox
+#           ./modules/fonts
+#           ./modules/networking
+#           ./modules/niri
+#           ./modules/shell
+#           ./modules/steam
+#           ./modules/sddm
+#           {
+#             _module.args = {
+#               inherit
+#                 fonts
+#                 unstable
+#                 username
+#                 dotfiles
+#                 ;
+#               inputs = newInputs;
+#             };
+#           }
+
+#           home-manager.nixosModules.home-manager
+#           {
+#             home-manager.extraSpecialArgs = {
+#               inherit
+#                 dotfiles
+#                 username
+#                 fonts
+#                 unstable
+#                 ;
+#               inputs = newInputs;
+#         home-manager= users.warren = import ./home/default.nix;
+# #               # Optionally, use home-manager.extraSpecialArgs to pass
+# #               # arguments to home.nix
+#             };
+#           }
+#         ];
+#       };
+#     };
+# }

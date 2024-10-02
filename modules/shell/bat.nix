@@ -1,9 +1,13 @@
 {
-  dotfiles,
+  config,
+  inputs,
   pkgs,
-  username,
   ...
 }:
+let
+  inherit (inputs) dotfiles;
+  inherit (config.build-conf) username;
+in
 {
   home-manager.users.${username} = {
     home.packages = [ pkgs.bat ];

@@ -1,4 +1,7 @@
-{ username, pkgs, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config.build-conf) username;
+in
 {
   imports = [
     ./fish.nix

@@ -1,4 +1,8 @@
-{ fonts, username, ... }:
+{ config, inputs, ... }:
+let
+  inherit (inputs) fonts;
+  inherit (config.build-conf) username;
+in
 {
   environment.systemPackages = with fonts; [
     ellograph_cf

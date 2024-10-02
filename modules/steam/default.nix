@@ -1,5 +1,7 @@
-{ pkgs, username, ... }:
+{ config, pkgs, ... }:
 let
+  inherit (config.build-conf) username;
+
   holo-script = pkgs.writeShellApplication {
     name = "holo-script";
     runtimeInputs = [

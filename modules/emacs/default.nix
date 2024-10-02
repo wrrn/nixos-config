@@ -1,11 +1,12 @@
 {
-  username,
+  config,
   pkgs,
   inputs,
   ...
 }:
 let
   inherit (inputs) dotfiles;
+  inherit (config.build-conf) username;
 in
 {
   # Start emacs-server with systemd
@@ -20,6 +21,7 @@ in
   environment.systemPackages = with pkgs; [
     ispell
     python3
+    emacsPackages.vterm
   ];
 
   home-manager.users.${username}.home.file.dot-emacs = {
