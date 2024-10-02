@@ -40,7 +40,7 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    options = "ctrl:swapcaps";
+    options = "ctrl:nocaps";
 
   };
 
@@ -57,6 +57,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    # wireplumber.enabe = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -107,6 +108,7 @@
     automake
     libtool
     zoxide
+    pavucontrol
     polkit-kde-agent # For adding auth when an app needs to sudo.
   ];
 

@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   username,
+  dotfiles,
   ...
 }:
 {
@@ -13,11 +14,6 @@
   programs.niri = {
     enable = true;
     package = pkgs.niri-stable;
-  };
-
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
   };
 
   services.upower = {
@@ -34,6 +30,12 @@
       swayidle
       kitty
     ];
+
+    home.file.dot-niri = {
+      source = "${dotfiles.niri}/.config/niri";
+      target = ".config/niri";
+      recursive = true;
+    };
 
     programs.fuzzel = {
       enable = true;

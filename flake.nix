@@ -8,17 +8,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dotfiles.url = "sourcehut:~warren/dotfiles/master";
-    fonts.url = "git+ssh://git@git.sr.ht/~warren/fonts";
+    dotfiles = {
+      url = "sourcehut:~warren/dotfiles/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fonts = {
+      url = "git+ssh://git@git.sr.ht/~warren/fonts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       rev = "918d8340afd652b011b937d29d5eea0be08467f5";
       submodules = true;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -59,7 +68,7 @@
         system = system;
         modules = [
           niri.nixosModules.niri
-          lix.nixosModules.default
+          # lix.nixosModules.default
           ./configuration.nix
           ./modules/1password
           ./modules/emacs
@@ -69,7 +78,7 @@
           ./modules/niri
           ./modules/shell
           ./modules/steam
-
+          ./modules/sddm
           {
             _module.args = {
               inherit
