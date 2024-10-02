@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (inputs) dotfiles;
   inherit (config.build-conf) username;
@@ -9,7 +14,11 @@ in
   ];
 
   home-manager.users.${username}.home.file = {
-    ".gitconfig" = "${dotfiles.git}/.gitconfig";
-    ".gitattributes" = "${dotfiles.git}/.gitattributes";
+    ".gitconfig" = {
+      source = "${dotfiles.git}/.gitconfig";
+    };
+    ".gitattributes" = {
+      source = "${dotfiles.git}/.gitattributes";
+    };
   };
 }

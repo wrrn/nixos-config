@@ -1,9 +1,13 @@
 {
-  username,
-  dotfiles,
+  config,
+  inputs,
   pkgs,
   ...
 }:
+let
+  inherit (inputs) dotfiles;
+  inherit (config.build-conf) username;
+in
 {
   programs.fish.enable = true;
 

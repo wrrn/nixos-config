@@ -4,7 +4,7 @@ let
   inherit (lib.types) nullOr attrsOf str;
 in
 {
-  options.conf = {
+  options.build-conf = {
     username = mkOption {
       type = str;
       description = "Username of the default user (single user setup).";

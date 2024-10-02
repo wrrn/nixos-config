@@ -12,10 +12,6 @@
     };
 
     # Third party flakes
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,23 +42,30 @@
       ...
     }@inputs:
     let
-      inherit (flake-utils) systems;
       systemInputs =
-        origInputs: system:
+        system:
         nixpkgs.lib.mergeAttrs inputs {
-          dotfiles = origInputs.dotfiles.packages.${system};
-          fonts = origInputs.fonts.packages.${system};
+          dotfiles = inputs.dotfiles.packages.${system};
+          fonts = inputs.fonts.packages.${system};
         };
+      modules = [
+        ./options.nix
+        ./nix-conf.nix
+        niri.nixosModules.niri
+        home-manager.nixosModules.home-manager
+      ];
     in
     {
       nixosConfigurations = {
         redwall =
           let
-            system = systems.x86_64-linux;
-            inputs = systemInputs system;
+            system = "x86_64-linux";
           in
           nixpkgs.lib.nixosSystem {
+            inherit system;
             modules = [
+              ./devices/redwall
+
               ./modules/1password
               ./modules/audio
               ./modules/coreutils
@@ -79,58 +82,14 @@
               ./modules/shell
               ./modules/steam
               ./modules/user
-            ];
-            _module.args = {
-              inputs = systemInputs;
-            };
+
+              {
+                _module.args = {
+                  inputs = systemInputs system;
+                };
+              }
+            ] ++ modules;
           };
       };
     };
 }
-#     {
-#       nixosConfigurations.redwall = nixpkgs.lib.nixosSystem {
-#         system = system;
-#         modules = [
-#           niri.nixosModules.niri
-#           # lix.nixosModules.default
-#           ./modules/1password
-#           ./modules/audio
-#           ./modules/emacs
-#           ./modules/firefox
-#           ./modules/fonts
-#           ./modules/networking
-#           ./modules/niri
-#           ./modules/shell
-#           ./modules/steam
-#           ./modules/sddm
-#           {
-#             _module.args = {
-#               inherit
-#                 fonts
-#                 unstable
-#                 username
-#                 dotfiles
-#                 ;
-#               inputs = newInputs;
-#             };
-#           }
-
-#           home-manager.nixosModules.home-manager
-#           {
-#             home-manager.extraSpecialArgs = {
-#               inherit
-#                 dotfiles
-#                 username
-#                 fonts
-#                 unstable
-#                 ;
-#               inputs = newInputs;
-#         home-manager= users.warren = import ./home/default.nix;
-# #               # Optionally, use home-manager.extraSpecialArgs to pass
-# #               # arguments to home.nix
-#             };
-#           }
-#         ];
-#       };
-#     };
-# }

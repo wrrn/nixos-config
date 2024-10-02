@@ -1,4 +1,8 @@
-_: {
+{ config, ... }:
+let
+  inherit (config.build-conf) username;
+in
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -24,4 +28,5 @@ _: {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+  home-manager.users.${username}.home.stateVersion = "24.11";
 }

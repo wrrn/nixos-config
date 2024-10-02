@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   imports = [
@@ -9,6 +9,6 @@
   # For adding auth when an app needs to sudo.
   security.polkit.enable = true;
   environment.systemPackages = [
-    polkit-kde-agent
+    pkgs.polkit-kde-agent
   ];
 }
