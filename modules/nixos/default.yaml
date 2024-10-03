@@ -1,0 +1,1 @@
+{ config, ... }: { system.stateVersion = config.device-conf.stateVersion; }
