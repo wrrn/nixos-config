@@ -5,6 +5,8 @@ let
 in
 {
 
+  # Proxy all DNS requests through dnsmasq.
+  networking.nameservers = [ "127.0.0.1" ];
   services.dnsmasq = {
     enable = true;
     alwaysKeepRunning = true;
@@ -15,6 +17,5 @@ in
         "1.0.0.3"
       ];
     };
-
   };
 }

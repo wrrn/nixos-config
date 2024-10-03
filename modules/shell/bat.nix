@@ -6,7 +6,7 @@
 }:
 let
   inherit (inputs) dotfiles;
-  inherit (config.build-conf) username;
+  inherit (config.device-conf) username;
 in
 {
   home-manager.users.${username} = {

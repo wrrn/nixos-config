@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  inherit (config.build-conf) username;
+  inherit (config.device-conf) username;
 in
 {
   imports = [

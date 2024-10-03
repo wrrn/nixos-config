@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  inherit (config.build-conf) username displayName;
+  inherit (config.device-conf) username displayName;
 in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.

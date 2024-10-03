@@ -6,6 +6,11 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +39,7 @@
     {
       self,
       nixpkgs,
+      nix-darwin,
       home-manager,
       flake-utils,
       niri,
@@ -50,8 +56,7 @@
         };
       modules = [
         ./options.nix
-        ./nix-conf.nix
-        niri.nixosModules.niri
+        ./modules/nix
         home-manager.nixosModules.home-manager
       ];
     in
@@ -65,6 +70,8 @@
             inherit system;
             modules = [
               ./devices/redwall
+
+              niri.nixosModules.niri
 
               ./modules/1password
               ./modules/audio
@@ -91,5 +98,26 @@
             ] ++ modules;
           };
       };
+
+      darwinConfigurations = {
+        bandit = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./devices/bandit
+
+            ./modules/1password
+            ./modules/coreutils
+            ./modules/emacs
+            ./modules/firefox
+            ./modules/fonts
+            ./modules/git
+            ./modules/home-manager
+            ./modules/keyboard
+            ./modules/locale
+            ./modules/networking
+            ./modules/shell
+            ./modules/user
+          ] ++ modules
+        }
+      }
     };
 }

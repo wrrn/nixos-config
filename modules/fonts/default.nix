@@ -1,7 +1,7 @@
 { config, inputs, ... }:
 let
   inherit (inputs) fonts;
-  inherit (config.build-conf) username;
+  inherit (config.device-conf) username;
 in
 {
   environment.systemPackages = with fonts; [

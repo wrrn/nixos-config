@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
+let
+  hostname = config.device-conf.networking.hostName;
+in
 {
   imports = [
     ./dnsmasq.nix
   ];
 
-  networking.nameservers = [ "127.0.0.1" ];
+  networking.hostName = hostname;
   networking.stevenblack = {
     enable = true;
     block = [
@@ -17,5 +20,4 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
 }
