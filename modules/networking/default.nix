@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  hostname = config.device-conf.networking.hostName;
+  inherit (config.device-conf) hostname;
 in
 {
   imports = [

@@ -1,4 +1,4 @@
-{ config }:
+{ config, ... }:
 let
   inherit (config.device-conf) username home-manager;
 in

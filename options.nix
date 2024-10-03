@@ -19,7 +19,7 @@ in
       example = "Alan Taylor";
     };
 
-    hostName = mkOption {
+    hostname = mkOption {
       type = str;
       description = "The hostname of the device.";
       default = null;
@@ -29,7 +29,7 @@ in
     home-manager.stateVersion = mkOption {
       type = str;
       description = "The version of the file layout for home-manager. Set this to the latest on the first install and leave it.";
-      example = "24.11"
+      example = "24.11";
     };
 
     system.stateVersion = mkOption {

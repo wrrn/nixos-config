@@ -116,8 +116,8 @@
             ./modules/networking
             ./modules/shell
             ./modules/user
-          ] ++ modules
-        }
-      }
+          ] ++ modules;
+        };
+      };
     };
 }
