@@ -7,8 +7,15 @@
 let
   inherit (inputs) dotfiles;
   inherit (config.device-conf) username;
+  firefoxPackage = {
+    aarch64-darwin = pkgs.firefox-darwin;
+    # Use the pure gtk version so that it works without xwayland
+    x86_64-linux = pkgs.firefox;
+  };
+
 in
 {
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
   environment.systemPackages = [
     pkgs.firefoxpwa
   ];
@@ -16,6 +23,8 @@ in
   home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
+      package = firefoxPackage.${pkgs.hostPlatform.system};
+
       policies = {
         DontCheckDefaultBrowser = true;
         DisableTelemetry = true;

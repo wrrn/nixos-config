@@ -1,7 +1,7 @@
 {
   config,
-  pkgs,
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -15,10 +15,10 @@ let
 in
 {
   # Start emacs-server with systemd
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
   services.emacs = {
     enable = true;
-
-    package = emacsPackage.${pkgs.hostPlatform};
+    package = emacsPackage.${pkgs.hostPlatform.system};
   };
 
   environment.variables.EDITOR = "emacs";

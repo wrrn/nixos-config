@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Personal flakes
     dotfiles = {
       url = "sourcehut:~warren/dotfiles/master";
@@ -51,6 +56,7 @@
       dotfiles,
       fonts,
       wrrnpkgs,
+      nixpkgs-firefox-darwin,
     }@inputs:
     let
       systemInputs =
@@ -118,9 +124,9 @@
 
             ./modules/1password
             ./modules/containers
-            # ./modules/emacs
+            ./modules/emacs
             ./modules/apps
-            # ./modules/firefox
+            ./modules/firefox
             # ./modules/fonts
             ./modules/git
             #            ./modules/home-manager
