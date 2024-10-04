@@ -33,6 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    wrrnpkgs = {
+      url = "git+ssh://git@git.sr.ht/~warren/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -45,7 +50,7 @@
       niri,
       dotfiles,
       fonts,
-      ...
+      wrrnpkgs,
     }@inputs:
     let
       systemInputs =
@@ -56,8 +61,9 @@
         };
       modules = [
         ./options.nix
+        ./modules/nixos
         ./modules/nix
-        home-manager.nixosModules.home-manager
+        ./modules/home-manager
       ];
     in
     {
@@ -67,11 +73,15 @@
             system = "x86_64-linux";
           in
           nixpkgs.lib.nixosSystem {
-            inherit system;
             modules = [
+              {
+                nixpkgs.hostPlatform = "x86_64-linux";
+              }
+
               ./devices/redwall
 
               niri.nixosModules.niri
+              home-manager.nixosModules.home-manager
 
               ./modules/1password
               ./modules/audio
@@ -104,19 +114,26 @@
           modules = [
             ./devices/bandit
 
+            home-manager.darwinModules.home-manager
+
             ./modules/1password
-            ./modules/coreutils
-            ./modules/emacs
-            ./modules/firefox
-            ./modules/fonts
+            ./modules/containers
+            # ./modules/emacs
+            ./modules/apps
+            # ./modules/firefox
+            # ./modules/fonts
             ./modules/git
-            ./modules/home-manager
-            ./modules/keyboard
-            ./modules/locale
-            ./modules/networking
+            #            ./modules/home-manager
+            # ./modules/keyboard
+            # ./modules/locale
+            # ./modules/networking
             ./modules/shell
             ./modules/user
+
           ] ++ modules;
+          specialArgs = {
+            inputs = systemInputs "aarch64-darwin";
+          };
         };
       };
     };

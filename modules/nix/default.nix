@@ -1,17 +1,17 @@
-{ config, ... }:
-let
-  hostPlatform = config.device-conf.architecture;
-in
+{ pkgs, ... }:
 {
-  # Set the nixpkgs hostPlatform to the specific
-  nixpkgs.hostPlatform = hostPlatform;
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  services.nix-daemon.enable = true;
 
-  # Enable the Flasks feature and accompanying new nix cli.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    package = pkgs.nix;
+
+    # Enable the Flakes feature and accompanying new nix cli.
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+
 }

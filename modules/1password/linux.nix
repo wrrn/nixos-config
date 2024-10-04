@@ -5,18 +5,16 @@
   ...
 }:
 let
+  inherit (lib) mkIf;
+  inherit (pkgs.stdenv) isLinux;
   inherit (config.device-conf) username;
-
 in
-{
-  imports = [
-    ./linux.nix
-    ./darwin.nix
-  ];
-
+mkIf isLinux {
   home-manager.users.${username} = {
+
     home.packages = [
-      pkgs._1password
+      pkgs._1password-gui
     ];
   };
+
 }

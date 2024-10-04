@@ -9,8 +9,11 @@ let
   inherit (config.device-conf) username;
 in
 {
-  environment.systemPackages = [
-    pkgs.git
+  environment.systemPackages = with pkgs; [
+    git
+    delta
+    git-machete
+    difftastic
   ];
 
   home-manager.users.${username}.home.file = {

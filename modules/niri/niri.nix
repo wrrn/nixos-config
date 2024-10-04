@@ -31,7 +31,6 @@ in
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       swayidle
-      kitty
     ];
 
     home.file.dot-niri = {

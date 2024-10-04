@@ -7,13 +7,18 @@
 let
   inherit (inputs) dotfiles;
   inherit (config.device-conf) username;
+  emacsPackage = {
+    aarch64-darwin = pkgs.emacs-plus;
+    # Use the pure gtk version so that it works without xwayland
+    x86_64-linux = pkgs.emacs29-pgtk;
+  };
 in
 {
   # Start emacs-server with systemd
   services.emacs = {
     enable = true;
-    # Use the pure gtk version so that it works without xwayland
-    package = pkgs.emacs29-pgtk;
+
+    package = emacsPackage.${pkgs.hostPlatform};
   };
 
   environment.variables.EDITOR = "emacs";

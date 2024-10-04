@@ -1,7 +1,7 @@
 { lib, ... }:
 let
-  inherit (lib) mkOption mkEnableOption;
-  inherit (lib.types) nullOr attrsOf str;
+  inherit (lib) mkOption;
+  inherit (lib.types) str oneOf int;
 in
 {
   options.device-conf = {
@@ -33,17 +33,13 @@ in
     };
 
     system.stateVersion = mkOption {
-      type = str;
+      type = oneOf [
+        str
+        int
+      ];
       description = "The version of the file layout for nixos/nix-darwin. Set this to the latest on the first install and leave it.";
       default = null;
       example = "24.11";
-    };
-
-    architecture = mkOption {
-      type = str;
-      description = "The architecture of the device.";
-      default = null;
-      example = "x86_64-linux";
     };
   };
 }
