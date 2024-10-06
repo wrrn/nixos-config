@@ -1,13 +1,20 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  stdenv,
+  options,
+  ...
+}:
 let
-  inherit (pkgs.stdenv) isLinux;
-  inherit (lib) optionalAttrs;
+  inherit (stdenv) isLinux;
+  inherit (lib) mkIf optionalAttrs;
 in
 {
-  # config = optionalAttrs isLinux {
-  # virtualisation.podman = {
-  # enable = true;
-  # dockerCompat = true;
-  # };
-  # };
+  config = mkIf isLinux (
+    optionalAttrs (options ? virtualisation) ({
+      virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;
+      };
+    })
+  );
 }

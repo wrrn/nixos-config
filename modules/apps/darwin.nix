@@ -46,6 +46,8 @@ in
       "Create Booklet 2" = 1350225911;
       "Gestimer" = 990588172;
       "HazeOver" = 430798174;
+      "rcmd" = 1596283165;
+      "Be Focused Pro" = 961632517;
     };
   };
 }

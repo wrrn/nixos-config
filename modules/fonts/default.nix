@@ -1,16 +1,22 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (inputs) fonts;
   inherit (config.device-conf) username;
+  fontsToInstall = with pkgs; [
+    ellograph_cf
+    ellograph_cf_nerdfont
+  ];
 in
 {
-  environment.systemPackages = with fonts; [
-    ellograph_cf
-    ellograph_cf_nerdfont
-  ];
+  nixpkgs.overlays = [ inputs.fonts.overlay ];
 
-  home-manager.users.${username}.home.packages = with fonts; [
-    ellograph_cf
-    ellograph_cf_nerdfont
-  ];
+  environment.systemPackages = fontsToInstall;
+
+  home-manager.users.${username}.home.packages = fontsToInstall;
+  fonts.packages = fontsToInstall;
 }

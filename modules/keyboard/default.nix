@@ -1,10 +1,9 @@
-_: {
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    options = "ctrl:nocaps";
-  };
-
-  console.useXkbConfig = true;
+{ lib, pkgs, ... }:
+let
+  inherit (pkgs.stdenv) isLinux isDarwin;
+  imports =
+    [ ] ++ (lib.optionals isLinux [ ./linux.nix ]) ++ (lib.optionals isDarwin [ ./darwin.nix ]);
+in
+{
+  inherit imports;
 }

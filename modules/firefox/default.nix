@@ -8,23 +8,17 @@ let
   inherit (inputs) dotfiles;
   inherit (config.device-conf) username;
   firefoxPackage = {
-    aarch64-darwin = pkgs.firefox-darwin;
-    # Use the pure gtk version so that it works without xwayland
-    x86_64-linux = pkgs.firefox;
+    aarch64-darwin = pkgs.firefox-devedition-darwin;
+    x86_64-linux = pkgs.firefox-devedition;
   };
-
 in
 {
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
-  environment.systemPackages = [
-    pkgs.firefoxpwa
-  ];
 
   home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
       package = firefoxPackage.${pkgs.hostPlatform.system};
-
       policies = {
         DontCheckDefaultBrowser = true;
         DisableTelemetry = true;
@@ -75,7 +69,6 @@ in
 
       nativeMessagingHosts = [
         pkgs.tridactyl-native
-        pkgs.firefoxpwa
       ];
       profiles.default = {
         id = 0;

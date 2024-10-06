@@ -1,12 +1,13 @@
 {
   lib,
+  options,
   config,
   pkgs,
   ...
 }:
 let
-  inherit (lib) mkIf;
   inherit (pkgs.stdenv) isDarwin;
+  inherit (lib) mkIf optionalAttrs;
   inherit (config.device-conf) username;
 in
 {
@@ -16,23 +17,3 @@ in
     ];
   });
 }
-
-# {
-#   lib,
-#   config,
-#   pkgs,
-#   ...
-# }:
-# let
-#   inherit (lib) mkIf isDarwin;
-#   inherit (config.device-confg) username;
-# in
-# {
-#   config = mkIf isDarwin ({
-#     home-manager.users.${username} = {
-#       home.packages = [
-#         pkgs.colima
-#       ];
-#     };
-#   });
-# }
