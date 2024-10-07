@@ -12,6 +12,7 @@ in
   programs.fish.enable = true;
 
   users.users.warren.shell = pkgs.fish;
+  environment.shells = [ pkgs.fish ];
 
   home-manager.users.${username} = {
     home.file.fish = {
