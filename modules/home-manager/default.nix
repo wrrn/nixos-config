@@ -1,8 +1,15 @@
-{ config, ... }:
+{
+  config,
+  ...
+}:
 let
   inherit (config.device-conf) username home-manager;
 in
 {
+  imports = [
+    ./darwin.nix
+  ];
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

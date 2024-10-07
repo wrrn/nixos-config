@@ -17,13 +17,18 @@
     };
 
     # Third party flakes
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -51,12 +56,15 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+
       flake-utils,
       niri,
+      mac-app-util,
+
       dotfiles,
       fonts,
       wrrnpkgs,
-      nixpkgs-firefox-darwin,
+
     }@inputs:
     let
       systemInputs =
@@ -70,6 +78,7 @@
         ./modules/nix
         ./modules/home-manager
       ];
+      inherit (flake-utils.lib) system;
     in
     {
       nixosConfigurations = {
@@ -87,6 +96,7 @@
 
               niri.nixosModules.niri
               home-manager.nixosModules.home-manager
+              mac-app-util.darwinModules.default
 
               ./modules/1password
               ./modules/audio
@@ -137,7 +147,7 @@
 
           ] ++ modules;
           specialArgs = {
-            inputs = systemInputs "aarch64-darwin";
+            inputs = systemInputs system.aarch64-darwin;
           };
         };
       };
