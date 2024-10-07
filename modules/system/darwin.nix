@@ -78,3 +78,6 @@ mkIf isDarwin (optional {
     };
   };
 })
+// (optional {
+  security.pam.enableSudoTouchIdAuth = true;
+})

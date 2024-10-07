@@ -1,7 +1,7 @@
 { ... }:
 {
   device-conf = {
-    username = "warrenharper";
+    username = "warren";
     displayName = "Warren";
     hostname = "bandit";
     home-manager.stateVersion = "24.11";
