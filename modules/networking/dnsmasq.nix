@@ -1,12 +1,10 @@
-{ config, pkgs, ... }:
+_:
 let
   addresses = import ./blocked-addresses.nix;
   cname = builtins.map (addr: "${addr},localhost") addresses;
 in
 {
 
-  # Proxy all DNS requests through dnsmasq.
-  networking.nameservers = [ "127.0.0.1" ];
   services.dnsmasq = {
     enable = true;
     alwaysKeepRunning = true;

@@ -1,4 +1,36 @@
-_: {
+{
+  lib,
+  options,
+  stdenv,
+  ...
+}:
+let
+  inherit (stdenv) isDarwin;
+  inherit (lib) mkIf optionalAttrs attrsets;
+  inherit (attrsets) isAttrs;
+  attrPathsMatch =
+    pattern: attrs:
+    assert isAttrs pattern;
+    builtins.all (
+      # Compare equality between `pattern` & `attrs`.
+      attr:
+      # Missing attr, not equal.
+      attrs ? ${attr}
+      && (
+        let
+          lhs = pattern.${attr};
+          rhs = attrs.${attr};
+        in
+        # If attrset check recursively
+        if isAttrs lhs then isAttrs rhs && attrPathsMatch lhs rhs else true
+      )
+    ) (builtins.attrNames pattern);
+
+  # AttrSet -> AttrSet
+  # If the attrset is in options then we set it, otherwise, it's just an empty attrset.
+  optional = a: optionalAttrs (attrPathsMatch a options) a;
+in
+mkIf isDarwin (optional {
   system.defaults = {
     menuExtraClock = {
       ShowDayOfWeek = false;
@@ -6,7 +38,6 @@ _: {
       ShowDate = "never";
       Show24Hour = true;
     };
-
     finder = {
       AppleShowAllFiles = true;
 
@@ -30,18 +61,20 @@ _: {
       appswitcher-all-displays = true;
     };
 
-    # Enable tap to click.
-    NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
-    NSGlobalDomain.KeyRepeat = 1;
-    NSGlobalDomain.InitialKeyRepeat = 15;
-    NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
-    NSGlobalDomain.AppleICUForce24HourTime = true;
-  };
+    NSGlobalDomain = {
+      # Enable tap to click.
+      "com.apple.mouse.tapBehavior" = 1;
+      KeyRepeat = 1;
+      InitialKeyRepeat = 15;
+      AppleShowScrollBars = "WhenScrolling";
+      AppleICUForce24HourTime = true;
+    };
 
-  documentation = {
-    enable = true;
-    doc.enable = true;
-    info.enable = true;
-    man.enable = true;
+    documentation = {
+      enable = true;
+      doc.enable = true;
+      info.enable = true;
+      man.enable = true;
+    };
   };
-}
+})

@@ -1,8 +1,19 @@
-_: {
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToControl = true;
-  };
-  system.defaults.trackpad.Clicking = true;
-
-}
+{
+  options,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  inherit (pkgs.stdenv) isDarwin;
+  inherit (lib) optionalAttrs mkIf;
+in
+mkIf isDarwin (
+  optionalAttrs (options ? system.keyboard) {
+    system.keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+    system.defaults.trackpad.Clicking = true;
+  }
+)

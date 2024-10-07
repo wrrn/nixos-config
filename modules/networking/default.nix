@@ -4,20 +4,9 @@ let
 in
 {
   imports = [
-    ./dnsmasq.nix
+    ./linux.nix
+    ./darwin.nix
   ];
 
   networking.hostName = hostname;
-  networking.stevenblack = {
-    enable = true;
-    block = [
-      "fakenews"
-      "gambling"
-      "porn"
-      "social"
-    ];
-  };
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 }

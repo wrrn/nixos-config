@@ -1,10 +1,22 @@
-_: {
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    options = "ctrl:nocaps";
-  };
+{
+  options,
+  lib,
+  stdenv,
+  ...
+}:
+let
+  inherit (stdenv) isLinux;
+  inherit (lib) optionalAttrs mkIf;
+in
+mkIf isLinux (
+  optionalAttrs (options ? services.xserver) {
+    # Configure keymap in X11
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+      options = "ctrl:nocaps";
+    };
 
-  console.useXkbConfig = true;
-}
+    console.useXkbConfig = true;
+  }
+)

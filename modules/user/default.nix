@@ -12,6 +12,7 @@ in
   users.users.${username} =
     {
       description = displayName;
+      home = "/Users/${username}";
     }
     // lib.optionalAttrs (pkgs.stdenv.isLinux) {
       isNormalUser = true;

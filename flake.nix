@@ -63,7 +63,6 @@
         system:
         nixpkgs.lib.mergeAttrs inputs {
           dotfiles = inputs.dotfiles.packages.${system};
-          fonts = inputs.fonts.packages.${system};
         };
       modules = [
         ./options.nix
@@ -123,17 +122,17 @@
             home-manager.darwinModules.home-manager
 
             ./modules/1password
+            ./modules/amethyst
+            ./modules/apps
             ./modules/containers
             ./modules/emacs
-            ./modules/apps
             ./modules/firefox
-            # ./modules/fonts
+            ./modules/fonts
             ./modules/git
-            #            ./modules/home-manager
-            # ./modules/keyboard
-            # ./modules/locale
-            # ./modules/networking
+            ./modules/keyboard
+            ./modules/networking
             ./modules/shell
+            ./modules/system
             ./modules/user
 
           ] ++ modules;

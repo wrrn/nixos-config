@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727891739,
-        "narHash": "sha256-mbQTBkZYhd+3VdO6cDFIC9FabJJxOUvvb/KQ9CeVsnI=",
+        "lastModified": 1728302213,
+        "narHash": "sha256-HNAmam231HLtKXr6NqqvVHBA5coU7vwSk9YHOfv+M9Q=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "1e4c42bf3e79f9acdd2a13f95fbe86d29d1812f5",
+        "rev": "cae0c9b512fa4e702773542c83bd236ad4579ffa",
         "type": "sourcehut"
       },
       "original": {
@@ -103,11 +103,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727319321,
-        "narHash": "sha256-RyCHS8+u2yyCF8zv4DSS7kYiyuK8dQYZUMKIwxgTDdk=",
+        "lastModified": 1728151992,
+        "narHash": "sha256-JfNOm3P6iAUznF0+SlkpRfC5aCfgWOhiseE1rOtREMs=",
         "ref": "refs/heads/main",
-        "rev": "e3d2a604e2666715a63d95b33c0b426d1a19030f",
-        "revCount": 4,
+        "rev": "d5373c203d90fcfa9d13f350f675e02f7cb152eb",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/fonts"
       },
@@ -149,11 +149,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1727997983,
-        "narHash": "sha256-t085RwS6OzkTco7VBU8MJRPcV9cSFeVkeI8ecfrSFZg=",
+        "lastModified": 1728123839,
+        "narHash": "sha256-yYvDIINM6XxeghpVOWQXcdkHCGTcya7YzCbbuyZI2Ow=",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "5309bc679bdba91798076ed3676bff3d12db0d97",
+        "rev": "fa63fb1070365e0eef776d50e27d42068a61ac53",
         "type": "github"
       },
       "original": {
@@ -217,11 +217,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1727802920,
-        "narHash": "sha256-HP89HZOT0ReIbI7IJZJQoJgxvB2Tn28V6XS3MNKnfLs=",
+        "lastModified": 1728018373,
+        "narHash": "sha256-NOiTvBbRLIOe5F6RbHaAh6++BNjsb149fGZd1T4+KBg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "27e30d177e57d912d614c88c622dcfdb2e6e6515",
+        "rev": "bc947f541ae55e999ffdb4013441347d83b00feb",
         "type": "github"
       },
       "original": {
@@ -238,11 +238,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728003358,
-        "narHash": "sha256-7HPLnyxoOjgq7oqOYRXP/tL6lVSJFKR5rLoRZzjvvGI=",
+        "lastModified": 1728089723,
+        "narHash": "sha256-CM4RhmkmqFcVymx+UEuekpNR0SwDLIaSIiqccYjbjYw=",
         "owner": "bandithedoge",
         "repo": "nixpkgs-firefox-darwin",
-        "rev": "84263e76626410f4836cd01b1a0f321a5853f666",
+        "rev": "b2612ae38e88fdd93af78eb2fa96259aa0053677",
         "type": "github"
       },
       "original": {
@@ -265,11 +265,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1727907660,
-        "narHash": "sha256-QftbyPoieM5M50WKUMzQmWtBWib/ZJbHo7mhj5riQec=",
+        "lastModified": 1728067476,
+        "narHash": "sha256-/uJcVXuBt+VFCPQIX+4YnYrHaubJSx4HoNsJVNRgANM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5966581aa04be7eff830b9e1457d56dc70a0b798",
+        "rev": "6e6b3dd395c3b1eb9be9f2d096383a8d05add030",
         "type": "github"
       },
       "original": {
@@ -344,11 +344,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728068848,
-        "narHash": "sha256-ylbJHkArt3Vi01pr77uSjcIqADejIu/jDT2vtTyXAB8=",
+        "lastModified": 1728125831,
+        "narHash": "sha256-uC/elKnGIA9dRaU26IHQizVtXBubLX9x2qDqAwfhyaI=",
         "ref": "refs/heads/main",
-        "rev": "bc03ef07c1a0409b2bfae8382f0c8c981266d08d",
-        "revCount": 8,
+        "rev": "1ad66b1d1cddf4128fc89278c84ea9f8691b5fd0",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
