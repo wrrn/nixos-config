@@ -13,6 +13,7 @@ in
     {
       description = displayName;
       home = "/Users/${username}";
+      shell = pkgs.fish;
     }
     // lib.optionalAttrs (pkgs.stdenv.isLinux) {
       isNormalUser = true;
