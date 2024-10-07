@@ -100,7 +100,6 @@
 
               ./modules/1password
               ./modules/audio
-              ./modules/coreutils
               ./modules/emacs
               ./modules/firefox
               ./modules/fonts

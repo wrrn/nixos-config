@@ -11,41 +11,39 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    vim
-    curl
-    ripgrep
-    gnumake
-    zoxide
-    gnugrep
+    asdf
+    bash
+    bat
     coreutils-full
+    curl
+    curl
+    delta
+    diffutils
+    direnv
+    eza
+    fd
+    fzf
+    gnugrep
+    gnumake
+    gnused
+    gnutar
+    gnutls
+    httpie
+    hwatch
+    jq
+    ripgrep
+    tree
+    vim
+    zoxide
   ];
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       alacritty
-      asdf
-      bash
-      bash
-      bat
-      curl
-      delta
-      diffutils
-      direnv
-      eza
-      fd
-      fzf
-      gnugrep
-      gnumake
-      gnused
-      gnutar
-      gnutls
       go
       gofumpt
       golangci-lint
       grpcurl
-      httpie
-      hwatch
-      jq
       jrnl
       k9s
       kubectl
@@ -54,18 +52,15 @@ in
       mosh
       nixfmt-rfc-style
       pgcli
-      ripgrep
       rsync
       shellcheck
       shfmt
       stow
       terminal-notifier
       tmux
-      tree
       tree-sitter
       yq-go
       yt-dlp
-      zoxide
     ];
 
     programs.zoxide.enable = true;
