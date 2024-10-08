@@ -96,7 +96,6 @@
 
               niri.nixosModules.niri
               home-manager.nixosModules.home-manager
-              mac-app-util.darwinModules.default
 
               ./modules/1password
               ./modules/audio

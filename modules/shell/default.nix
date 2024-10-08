@@ -11,8 +11,7 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    asdf
-    bash
+    asdf-vm
     bat
     coreutils-full
     curl

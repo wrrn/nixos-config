@@ -27,6 +27,8 @@ in
     ispell
     python3
     emacsPackages.vterm
+    glibtool
+    cmake
   ];
 
   home-manager.users.${username}.home.file.dot-emacs = {

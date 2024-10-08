@@ -29,6 +29,7 @@ let
   # AttrSet -> AttrSet
   # If the attrset is in options then we set it, otherwise, it's just an empty attrset.
   optional = a: optionalAttrs (attrPathsMatch a options) a;
+
 in
 mkIf isDarwin (
   optional {
@@ -36,7 +37,7 @@ mkIf isDarwin (
       menuExtraClock = {
         ShowDayOfWeek = false;
         ShowDayOfMonth = false;
-        ShowDate = "never";
+        ShowDate = 0;
         Show24Hour = true;
       };
       finder = {
@@ -70,15 +71,17 @@ mkIf isDarwin (
         AppleShowScrollBars = "WhenScrolling";
         AppleICUForce24HourTime = true;
       };
-
-      documentation = {
-        enable = true;
-        doc.enable = true;
-        info.enable = true;
-        man.enable = true;
-      };
     };
   }
+  // optional {
+    documentation = {
+      enable = true;
+      doc.enable = true;
+      info.enable = true;
+      man.enable = true;
+    };
+  }
+
   // optional {
     security.pam.enableSudoTouchIdAuth = true;
   }

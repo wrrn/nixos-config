@@ -7,18 +7,25 @@
 let
   inherit (inputs) dotfiles;
   inherit (config.device-conf) username;
-  firefoxPackage = {
-    aarch64-darwin = pkgs.firefox-devedition-darwin;
-    x86_64-linux = pkgs.firefox-devedition;
-  };
+  inherit (pkgs.stdenv) isDarwin;
+
+  mozillaConfigPath = if isDarwin then "Library/Application Support/Mozilla" else ".mozilla";
+
+  firefoxConfigPath =
+    if isDarwin then "Library/Application Support/Firefox" else "${mozillaConfigPath}/firefox";
+
+  profilesPath = if isDarwin then "${firefoxConfigPath}/Profiles" else firefoxConfigPath;
+
+  firefoxPackage = if isDarwin then pkgs.firefox-devedition-darwin else pkgs.firefox-devedition;
 in
 {
+
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
 
   home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
-      package = firefoxPackage.${pkgs.hostPlatform.system};
+      package = firefoxPackage;
       policies = {
         DontCheckDefaultBrowser = true;
         DisableTelemetry = true;
@@ -36,7 +43,10 @@ in
         HardwareAcceleration = true;
         TranslateEnabled = true;
 
-        Homepage.StartPage = "previous-session";
+        Homepage = {
+          StartPage = "homepage";
+          URL = "about:blank";
+        };
 
         UserMessaging = {
           UrlbarInterventions = false;
@@ -75,7 +85,7 @@ in
         containersForce = true;
         isDefault = true;
         settings = {
-          # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "devtools.chrome.enabled" = true;
           "devtools.debugger.remote-enabled" = true;
         };
@@ -93,18 +103,22 @@ in
             name = "banking";
           };
         };
-        # userChrome = ''
-        # @import "./theme/userChrome.css"
-        # '';
+        userChrome = ''
+          @import "./theme/userChrome.css"
+        '';
       };
     };
-    # home.file.".mozilla/firefox/default/chrome/theme".source = inputs.dotfiles.firefox-theme;
+
+    home.file.firefox-theme = {
+      source = inputs.dotfiles.firefox-theme;
+      target = "${profilesPath}/default/chrome/theme";
+      recursive = true;
+    };
 
     home.file.dot-tridactyl = {
       source = "${dotfiles.tridactyl}/.config/tridactyl";
       target = ".config/tridactyl";
       recursive = true;
-
     };
   };
 }
