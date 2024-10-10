@@ -1,8 +1,13 @@
 { pkgs, ... }:
+let
+  inherit (pkgs.stdenv) isDarwin;
+in
 {
+  imports = [
+    ./darwin.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
-  services.nix-daemon.enable = true;
 
   nix = {
     package = pkgs.nix;

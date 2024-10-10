@@ -8,6 +8,7 @@ in
     ./starship.nix
     ./bat.nix
     ./linux.nix
+    ./darwin.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -55,7 +56,7 @@ in
       shellcheck
       shfmt
       stow
-      terminal-notifier
+
       tmux
       tree-sitter
       yq-go

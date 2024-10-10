@@ -6,6 +6,7 @@ in
   imports = [
     ./linux.nix
     ./darwin.nix
+    ./dnsmasq.nix
   ];
 
   networking.hostName = hostname;

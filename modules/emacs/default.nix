@@ -8,22 +8,22 @@ let
   inherit (inputs) dotfiles;
   inherit (config.device-conf) username;
   inherit (pkgs.stdenv) isLinux;
-  inherit (pkgs.hostPlatform) system;
+  inherit (pkgs.hostPlatform.uname) system;
 
   emacsPackage =
     {
-      aarch64-darwin = pkgs.emacs-plus;
+      Darwin = pkgs.emacs-plus;
       # Use the pure gtk version so that it works without xwayland
-      x86_64-linux = pkgs.emacs29-pgtk;
+      Linux = pkgs.emacs29-pgtk;
     }
-    ."${system}";
+    .${system};
 in
 {
   # Start emacs-server with systemd
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
   services.emacs = {
     enable = isLinux;
-    package = emacsPackage.${pkgs.hostPlatform.system};
+    package = emacsPackage;
   };
 
   environment.variables.EDITOR = "emacs";

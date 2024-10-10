@@ -1,11 +1,11 @@
 {
   lib,
-  stdenv,
   options,
+  pkgs
   ...
 }:
 let
-  inherit (stdenv) isLinux;
+  inherit (pkgs.stdenv) isLinux;
   inherit (lib) mkIf optionalAttrs;
 in
 {

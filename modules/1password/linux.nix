@@ -11,7 +11,6 @@ let
 in
 mkIf isLinux {
   home-manager.users.${username} = {
-
     home.packages = [
       pkgs._1password-gui
     ];
