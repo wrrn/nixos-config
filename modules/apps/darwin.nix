@@ -24,6 +24,7 @@ in
       inyourface
       monodraw
       hammerspoon
+      ollama
     ];
   };
 
