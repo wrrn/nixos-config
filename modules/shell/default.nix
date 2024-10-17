@@ -40,16 +40,21 @@ in
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       alacritty
+
       go
       gofumpt
       golangci-lint
+      gotools
+      delve
+      gdlv
+
       grpcurl
       jrnl
       k9s
       kubectl
       minikube
       mkcert
-      mosh
+      # mosh
       nixfmt-rfc-style
       pgcli
       rsync

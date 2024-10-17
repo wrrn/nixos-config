@@ -28,61 +28,75 @@ let
 
   # AttrSet -> AttrSet
   # If the attrset is in options then we set it, otherwise, it's just an empty attrset.
-  optional = a: optionalAttrs (attrPathsMatch a options) a;
+  # optional = a: optionalAttrs (attrPathsMatch a options) a;
+  optional = a: a;
+
+  modules = ([
+    (optional {
+      system.defaults = {
+
+        menuExtraClock = {
+          ShowDayOfWeek = false;
+          ShowDayOfMonth = false;
+          ShowDate = 0;
+          Show24Hour = true;
+        };
+
+        finder = {
+          AppleShowAllFiles = true;
+          ## Set the preferred view style to list view.
+          FXPreferredViewStyle = "Nlsv";
+          QuitMenuItem = true;
+          ShowPathbar = true;
+          _FXShowPosixPathInTitle = true;
+          _FXSortFoldersFirst = true;
+        };
+
+        dock = {
+          static-only = true;
+          show-recents = false;
+          orientation = "left";
+          mru-spaces = false;
+          mouse-over-hilite-stack = true;
+          magnification = true;
+          autohide = true;
+          appswitcher-all-displays = true;
+        };
+
+        NSGlobalDomain = {
+          # Enable tap to click.
+          "com.apple.mouse.tapBehavior" = 1;
+          KeyRepeat = 1;
+          InitialKeyRepeat = 15;
+          AppleShowScrollBars = "WhenScrolling";
+          AppleICUForce24HourTime = true;
+        };
+        # Note this might not work I might have to do something other than optional
+        CustomUserPreferences = {
+          "com.apple.universalaccess" = {
+            grayscale = 1;
+            differentiateWithoutColor = 1;
+            increaseContrast = 1;
+            reduceMotion = 1;
+            reduceTransparency = 1;
+          };
+        };
+      };
+    })
+
+    (optional {
+      documentation = {
+        enable = true;
+        doc.enable = true;
+        info.enable = true;
+        man.enable = true;
+      };
+    })
+
+    (optional {
+      security.pam.enableSudoTouchIdAuth = true;
+    })
+  ]);
 
 in
-mkIf isDarwin (
-  optional {
-    system.defaults = {
-      menuExtraClock = {
-        ShowDayOfWeek = false;
-        ShowDayOfMonth = false;
-        ShowDate = 0;
-        Show24Hour = true;
-      };
-      finder = {
-        AppleShowAllFiles = true;
-
-        ## Set the preferred view style to list view.
-        FXPreferredViewStyle = "Nlsv";
-
-        QuitMenuItem = true;
-        ShowPathbar = true;
-        _FXShowPosixPathInTitle = true;
-        _FXSortFoldersFirst = true;
-      };
-
-      dock = {
-        static-only = true;
-        show-recents = false;
-        orientation = "left";
-        mru-spaces = false;
-        mouse-over-hilite-stack = true;
-        magnification = true;
-        autohide = true;
-        appswitcher-all-displays = true;
-      };
-
-      NSGlobalDomain = {
-        # Enable tap to click.
-        "com.apple.mouse.tapBehavior" = 1;
-        KeyRepeat = 1;
-        InitialKeyRepeat = 15;
-        AppleShowScrollBars = "WhenScrolling";
-        AppleICUForce24HourTime = true;
-      };
-    };
-  }
-  // optional {
-    documentation = {
-      enable = true;
-      doc.enable = true;
-      info.enable = true;
-      man.enable = true;
-    };
-  }
-
-  // optional {
-    security.pam.enableSudoTouchIdAuth = true;
-  }
-)
+mkIf isDarwin (lib.foldl lib.attrsets.recursiveUpdate { } modules)
