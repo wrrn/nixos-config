@@ -14,6 +14,8 @@ in
     delta
     git-machete
     difftastic
+
+    hut # Not really git related, but related to a forge.
   ];
 
   home-manager.users.${username}.home.file = {

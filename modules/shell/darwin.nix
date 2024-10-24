@@ -13,6 +13,7 @@ mkIf isDarwin {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       terminal-notifier
+      google-cloud-sdk
     ];
   };
 }

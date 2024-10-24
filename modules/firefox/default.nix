@@ -20,7 +20,7 @@ let
 in
 {
 
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
 
   home-manager.users.${username} = {
     programs.firefox = {

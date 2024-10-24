@@ -142,6 +142,7 @@
             ./modules/shell
             ./modules/system
             ./modules/user
+            ./modules/pryon
 
           ] ++ modules;
           specialArgs = {

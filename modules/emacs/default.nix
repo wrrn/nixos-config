@@ -20,7 +20,7 @@ let
 in
 {
   # Start emacs-server with systemd
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlay.macApps ];
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
   services.emacs = {
     enable = isLinux;
     package = emacsPackage;
