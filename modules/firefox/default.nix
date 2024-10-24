@@ -16,7 +16,7 @@ let
 
   profilesPath = if isDarwin then "${firefoxConfigPath}/Profiles" else firefoxConfigPath;
 
-  firefoxPackage = if isDarwin then pkgs.firefox-devedition-darwin else pkgs.firefox-devedition;
+  firefoxPackage = if isDarwin then pkgs.firefox-devedition-darwin else pkgs.firefox-devedition-bin;
 in
 {
 
@@ -80,22 +80,27 @@ in
       nativeMessagingHosts = [
         pkgs.tridactyl-native
       ];
-      profiles.default = {
+
+      profiles.dev-edition-default = {
         id = 0;
-        containersForce = true;
         isDefault = true;
+
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "devtools.chrome.enabled" = true;
           "devtools.debugger.remote-enabled" = true;
         };
+
+        containersForce = true;
         containers = {
+
           personal = {
             id = 0;
             color = "green";
             icon = "circle";
             name = "personal";
           };
+
           banking = {
             id = 1;
             color = "purple";
@@ -103,6 +108,7 @@ in
             name = "banking";
           };
         };
+
         userChrome = ''
           @import "./theme/userChrome.css"
         '';
@@ -111,7 +117,7 @@ in
 
     home.file.firefox-theme = {
       source = inputs.dotfiles.firefox-theme;
-      target = "${profilesPath}/default/chrome/theme";
+      target = "${profilesPath}/dev-edition-default/chrome/theme";
       recursive = true;
     };
 

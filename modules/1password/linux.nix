@@ -1,19 +1,19 @@
 {
-  config,
-  pkgs,
   lib,
+  options,
+  pkgs,
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optionalAttrs;
   inherit (pkgs.stdenv) isLinux;
-  inherit (config.device-conf) username;
-in
-mkIf isLinux {
-  home-manager.users.${username} = {
-    home.packages = [
-      pkgs._1password-gui
-    ];
-  };
 
-}
+in
+mkIf isLinux (
+  optionalAttrs (options ? programs._1password) {
+    programs = {
+      _1password.enable = true;
+      _1password-gui.enable = true;
+    };
+  }
+)

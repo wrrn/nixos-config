@@ -4,7 +4,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    xwayland-satellite-unstable
+    xwayland-satellite
     xwayland
   ];
 

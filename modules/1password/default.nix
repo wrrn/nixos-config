@@ -13,10 +13,4 @@ in
     ./linux.nix
     ./darwin.nix
   ];
-
-  home-manager.users.${username} = {
-    home.packages = [
-      pkgs._1password
-    ];
-  };
 }

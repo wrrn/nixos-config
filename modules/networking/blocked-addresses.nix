@@ -11,6 +11,4 @@
   "allsides.com"
   "ground.news"
   "theguardian.com"
-  "pornhub.com"
-  "www.pornhub.com"
 ]
