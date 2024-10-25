@@ -9,13 +9,16 @@ let
   inherit (config.device-conf) username;
 in
 {
+
+  nixpkgs.overlays = [ dotfiles.overlays.default ];
+
   home-manager.users.${username} = {
     home.packages = [
       pkgs.wezterm
     ];
 
     home.file.wezterm = {
-      source = "${dotfiles.wezterm}/.wezterm.lua";
+      source = "${pkgs.dotfiles.wezterm}/.wezterm.lua";
       target = ".config/wezterm/wezterm.lua";
     };
   };

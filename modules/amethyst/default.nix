@@ -6,15 +6,19 @@
 }:
 
 let
-  inherit (inputs) dotfiles;
+  inherit (inputs) dotfiles wrrnpkgs;
   inherit (config.device-conf) username;
 in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
+  nixpkgs.overlays = [
+    wrrnpkgs.overlays.macApps
+    dotfiles.overlays.default
+  ];
+
   home-manager.users.${username} = {
     home.packages = [ pkgs.amethyst ];
     home.file.dot-amethyst = {
-      source = "${dotfiles.amethyst}/.amethyst.yml";
+      source = "${pkgs.dotfiles.amethyst}/.amethyst.yml";
       target = ".amethyst.yml";
     };
   };

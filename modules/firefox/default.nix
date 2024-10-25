@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
+  inherit (inputs) dotfiles wrrnpkgs;
   inherit (config.device-conf) username;
   inherit (pkgs.stdenv) isDarwin;
 
@@ -20,7 +20,10 @@ let
 in
 {
 
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
+  nixpkgs.overlays = [
+    wrrnpkgs.overlays.macApps
+    dotfiles.overlays.default
+  ];
 
   home-manager.users.${username} = {
     programs.firefox = {
@@ -116,13 +119,13 @@ in
     };
 
     home.file.firefox-theme = {
-      source = inputs.dotfiles.firefox-theme;
+      source = pkgs.dotfiles.firefox-theme;
       target = "${profilesPath}/dev-edition-default/chrome/theme";
       recursive = true;
     };
 
     home.file.dot-tridactyl = {
-      source = "${dotfiles.tridactyl}/.config/tridactyl";
+      source = "${pkgs.dotfiles.tridactyl}/.config/tridactyl";
       target = ".config/tridactyl";
       recursive = true;
     };

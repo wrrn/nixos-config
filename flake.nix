@@ -67,21 +67,16 @@
 
     }@inputs:
     let
-      systemInputs =
-        system:
-        nixpkgs.lib.mergeAttrs inputs {
-          dotfiles = inputs.dotfiles.packages.${system};
-        };
       inherit (flake-utils.lib) system;
     in
     {
       nixosConfigurations = {
-        redwall = nixpkgs.lib.nixosSystem {
+        alan-taylor = nixpkgs.lib.nixosSystem {
           modules = [
-            ./devices/redwall
+            ./devices/alan-taylor
             {
               _module.args = {
-                inputs = systemInputs system.x86_64-linux;
+                inherit inputs;
               };
             }
           ];
@@ -94,7 +89,7 @@
             ./devices/bandit
           ];
           specialArgs = {
-            inputs = systemInputs system.aarch64-darwin;
+            inherit inputs;
           };
         };
       };

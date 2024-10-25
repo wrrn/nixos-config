@@ -5,10 +5,14 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (config.device-conf) username;
+  inherit (inputs) dotfiles niri;
 in
 {
+  nixpkgs.overlays = [
+    niri.overlays.niri
+    dotfiles.overlays.default
+  ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -34,7 +38,7 @@ in
     ];
 
     home.file.dot-niri = {
-      source = "${dotfiles.niri}/.config/niri";
+      source = "${pkgs.dotfiles.niri}/.config/niri";
       target = ".config/niri";
       recursive = true;
     };

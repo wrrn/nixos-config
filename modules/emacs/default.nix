@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
+  inherit (inputs) dotfiles wrrnpkgs;
   inherit (config.device-conf) username;
   inherit (pkgs.stdenv) isLinux;
   inherit (pkgs.hostPlatform.uname) system;
@@ -19,8 +19,12 @@ let
     .${system};
 in
 {
+  nixpkgs.overlays = [
+    wrrnpkgs.overlays.macApps
+    dotfiles.overlays.default
+  ];
+
   # Start emacs-server with systemd
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
   services.emacs = {
     enable = isLinux;
     package = emacsPackage;
@@ -37,7 +41,7 @@ in
   ];
 
   home-manager.users.${username}.home.file.dot-emacs = {
-    source = "${dotfiles.emacs}/.emacs.d";
+    source = "${pkgs.dotfiles.emacs}/.emacs.d";
     target = ".emacs.d";
     recursive = true;
   };

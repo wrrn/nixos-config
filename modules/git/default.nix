@@ -9,6 +9,7 @@ let
   inherit (config.device-conf) username;
 in
 {
+  nixpkgs.overlays = [ dotfiles.overlays.default ];
   environment.systemPackages = with pkgs; [
     git
     delta
@@ -20,10 +21,10 @@ in
 
   home-manager.users.${username}.home.file = {
     ".gitconfig" = {
-      source = "${dotfiles.git}/.gitconfig";
+      source = "${pkgs.dotfiles.git}/.gitconfig";
     };
     ".gitattributes" = {
-      source = "${dotfiles.git}/.gitattributes";
+      source = "${pkgs.dotfiles.git}/.gitattributes";
     };
   };
 }
