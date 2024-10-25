@@ -39,8 +39,6 @@ in
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      alacritty
-
       go
       gofumpt
       golangci-lint

@@ -72,79 +72,27 @@
         nixpkgs.lib.mergeAttrs inputs {
           dotfiles = inputs.dotfiles.packages.${system};
         };
-      modules = [
-        ./options.nix
-        ./modules/nixos
-        ./modules/nix
-        ./modules/home-manager
-      ];
       inherit (flake-utils.lib) system;
     in
     {
       nixosConfigurations = {
-        redwall =
-          let
-            system = "x86_64-linux";
-          in
-          nixpkgs.lib.nixosSystem {
-            modules = [
-              {
-                nixpkgs.hostPlatform = "x86_64-linux";
-              }
-
-              ./devices/redwall
-
-              niri.nixosModules.niri
-              home-manager.nixosModules.home-manager
-
-              ./modules/1password
-              ./modules/audio
-              ./modules/emacs
-              ./modules/firefox
-              ./modules/fonts
-              ./modules/git
-              ./modules/home-manager
-              ./modules/keyboard
-              ./modules/locale
-              ./modules/networking
-              ./modules/niri
-              ./modules/sddm
-              ./modules/shell
-              ./modules/steam
-              ./modules/user
-
-              {
-                _module.args = {
-                  inputs = systemInputs system;
-                };
-              }
-            ] ++ modules;
-          };
+        redwall = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./devices/redwall
+            {
+              _module.args = {
+                inputs = systemInputs system.x86_64-linux;
+              };
+            }
+          ];
+        };
       };
 
       darwinConfigurations = {
         bandit = nix-darwin.lib.darwinSystem {
           modules = [
             ./devices/bandit
-
-            home-manager.darwinModules.home-manager
-
-            ./modules/1password
-            ./modules/amethyst
-            ./modules/apps
-            ./modules/containers
-            ./modules/emacs
-            ./modules/firefox
-            ./modules/fonts
-            ./modules/git
-            ./modules/keyboard
-            ./modules/networking
-            ./modules/shell
-            ./modules/system
-            ./modules/user
-            ./modules/pryon
-
-          ] ++ modules;
+          ];
           specialArgs = {
             inputs = systemInputs system.aarch64-darwin;
           };
