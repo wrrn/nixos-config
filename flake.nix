@@ -74,12 +74,10 @@
         alan-taylor = nixpkgs.lib.nixosSystem {
           modules = [
             ./devices/alan-taylor
-            {
-              _module.args = {
-                inherit inputs;
-              };
-            }
           ];
+          specialArgs = {
+            inherit inputs;
+          };
         };
       };
 

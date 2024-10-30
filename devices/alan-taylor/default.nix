@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  inherit (inputs) home-manager;
+  inherit (inputs) home-manager niri;
   inherit (inputs.flake-utils.lib) system;
 in
 {
