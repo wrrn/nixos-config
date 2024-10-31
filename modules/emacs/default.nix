@@ -41,8 +41,8 @@ in
   ];
 
   home-manager.users.${username}.home.file.dot-emacs = {
-    source = "${pkgs.dotfiles.emacs}/.emacs.d";
-    target = ".emacs.d";
+    source = "${pkgs.dotfiles.emacs}/.config/emacs";
+    target = ".config/emacs";
     recursive = true;
   };
 }
