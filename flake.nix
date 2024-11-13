@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Personal flakes
     dotfiles = {
       url = "sourcehut:~warren/dotfiles/master";
@@ -60,6 +65,7 @@
       flake-utils,
       niri,
       mac-app-util,
+      nur,
 
       dotfiles,
       fonts,

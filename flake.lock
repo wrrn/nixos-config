@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730377927,
-        "narHash": "sha256-YMDQOs9+bAlmI49YZHLfKZ83QupAjgtx1yzBolA98/U=",
+        "lastModified": 1731503539,
+        "narHash": "sha256-XPqjFT30hyxuTNLKbazJ34W0IOFqJlHAnZGt1CEXzTI=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "ec46a3ca539fa19f714ff09617188f51a080e434",
+        "rev": "cbacea656d1c8cdf352a2830204432007f570564",
         "type": "sourcehut"
       },
       "original": {
@@ -350,6 +350,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1730811841,
+        "narHash": "sha256-xMI+Ov/67jMDE+RK915iaJBqNrbTB7mI4Yux0y3J/Iw=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "e356541e9a30c987e72f994011770c385322ad67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "dotfiles": "dotfiles",
@@ -360,6 +375,7 @@
         "niri": "niri",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "nur": "nur",
         "wrrnpkgs": "wrrnpkgs"
       }
     },
@@ -446,11 +462,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729764515,
-        "narHash": "sha256-eZP7szPxnhLv48hUCtlh06trJlvCetWGfbTRnqRGlbM=",
+        "lastModified": 1731503181,
+        "narHash": "sha256-kOhmHdrSRML2DnwnbdGiAEvMUwv5QE9yRQawU6om9y4=",
         "ref": "refs/heads/main",
-        "rev": "26e6c43796776aeb4da24fde035de093e1b6f185",
-        "revCount": 15,
+        "rev": "181fde0377255c68e22aaba2b80963e521d4ad5a",
+        "revCount": 17,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },

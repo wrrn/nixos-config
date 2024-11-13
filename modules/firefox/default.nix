@@ -5,9 +5,10 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles wrrnpkgs;
+  inherit (inputs) dotfiles wrrnpkgs nur;
   inherit (config.device-conf) username;
   inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.nur.repos.rycee) firefox-addons;
 
   mozillaConfigPath = if isDarwin then "Library/Application Support/Mozilla" else ".mozilla";
 
@@ -23,6 +24,7 @@ in
   nixpkgs.overlays = [
     wrrnpkgs.overlays.macApps
     dotfiles.overlays.default
+    nur.overlay
   ];
 
   home-manager.users.${username} = {
@@ -48,7 +50,7 @@ in
 
         Homepage = {
           StartPage = "homepage";
-          URL = "about:blank";
+          URL = "https://cpu.land/the-basics";
         };
 
         UserMessaging = {
@@ -68,16 +70,16 @@ in
           Fingerprinting = true;
         };
 
-        FirefoxHome = # Make new tab only show search
-          {
-            Search = true;
-            TopSites = false;
-            SponsoredTopSites = false;
-            Highlights = false;
-            Pocket = false;
-            SponsoredPocket = false;
-            Snippets = false;
-          };
+        # Make new tab only show search
+        FirefoxHome = {
+          Search = false;
+          TopSites = false;
+          SponsoredTopSites = false;
+          Highlights = false;
+          Pocket = false;
+          SponsoredPocket = false;
+          Snippets = false;
+        };
       };
 
       nativeMessagingHosts = [
@@ -115,6 +117,12 @@ in
         userChrome = ''
           @import "./theme/userChrome.css"
         '';
+
+        extensions = [
+          firefox-addons.ublock-origin
+          firefox-addons.privacy-badger
+          firefox-addons.onepassword-password-manager
+        ];
       };
     };
 

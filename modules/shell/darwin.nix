@@ -13,7 +13,7 @@ mkIf isDarwin {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       terminal-notifier
-      google-cloud-sdk
+      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     ];
   };
 }

@@ -17,6 +17,8 @@ in
     difftastic
 
     hut # Not really git related, but related to a forge.
+
+    jujutsu # Again not really git related, but version control related.
   ];
 
   home-manager.users.${username}.home.file = {
