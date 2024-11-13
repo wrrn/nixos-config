@@ -30,17 +30,17 @@ in
 
   homebrew = {
     enable = true;
-    # taps = [
-    # {
-    # name = "pryoninc";
-    # clone_target = "ssh://git@bitbucket.org/pryoninc/homebrew-tap";
-    # force_auto_update = true;
-    # }
-    # ];
+    taps = [
+      {
+        name = "pryoninc/tap";
+        clone_target = "git@bitbucket.org:pryoninc/homebrew-tap";
+        force_auto_update = true;
+      }
+    ];
 
-    # brews = [
-    # "pryoninc/k8s_wait_for"
-    # ];
+    brews = [
+      "pryoninc/tap/k8s_wait_for"
+    ];
 
     masApps = {
       "Amphetamine" = 937984704;
