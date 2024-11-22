@@ -23,6 +23,9 @@ in
     home-manager.darwinModules.home-manager
     ../../modules/1password
     ../../modules/amethyst
+    ../../modules/sketchybar
+
+    ../../modules/jankyborders
     ../../modules/apps
     ../../modules/containers
     ../../modules/emacs

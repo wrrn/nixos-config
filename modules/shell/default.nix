@@ -46,6 +46,7 @@ in
       delve
       gdlv
 
+      dasht
       grpcurl
       jrnl
       k9s
@@ -59,7 +60,6 @@ in
       shellcheck
       shfmt
       stow
-
       tmux
       tree-sitter
       yq-go

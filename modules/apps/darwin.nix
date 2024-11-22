@@ -15,7 +15,6 @@ in
       skhd
       shortcat
       itsycal
-      bartender
       emacs-plus
       little-snitch
       amethyst

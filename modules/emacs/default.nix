@@ -40,9 +40,15 @@ in
     cmake
   ];
 
-  home-manager.users.${username}.home.file.dot-emacs = {
-    source = "${pkgs.dotfiles.emacs}/.config/emacs";
-    target = ".config/emacs";
-    recursive = true;
+  home-manager.users.${username}.home = {
+    packages = [
+      pkgs.global
+    ];
+
+    file.dot-emacs = {
+      source = "${pkgs.dotfiles.emacs}/.config/emacs";
+      target = ".config/emacs";
+      recursive = true;
+    };
   };
 }
