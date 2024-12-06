@@ -1,5 +1,5 @@
 _: {
   services.sketchybar = {
-    enable = true;
+    enable = false;
   };
 }
