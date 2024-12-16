@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733436365,
-        "narHash": "sha256-Xz9z1hBCdjIu7T0ua7M1zyXj8qFCgCMegq4NVwn4OMo=",
+        "lastModified": 1734027705,
+        "narHash": "sha256-f2F9yoIuOsv6F0/0p8iknqsrxBPlgPy50TdutbGPS1w=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "611485afc5a200ee659c3f1ffdae0e6dd22a0738",
+        "rev": "149a48b3343753ffec6b122b2633fa7ebc81301d",
         "type": "sourcehut"
       },
       "original": {
@@ -293,11 +293,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728901530,
-        "narHash": "sha256-I9Qd0LnAsEGHtKE9+uVR0iDFmsijWSy7GT0g3jihG4Q=",
+        "lastModified": 1733570843,
+        "narHash": "sha256-sQJAxY1TYWD1UyibN/FnN97paTFuwBw3Vp3DNCyKsMk=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "a60ac02f9466f85f092e576fd8364dfc4406b5a6",
+        "rev": "a35b08d09efda83625bef267eb24347b446c80b8",
         "type": "github"
       },
       "original": {
@@ -462,11 +462,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733436681,
-        "narHash": "sha256-pIJbIIF8XpoOPCFKXCL2++A+oWxXWHbRrODIO21kHDk=",
+        "lastModified": 1733761336,
+        "narHash": "sha256-gNRdOrmp3eoTmJdvV9vB9PVEUIBJiHaxOmbXK/CpOA0=",
         "ref": "refs/heads/main",
-        "rev": "9f78b8d88742c6ea31b5080befc19b46258a0bf9",
-        "revCount": 19,
+        "rev": "670313285dadb312024e4a3f5f8016c6b697f725",
+        "revCount": 20,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },

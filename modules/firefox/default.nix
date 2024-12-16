@@ -51,6 +51,7 @@ in
         Homepage = {
           StartPage = "homepage";
           URL = "https://cpu.land/the-basics";
+          Additional = [ "https://www.lightnote.co/" ];
         };
 
         UserMessaging = {

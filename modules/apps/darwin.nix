@@ -24,6 +24,7 @@ in
       monodraw
       hammerspoon
       ollama
+      ice-bar
     ];
   };
 
