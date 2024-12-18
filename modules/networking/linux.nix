@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   options,
@@ -7,7 +8,7 @@
 let
   inherit (pkgs.stdenv) isLinux;
   inherit (lib) mkIf optionalAttrs;
-
+  inherit (inputs) wrrnhosts;
   modules = ([
 
     (optionalAttrs (options ? networking.networkmanager.enable) {
@@ -29,7 +30,13 @@ let
     (optionalAttrs (options ? networking.nameservers) {
       networking.nameservers = [ "127.0.0.1" ];
     })
+
+    (optionalAttrs (options ? networking.hostFiles) {
+      wrrn.hosts.enable = true;
+    })
+
   ]);
 
 in
+
 mkIf isLinux (lib.foldl lib.attrsets.recursiveUpdate { } modules)

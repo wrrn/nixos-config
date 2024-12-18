@@ -53,6 +53,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    wrrnhosts = {
+      url = "git+ssh://git@git.sr.ht/~warren/hosts";
+      # url = "path:/home/warren/hosts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -70,6 +76,7 @@
       dotfiles,
       fonts,
       wrrnpkgs,
+      wrrnhosts,
 
     }@inputs:
     let

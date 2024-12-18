@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  inherit (inputs) home-manager niri;
+  inherit (inputs) home-manager niri wrrnhosts;
   inherit (inputs.flake-utils.lib) system;
 in
 {
@@ -23,6 +23,7 @@ in
 
     niri.nixosModules.niri
     home-manager.nixosModules.home-manager
+    wrrnhosts.nixosModules.hosts
 
     ../../modules/1password
     ../../modules/audio
