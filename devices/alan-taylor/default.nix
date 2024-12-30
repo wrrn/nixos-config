@@ -27,20 +27,22 @@ in
 
     ../../modules/1password
     ../../modules/audio
+    ../../modules/bluetooth
     ../../modules/emacs
     ../../modules/firefox
     ../../modules/fonts
     ../../modules/git
+    ../../modules/ghostty
     ../../modules/home-manager
     ../../modules/keyboard
     ../../modules/locale
     ../../modules/networking
     ../../modules/niri
+    ../../modules/printing
     ../../modules/sddm
     ../../modules/shell
     ../../modules/steam
     ../../modules/user
-    ../../modules/wezterm
   ];
 
   # Bootloader.
@@ -52,4 +54,8 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 }

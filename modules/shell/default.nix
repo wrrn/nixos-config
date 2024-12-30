@@ -7,6 +7,7 @@ in
     ./fish.nix
     ./starship.nix
     ./bat.nix
+    ./tmux.nix
     ./linux.nix
     ./darwin.nix
   ];
@@ -60,7 +61,6 @@ in
       shellcheck
       shfmt
       stow
-      tmux
       tree-sitter
       yq-go
       yt-dlp
