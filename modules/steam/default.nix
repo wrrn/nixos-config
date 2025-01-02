@@ -32,8 +32,6 @@ in
 
   home-manager.users.${username} = {
     home.packages = [
-      pkgs.prismlauncher
-      pkgs.heroic
       pkgs.itch
       holo
     ];

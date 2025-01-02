@@ -21,7 +21,6 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    niri.nixosModules.niri
     home-manager.nixosModules.home-manager
     wrrnhosts.nixosModules.hosts
 
