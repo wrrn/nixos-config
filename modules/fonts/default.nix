@@ -7,9 +7,15 @@
 let
   inherit (inputs) fonts;
   inherit (config.device-conf) username;
-  fontsToInstall = with pkgs; [
-    ellograph_cf
-    ellograph_cf_nerdfont
+  fontsToInstall = [
+    pkgs.monalisa
+    pkgs.ellograph_cf
+    pkgs.ellograph_cf_nerdfont
+    pkgs.berkely_mono
+    pkgs.ibm-plex
+    pkgs.nerd-fonts.iosevka
+    pkgs.nerd-fonts.zed-mono
+
   ];
 in
 {
