@@ -1,13 +1,14 @@
 {
+  config,
   inputs,
   pkgs,
   ...
 }:
 let
-  inherit (inputs) ghostty;
+  inherit (config.device-conf) username;
 in
 {
-  environment.systemPackages = [
-    ghostty.packages.${pkgs.system}.default
-  ];
+
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
+  home-manager.users.${username}.home.packages = [ pkgs.ghostty ];
 }
