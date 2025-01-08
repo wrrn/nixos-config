@@ -24,6 +24,7 @@ in
       hammerspoon
       ollama
       ice-bar
+      google-chrome
     ];
   };
 
