@@ -14,7 +14,7 @@ let
     {
       Darwin = pkgs.emacs-plus;
       # Use the pure gtk version so that it works without xwayland
-      Linux = pkgs.emacs29-pgtk;
+      Linux = pkgs.emacs30-pgtk;
     }
     .${system};
 in
@@ -30,7 +30,7 @@ in
     package = emacsPackage;
   };
 
-  environment.variables.EDITOR = "emacs";
+  environment.variables.EDITOR = "emacsclient";
 
   environment.systemPackages = with pkgs; [
     ispell

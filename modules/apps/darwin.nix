@@ -16,11 +16,10 @@ in
       shortcat
       itsycal
       emacs-plus
+      emacs-plus-client
       little-snitch
       amethyst
-      dash-docs
       alfred-mac
-      inyourface
       monodraw
       hammerspoon
       ollama
@@ -30,18 +29,6 @@ in
 
   homebrew = {
     enable = true;
-    taps = [
-      {
-        name = "pryoninc/tap";
-        clone_target = "git@bitbucket.org:pryoninc/homebrew-tap";
-        force_auto_update = true;
-      }
-    ];
-
-    brews = [
-      "pryoninc/tap/k8s_wait_for"
-    ];
-
     masApps = {
       "Amphetamine" = 937984704;
       "Create Booklet 2" = 1350225911;

@@ -4,12 +4,13 @@ let
 in
 {
   imports = [
-    ./fish.nix
-    ./starship.nix
     ./bat.nix
-    ./tmux.nix
-    ./linux.nix
     ./darwin.nix
+    ./fish.nix
+    ./linux.nix
+    ./ssh.nix
+    ./starship.nix
+    ./tmux.nix
   ];
 
   environment.systemPackages = with pkgs; [

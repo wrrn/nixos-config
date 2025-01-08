@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -7,6 +8,6 @@ let
 in
 {
   environment.systemPackages = [
-    ghostty.packages.x86_64-linux.default
+    ghostty.packages.${pkgs.system}.default
   ];
 }

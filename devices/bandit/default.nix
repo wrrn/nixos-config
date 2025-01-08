@@ -31,13 +31,16 @@ in
     ../../modules/emacs
     ../../modules/firefox
     ../../modules/fonts
+    # Disablinng Ghostty. It currently doesn't build for macos.
+    # TODO: Install Ghostty.
+    # ../../modules/ghostty
+
     ../../modules/git
     ../../modules/keyboard
     ../../modules/networking
     ../../modules/shell
     ../../modules/system
     ../../modules/user
-    ../../modules/wezterm
     ../../modules/pryon
   ];
 }

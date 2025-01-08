@@ -1,10 +1,10 @@
 { ... }:
 {
   device-conf = {
-    username = "warren";
-    displayName = "Warren";
+    username = "warrenharper";
+    displayName = "Warren Harper";
     hostname = "bandit";
-    home-manager.stateVersion = "24.11";
+    home-manager.stateVersion = "25.05";
     system.stateVersion = 5;
   };
 }
