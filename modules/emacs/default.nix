@@ -17,6 +17,17 @@ let
       Linux = pkgs.emacs30-pgtk;
     }
     .${system};
+
+  # Need to include the packages in home-manager for macos because darwin won't
+  # the emacs daemon story for darwin doesn't work as expected.
+  homeManagerPackageLists = {
+    Darwin = [
+      pkgs.emacs-plus
+      pkgs.emacs-plus-client
+    ];
+  };
+
+  homeManagerPackages = homeManagerPackageLists.${system} or [ ];
 in
 {
   nixpkgs.overlays = [
@@ -43,7 +54,7 @@ in
   home-manager.users.${username}.home = {
     packages = [
       pkgs.global
-    ];
+    ] ++ homeManagerPackages;
 
     file.dot-emacs = {
       source = "${pkgs.dotfiles.emacs}/.config/emacs";

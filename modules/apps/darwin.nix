@@ -15,8 +15,6 @@ in
       skhd
       shortcat
       itsycal
-      emacs-plus
-      emacs-plus-client
       little-snitch
       amethyst
       alfred-mac
@@ -25,6 +23,7 @@ in
       ollama
       ice-bar
       google-chrome
+      zen-browser
     ];
   };
 
