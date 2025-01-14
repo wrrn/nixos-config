@@ -36,6 +36,7 @@ in
       "HazeOver" = 430798174;
       "rcmd" = 1596283165;
       "Be Focused Pro" = 961632517;
+      "In Your Face" = 1476964367;
     };
   };
 }
