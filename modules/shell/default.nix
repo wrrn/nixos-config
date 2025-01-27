@@ -65,6 +65,7 @@ in
       tree-sitter
       yq-go
       yt-dlp
+      zig
     ];
 
     programs.zoxide.enable = true;
