@@ -47,6 +47,7 @@ in
 
         HardwareAcceleration = true;
         TranslateEnabled = true;
+        DNSOverHTTPS = false;
 
         Homepage = {
           StartPage = "homepage";
@@ -81,6 +82,26 @@ in
           SponsoredPocket = false;
           Snippets = false;
         };
+
+        Preferences = {
+          "network.trr.mode" = {
+            Value = 5;
+            Status = "locked";
+          };
+
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = {
+            Value = true;
+          };
+
+          "devtools.chrome.enabled" = {
+            Value = true;
+          };
+
+          "devtools.debugger.remote-enabled" = {
+            Value = true;
+          };
+
+        };
       };
 
       nativeMessagingHosts = [
@@ -90,13 +111,6 @@ in
       profiles.dev-edition-default = {
         id = 0;
         isDefault = true;
-
-        settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "devtools.chrome.enabled" = true;
-          "devtools.debugger.remote-enabled" = true;
-        };
-
         containersForce = true;
         containers = {
 
