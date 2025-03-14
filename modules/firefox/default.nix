@@ -133,7 +133,7 @@ in
           @import "./theme/userChrome.css"
         '';
 
-        extensions = [
+        extensions.packages = [
           firefox-addons.ublock-origin
           firefox-addons.privacy-badger
           firefox-addons.onepassword-password-manager
