@@ -209,11 +209,11 @@
         "systems": "systems_7"
       },
       "locked": {
-        "lastModified": 1726560853,
-        "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
@@ -645,11 +645,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741965200,
-        "narHash": "sha256-yBzufy11IsOyZm/4DCuOD466+hXu2SZJ7MthvvK/3wM=",
+        "lastModified": 1741972495,
+        "narHash": "sha256-9Fpz3vhpm9+RrIluCFus2qPJH6LRKWD3IEKNrIV4exc=",
         "ref": "refs/heads/main",
-        "rev": "5a6e1dde1f48603579ef33aa2b3760f1dc43f552",
-        "revCount": 33,
+        "rev": "7dffe1b2792aa2f813c4541fa15538b5d53fbaa2",
+        "revCount": 34,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
