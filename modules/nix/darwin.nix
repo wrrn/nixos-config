@@ -9,7 +9,7 @@ let
   inherit (lib) mkIf optionalAttrs;
 in
 mkIf isDarwin (
-  optionalAttrs (options ? services.nix-daemon) {
-    services.nix-daemon.enable = true;
+  optionalAttrs (options ? nix.enable) {
+    nix.enable = true;
   }
 )

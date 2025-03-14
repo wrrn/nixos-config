@@ -24,7 +24,7 @@ in
   nixpkgs.overlays = [
     wrrnpkgs.overlays.macApps
     dotfiles.overlays.default
-    nur.overlay
+    nur.overlays.default
   ];
 
   home-manager.users.${username} = {
@@ -47,7 +47,7 @@ in
 
         HardwareAcceleration = true;
         TranslateEnabled = true;
-        DNSOverHTTPS = false;
+        # DNSOverHTTPS = false;
 
         Homepage = {
           StartPage = "homepage";

@@ -109,6 +109,15 @@
             inherit inputs;
           };
         };
+
+        boq = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./devices/boq
+          ];
+          specialArgs = {
+            inherit inputs;
+          };
+        };
       };
     };
 }
