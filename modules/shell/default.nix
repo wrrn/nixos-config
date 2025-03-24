@@ -14,7 +14,6 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    asdf-vm
     bat
     coreutils-full
     curl
@@ -33,6 +32,7 @@ in
     httpie
     hwatch
     jq
+    mise
     ripgrep
     tree
     vim

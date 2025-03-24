@@ -47,7 +47,7 @@ in
 
         HardwareAcceleration = true;
         TranslateEnabled = true;
-        # DNSOverHTTPS = false;
+        DNSOverHTTPS = false;
 
         Homepage = {
           StartPage = "homepage";
