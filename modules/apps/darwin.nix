@@ -17,7 +17,6 @@ in
       itsycal
       little-snitch
       amethyst
-      alfred-mac
       monodraw
       hammerspoon
       ollama
@@ -38,5 +37,9 @@ in
       "Be Focused Pro" = 961632517;
       "In Your Face" = 1476964367;
     };
+
+    casks = [
+      "alfred" # Install via brew because the trampoline is not working
+    ];
   };
 }
