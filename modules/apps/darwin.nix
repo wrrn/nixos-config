@@ -15,7 +15,6 @@ in
       skhd
       shortcat
       itsycal
-      little-snitch
       amethyst
       monodraw
       hammerspoon
@@ -41,6 +40,7 @@ in
     casks = [
       "alfred" # Install via brew because the trampoline is not working
       "cold-turkey-blocker"
+      "little-snitch" # It needs to be installed to the /Applications directory.
     ];
   };
 }
