@@ -1,19 +1,21 @@
 {
   lib,
+  pkgs,
   system,
   ...
 }:
 let
   inherit (lib) mkIf optionalAttrs warn;
   inherit (lib.systems.inspect) predicates;
-  isDarwin = predicates.isDarwin system;
+  inherit (pkgs.stdenv) isDarwin;
 in
 {
-  config = mkIf isDarwin (
-    warn ''
-      `_1password_gui` will not be installed on Darwin.
-       Please download it from:
-      https://1password.com/downloads/mac
-    '' { }
-  );
+  config = mkIf isDarwin {
+    homebrew = {
+      enable = true;
+      casks = [
+        "1password"
+      ];
+    };
+  };
 }
