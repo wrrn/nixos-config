@@ -22,7 +22,6 @@ in
   ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      awscli2
       amazon-ecr-credential-helper
       air # a live reloader for go binaries.
       gh
@@ -43,6 +42,7 @@ in
       "tcl-tk"
       "postgresql@14"
       "mockery"
+      "awscli"
     ];
 
     casks = [
