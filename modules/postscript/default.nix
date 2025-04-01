@@ -47,6 +47,7 @@ in
 
     casks = [
       "docker"
+      "aws-vpn-client"
     ];
   };
 }
