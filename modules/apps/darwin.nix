@@ -11,16 +11,17 @@ in
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      mas
-      skhd
-      shortcat
-      itsycal
       amethyst
-      monodraw
-      hammerspoon
-      ollama
-      ice-bar
       google-chrome
+      hammerspoon
+      ice-bar
+      itsycal
+      mas
+      monodraw
+      net-news-wire
+      ollama
+      shortcat
+      skhd
       zen-browser
     ];
   };
@@ -29,12 +30,12 @@ in
     enable = true;
     masApps = {
       "Amphetamine" = 937984704;
+      "Be Focused Pro" = 961632517;
       "Create Booklet 2" = 1350225911;
       "Gestimer" = 990588172;
       "HazeOver" = 430798174;
-      "rcmd" = 1596283165;
-      "Be Focused Pro" = 961632517;
       "In Your Face" = 1476964367;
+      "rcmd" = 1596283165;
     };
 
     casks = [
