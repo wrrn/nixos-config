@@ -66,6 +66,8 @@ in
       yq-go
       yt-dlp
       zig
+      xh
+      nix-update
     ];
 
     programs.zoxide.enable = true;

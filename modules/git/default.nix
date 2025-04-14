@@ -14,11 +14,13 @@ in
     git
     delta
     git-machete
+    git-stack
     difftastic
 
     hut # Not really git related, but related to a forge.
 
     jujutsu # Again not really git related, but version control related.
+
   ];
 
   home-manager.users.${username}.home.file = {
