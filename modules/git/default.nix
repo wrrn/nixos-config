@@ -14,7 +14,6 @@ in
     git
     delta
     git-machete
-    git-stack
     difftastic
 
     hut # Not really git related, but related to a forge.
