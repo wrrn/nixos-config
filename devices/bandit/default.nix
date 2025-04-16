@@ -33,6 +33,7 @@ in
     ../../modules/fonts
     ../../modules/ghostty
     ../../modules/git
+    ../../modules/go
     ../../modules/keyboard
     ../../modules/networking
     ../../modules/shell

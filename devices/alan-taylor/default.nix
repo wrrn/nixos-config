@@ -32,6 +32,7 @@ in
     ../../modules/fonts
     ../../modules/git
     ../../modules/ghostty
+    ../../modules/go
     ../../modules/home-manager
     ../../modules/keyboard
     ../../modules/locale
