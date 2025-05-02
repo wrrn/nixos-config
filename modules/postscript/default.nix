@@ -27,6 +27,7 @@ in
       gh
       copilot-language-server
       jira-cli-go
+      terraform
     ];
   };
 

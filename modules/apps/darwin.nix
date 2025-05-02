@@ -43,6 +43,7 @@ in
       "cold-turkey-blocker"
       "little-snitch" # It needs to be installed to the /Applications directory.
       "lunar"
+      "brettferdosi/tap/grayscale"
     ];
   };
 }
