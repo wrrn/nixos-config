@@ -28,6 +28,7 @@ in
       copilot-language-server
       jira-cli-go
       terraform
+      go-mockery
     ];
   };
 
@@ -43,7 +44,6 @@ in
       "zlib"
       "tcl-tk"
       "postgresql@14"
-      "mockery"
       "awscli"
     ];
 
