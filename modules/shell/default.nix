@@ -60,6 +60,7 @@ in
       zig
       xh
       nix-update
+      yaak
     ];
 
     programs.zoxide.enable = true;
