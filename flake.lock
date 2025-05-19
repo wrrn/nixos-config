@@ -645,11 +645,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747682425,
-        "narHash": "sha256-uSQgEh8LO5N+KuIY6xQ6t/ui3yHw8pKO07XBkVNe438=",
+        "lastModified": 1747686893,
+        "narHash": "sha256-tFi6GR8LpbFD2FH8s1k3n7ycy75Kd/JnhFweom3N9/0=",
         "ref": "refs/heads/main",
-        "rev": "813857864b98b04016d645460281600dcca64729",
-        "revCount": 56,
+        "rev": "85dd9678c1e015df8854932d95c688fed00da9c9",
+        "revCount": 57,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
