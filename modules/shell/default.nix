@@ -36,6 +36,7 @@ in
     tree
     vim
     zoxide
+    bazelisk
   ];
 
   home-manager.users.${username} = {
@@ -55,6 +56,7 @@ in
       shfmt
       stow
       tree-sitter
+      wrrn.claude-code
       wrrn.yaak
       xh
       yq-go
