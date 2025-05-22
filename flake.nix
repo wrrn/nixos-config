@@ -19,12 +19,6 @@
     # Third party flakes
     flake-utils = {
       url = "github:numtide/flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     niri = {
@@ -74,7 +68,6 @@
       home-manager,
 
       flake-utils,
-      ghostty,
       niri,
       mac-app-util,
       nur,

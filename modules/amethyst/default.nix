@@ -16,7 +16,7 @@ in
   ];
 
   home-manager.users.${username} = {
-    home.packages = [ pkgs.amethyst ];
+    home.packages = [ pkgs.wrrn.amethyst ];
     home.file.dot-amethyst = {
       source = "${pkgs.dotfiles.amethyst}/.amethyst.yml";
       target = ".amethyst.yml";

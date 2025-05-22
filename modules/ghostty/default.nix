@@ -10,5 +10,5 @@ in
 {
 
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
-  home-manager.users.${username}.home.packages = [ pkgs.ghostty ];
+  home-manager.users.${username}.home.packages = [ pkgs.wrrn.ghostty ];
 }

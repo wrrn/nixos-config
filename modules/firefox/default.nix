@@ -17,7 +17,8 @@ let
 
   profilesPath = if isDarwin then "${firefoxConfigPath}/Profiles" else firefoxConfigPath;
 
-  firefoxPackage = if isDarwin then pkgs.firefox-devedition-darwin else pkgs.firefox-devedition-bin;
+  firefoxPackage =
+    if isDarwin then pkgs.wrrn.firefox-devedition-darwin else pkgs.firefox-devedition-bin;
 in
 {
 

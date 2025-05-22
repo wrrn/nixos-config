@@ -47,7 +47,7 @@ in
       kubectl
       minikube
       mkcert
-      # mosh
+      nix-update
       nixfmt-rfc-style
       pgcli
       rsync
@@ -55,12 +55,11 @@ in
       shfmt
       stow
       tree-sitter
+      wrrn.yaak
+      xh
       yq-go
       yt-dlp
       zig
-      xh
-      nix-update
-      yaak
     ];
 
     programs.zoxide.enable = true;

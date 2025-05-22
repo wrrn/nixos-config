@@ -12,7 +12,7 @@ let
 
   emacsPackage =
     {
-      Darwin = pkgs.emacs-plus;
+      Darwin = pkgs.wrrn.emacs-plus;
       # Use the pure gtk version so that it works without xwayland
       Linux = pkgs.emacs30-pgtk;
     }
@@ -22,8 +22,8 @@ let
   # the emacs daemon story for darwin doesn't work as expected.
   homeManagerPackageLists = {
     Darwin = [
-      pkgs.emacs-plus
-      pkgs.emacs-plus-client
+      pkgs.wrrn.emacs-plus
+      pkgs.wrrn.emacs-plus-client
     ];
   };
 

@@ -11,18 +11,18 @@ in
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      amethyst
       google-chrome
-      hammerspoon
       ice-bar
       itsycal
       mas
-      monodraw
       net-news-wire
       ollama
-      shortcat
       skhd
-      zen-browser
+      wrrn.amethyst
+      wrrn.hammerspoon
+      wrrn.monodraw
+      wrrn.shortcat
+      wrrn.zen-browser
     ];
   };
 
