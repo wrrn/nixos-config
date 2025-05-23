@@ -21,6 +21,7 @@ in
     ./options.nix
 
     home-manager.darwinModules.home-manager
+    ../../modules/darwin
     ../../modules/1password
     ../../modules/amethyst
     ../../modules/sketchybar
