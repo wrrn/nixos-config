@@ -28,6 +28,16 @@ in
 
   homebrew = {
     enable = true;
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+      upgrade = true;
+    };
+
+    taps = [
+      "brettferdosi/tap"
+    ];
+
     masApps = {
       "Amphetamine" = 937984704;
       "Be Focused Pro" = 961632517;

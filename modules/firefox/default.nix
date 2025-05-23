@@ -17,9 +17,8 @@ let
 
   profilesPath = if isDarwin then "${firefoxConfigPath}/Profiles" else firefoxConfigPath;
 
-  firefoxPackage =
-    if isDarwin then pkgs.wrrn.firefox-devedition-darwin else pkgs.firefox-devedition-bin;
 in
+
 {
 
   nixpkgs.overlays = [
@@ -28,10 +27,14 @@ in
     nur.overlays.default
   ];
 
+  imports = [
+    ./darwin.nix
+    ./linux.nix
+  ];
+
   home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
-      package = firefoxPackage;
       policies = {
         DontCheckDefaultBrowser = true;
         DisableTelemetry = true;
