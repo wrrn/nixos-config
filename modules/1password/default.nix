@@ -4,13 +4,9 @@
   lib,
   ...
 }:
-let
-  inherit (config.device-conf) username;
-
-in
 {
-  imports = [
-    ./linux.nix
-    ./darwin.nix
-  ];
+  programs = {
+    _1password.enable = true;
+    _1password-gui.enable = true;
+  };
 }
