@@ -51,6 +51,7 @@ in
       nix-update
       nixfmt-rfc-style
       pgcli
+      pkgs.nodePackages_latest.prettier
       rsync
       shellcheck
       shfmt
