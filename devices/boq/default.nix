@@ -31,7 +31,7 @@ in
     ../../modules/apps
     ../../modules/containers
     ../../modules/emacs
-    ../../modules/firefox
+    ../../modules/zen-browser
     ../../modules/fonts
     ../../modules/ghostty
     ../../modules/git

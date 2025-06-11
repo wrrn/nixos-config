@@ -22,7 +22,6 @@ in
       wrrn.hammerspoon
       wrrn.monodraw
       wrrn.shortcat
-      wrrn.zen-browser
     ];
   };
 

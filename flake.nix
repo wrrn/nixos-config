@@ -36,6 +36,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
+      # url = "path:/Users/warren.harper/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # Personal flakes
     dotfiles = {
       url = "sourcehut:~warren/dotfiles/master";
@@ -71,6 +78,7 @@
       niri,
       mac-app-util,
       nur,
+      zen-browser,
 
       dotfiles,
       fonts,
