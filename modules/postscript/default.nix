@@ -29,6 +29,8 @@ in
       jira-cli-go
       terraform
       go-mockery
+      mongosh
+      wrrn.mongodb-atlas-cli
     ];
   };
 
