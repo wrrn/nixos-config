@@ -23,7 +23,6 @@ in
     home-manager.darwinModules.home-manager
     ../../modules/darwin
     ../../modules/1password
-    ../../modules/aider
     ../../modules/amethyst
     ../../modules/sketchybar
 
