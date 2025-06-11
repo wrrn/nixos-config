@@ -41,10 +41,11 @@ in
       "Amphetamine" = 937984704;
       "Be Focused Pro" = 961632517;
       "Create Booklet 2" = 1350225911;
-      "Gestimer" = 990588172;
+      "Gestimer" = 6447125648;
       "HazeOver" = 430798174;
       "In Your Face" = 1476964367;
       "rcmd" = 1596283165;
+      "Instapaper" = 288545208;
     };
 
     casks = [
