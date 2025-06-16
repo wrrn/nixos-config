@@ -29,8 +29,9 @@ in
       jira-cli-go
       terraform
       go-mockery
-      mongosh
+      wrrn.mongosh
       wrrn.mongodb-atlas-cli
+      mongodb-compass
     ];
   };
 
@@ -47,10 +48,11 @@ in
       "tcl-tk"
       "postgresql@14"
       "awscli"
+      "docker"
+      "docker-compose"
     ];
 
     casks = [
-      "docker"
       "aws-vpn-client"
       "kreya"
     ];
