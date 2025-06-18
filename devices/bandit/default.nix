@@ -30,7 +30,7 @@ in
     ../../modules/apps
     ../../modules/containers
     ../../modules/emacs
-    ../../modules/firefox
+    ../../modules/zen-browser
     ../../modules/fonts
     ../../modules/ghostty
     ../../modules/git
@@ -40,6 +40,5 @@ in
     ../../modules/shell
     ../../modules/system
     ../../modules/user
-    ../../modules/pryon
   ];
 }
