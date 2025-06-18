@@ -14,7 +14,16 @@ in
   config = mkIf isDarwin ({
     home-manager.users.${username}.home.packages = [
       pkgs.colima
-      # pkgs.docker
     ];
+
+    homebrew = {
+      enable = true;
+      brews = [
+        "docker"
+        "docker-compose"
+        "docker-buildx"
+      ];
+    };
+
   });
 }

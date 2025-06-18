@@ -48,8 +48,6 @@ in
       "tcl-tk"
       "postgresql@14"
       "awscli"
-      "docker"
-      "docker-compose"
     ];
 
     casks = [
