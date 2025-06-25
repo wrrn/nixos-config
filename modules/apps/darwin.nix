@@ -46,6 +46,8 @@ in
       "In Your Face" = 1476964367;
       "rcmd" = 1596283165;
       "Instapaper" = 288545208;
+      "Capo" = 696977615;
+      "Endel" = 1346247457;
     };
 
     casks = [
