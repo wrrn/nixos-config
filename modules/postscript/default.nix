@@ -19,6 +19,8 @@ in
     tcl
     tk
     pipenv
+    buf
+    openapi-generator-cli
   ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
