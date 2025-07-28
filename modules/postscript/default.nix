@@ -21,7 +21,10 @@ in
     pipenv
     buf
     openapi-generator-cli
+    kcat
+    redocly
   ];
+
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       amazon-ecr-credential-helper
@@ -31,7 +34,7 @@ in
       jira-cli-go
       terraform
       go-mockery
-      wrrn.mongosh
+      mongosh
       wrrn.mongodb-atlas-cli
       mongodb-compass
     ];

@@ -24,9 +24,9 @@ in
     ../../modules/darwin
     ../../modules/1password
     ../../modules/amethyst
-    ../../modules/sketchybar
+    # ../../modules/sketchybar
 
-    ../../modules/jankyborders
+    # ../../modules/jankyborders
     ../../modules/apps
     ../../modules/containers
     ../../modules/emacs
