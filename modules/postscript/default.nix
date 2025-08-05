@@ -42,17 +42,21 @@ in
 
   homebrew = {
     enable = true;
+    taps = [
+      "atlassian/homebrew-acli"
+    ]
 
     # Installing these via brew so that they are in the expected locations.
     brews = [
+      "acli"
+      "awscli"
       "openssl"
+      "postgresql@14"
       "readline"
       "sqlite3"
-      "xz"
-      "zlib"
       "tcl-tk"
-      "postgresql@14"
-      "awscli"
+      "xz"
+      "zlib"      
     ];
 
     casks = [
