@@ -70,17 +70,18 @@ let
           InitialKeyRepeat = 15;
           AppleShowScrollBars = "WhenScrolling";
           AppleICUForce24HourTime = true;
+          _HIHideMenuBar = false;
         };
         # Note this might not work. I might have to do something other than optional
-        # CustomUserPreferences = {
-        #"com.apple.universalaccess" = {
-        # grayscale = 1;
-        # differentiateWithoutColor = 1;
-        #increaseContrast = 1;
-        #reduceMotion = 1;
-        #reduceTransparency = 1;
-        #};
-        #};
+        CustomUserPreferences = {
+          "com.apple.universalaccess" = {
+            grayscale = 1;
+            differentiateWithoutColor = 1;
+            increaseContrast = 1;
+            reduceMotion = 1;
+            reduceTransparency = 1;
+          };
+        };
       };
     })
 
