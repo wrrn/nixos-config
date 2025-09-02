@@ -27,6 +27,7 @@ in
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
+      awscli2
       amazon-ecr-credential-helper
       air # a live reloader for go binaries.
       gh
@@ -37,6 +38,7 @@ in
       mongosh
       wrrn.mongodb-atlas-cli
       mongodb-compass
+      act
     ];
   };
 
@@ -44,19 +46,19 @@ in
     enable = true;
     taps = [
       "atlassian/homebrew-acli"
-    ]
+    ];
 
     # Installing these via brew so that they are in the expected locations.
     brews = [
       "acli"
-      "awscli"
+      # "awscli"
       "openssl"
       "postgresql@14"
       "readline"
       "sqlite3"
       "tcl-tk"
       "xz"
-      "zlib"      
+      "zlib"
     ];
 
     casks = [
