@@ -1,8 +1,16 @@
-{ config, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (config.device-conf) username;
 in
 {
+
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
+
   imports = [
     ./bat.nix
     ./darwin.nix
@@ -52,7 +60,9 @@ in
       mkcert
       nix-update
       nixfmt-rfc-style
-      pgcli
+      ## Disable this because it's currently broken on darwin.
+      ## TODO: Check in a little while. 2025/09/02
+      # pgcli
       pkgs.nodePackages_latest.prettier
       rsync
       shellcheck

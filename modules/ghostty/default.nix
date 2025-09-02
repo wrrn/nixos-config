@@ -1,14 +1,13 @@
 {
-  config,
   inputs,
-  pkgs,
   ...
 }:
-let
-  inherit (config.device-conf) username;
-in
 {
-
+  ## Putting this here to prevent infinite recursion.
+  ## TODO: Is there a better way.
   nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
-  home-manager.users.${username}.home.packages = [ pkgs.wrrn.ghostty ];
+  imports = [
+    ./darwin.nix
+    ./linux.nix
+  ];
 }

@@ -32,7 +32,6 @@ in
       air # a live reloader for go binaries.
       gh
       copilot-language-server
-      jira-cli-go
       terraform
       go-mockery
       mongosh
