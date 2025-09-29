@@ -76,6 +76,8 @@ in
       yq-go
       yt-dlp
       zig
+      devenv
+      opencode
     ];
 
     programs.zoxide.enable = true;

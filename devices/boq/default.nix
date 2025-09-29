@@ -24,23 +24,21 @@ in
     ../../modules/darwin
     ../../modules/1password
     ../../modules/amethyst
-    # ../../modules/sketchybar
-
-    # ../../modules/jankyborders
     ../../modules/apps
     ../../modules/containers
     ../../modules/emacs
-    ../../modules/zen-browser
     ../../modules/fonts
+    ../../modules/gauntlet
     ../../modules/ghostty
     ../../modules/git
     ../../modules/go
     ../../modules/keyboard
+    ../../modules/mongo
     ../../modules/networking
     ../../modules/shell
     ../../modules/system
     ../../modules/user
-
+    ../../modules/zen-browser
     ../../modules/postscript
   ];
 }
