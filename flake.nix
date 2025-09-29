@@ -21,6 +21,11 @@
       url = "github:numtide/flake-utils";
     };
 
+    gauntlet = {
+      url = "github:project-gauntlet/gauntlet";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,6 +80,7 @@
       home-manager,
 
       flake-utils,
+      gauntlet,
       niri,
       mac-app-util,
       nur,
