@@ -10,7 +10,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.nix;
+    package = pkgs.lixPackageSets.stable.lix;
 
     # Enable the Flakes feature and accompanying new nix cli.
     settings = {
