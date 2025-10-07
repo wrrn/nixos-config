@@ -38,11 +38,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759179301,
-        "narHash": "sha256-91Cooz6pNUps6/rSyzE94zxfJRLF1tEkUo+THDCIiX4=",
+        "lastModified": 1759859417,
+        "narHash": "sha256-JX2AcS506uxXpzP2ZItXvslOWwfvNIRk9Vj8g48bRN8=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "f7206fb5daeb9d508ba1785105204f40f8c0276d",
+        "rev": "5fc8ded3ee0d8732c3dc2bce8d5c67e7b5a9e197",
         "type": "sourcehut"
       },
       "original": {
@@ -658,11 +658,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759177104,
-        "narHash": "sha256-pYJ5q+WWVIObC6aRB5MUfjF/+VskmvdkaWi703v5wjY=",
+        "lastModified": 1759250835,
+        "narHash": "sha256-fNv7sF186WtOZ6uatEXRju1YrDWC9HjIgTNLG1sJGM4=",
         "ref": "refs/heads/main",
-        "rev": "4608f9be1cf0e3f0567a3a34392a7eb283b55a1e",
-        "revCount": 68,
+        "rev": "63b76800f4eea829c11790ab212b2594c477d6c1",
+        "revCount": 69,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
