@@ -13,10 +13,14 @@ in
     package = pkgs.nix;
 
     # Enable the Flakes feature and accompanying new nix cli.
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      trusted-users = [ "@admin" ];
+
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
 
 }
