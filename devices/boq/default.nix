@@ -26,6 +26,7 @@ in
     ../../modules/amethyst
     ../../modules/apps
     ../../modules/containers
+    ../../modules/cold-turkey
     ../../modules/emacs
     ../../modules/fonts
     ../../modules/gauntlet

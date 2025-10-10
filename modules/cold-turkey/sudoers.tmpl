@@ -1,0 +1,8 @@
+User_Alias ME = "__USERNAME__"
+Cmnd_Alias KILL_COLD_TURKEY = /bin/launchctl \
+                                bootout \
+                                gui/501/launchkeep.cold-turkey
+Cmnd_Alias CHANGE_SUDOERS_FLAG = /usr/bin/chflags ^no(schg|schange|simmutable) /etc/sudoers.d/__FILENAME__$
+ME ALL = (ALL) ALL, \
+         !KILL_COLD_TURKEY, \
+         NOTAFTER=2025101100 !CHANGE_SUDOERS_FLAG
