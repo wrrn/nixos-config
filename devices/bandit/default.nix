@@ -28,6 +28,7 @@ in
 
     ../../modules/jankyborders
     ../../modules/apps
+    ../../modules/cold-turkey
     ../../modules/containers
     ../../modules/emacs
     ../../modules/zen-browser
