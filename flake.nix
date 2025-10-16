@@ -3,8 +3,14 @@
   inputs = {
     # Official flakes
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
+    
+   nixpkgs-master = {
+      url = "github:NixOS/nixpkgs/staging-next";
+#     url = "github:NixOS/nixpkgs/master";
+    };
+
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
@@ -76,6 +82,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-master,
       nix-darwin,
       home-manager,
 

@@ -16,7 +16,7 @@ in
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
-
+    ../../modules/fixed-packages
     # Set device options
     ./options.nix
 
