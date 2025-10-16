@@ -13,7 +13,6 @@ in
     home.packages = with pkgs; [
       google-chrome
       ice-bar
-      itsycal
       mas
       net-news-wire
       ollama
@@ -53,13 +52,16 @@ in
     };
 
     casks = [
-      "alfred" # Install via brew because the trampoline is not working
-      "cold-turkey-blocker"
-      "little-snitch" # It needs to be installed to the /Applications directory.
-      "lunar"
       "brettferdosi/tap/grayscale"
+      "cold-turkey-blocker"
       "dayflow"
       "handy"
+      "itsycal" # It needs to be installed in the /Applications directory
+      "little-snitch" # It needs to be installed to the /Applications directory.
+      "lunar"
+      "meetingbar"
+      "reader"
+      "alfred" # Install via brew because the trampoline is not working
     ];
   };
 }
