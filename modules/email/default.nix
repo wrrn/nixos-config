@@ -5,14 +5,9 @@ in
 {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      go
-      gopls
-      gofumpt
-      golangci-lint
-      gotools
-      delve
-      gdlv
-      kubebuilder
+      aerc
+      notmuch
+      w3m # Used for viewing html emails
     ];
   };
 }

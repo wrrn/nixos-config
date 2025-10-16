@@ -28,11 +28,13 @@ in
     ../../modules/containers
     ../../modules/cold-turkey
     ../../modules/emacs
+    ../../modules/email
     ../../modules/fonts
     ../../modules/gauntlet
     ../../modules/ghostty
     ../../modules/git
     ../../modules/go
+    ../../modules/jujutsu
     ../../modules/keyboard
     ../../modules/mongo
     ../../modules/networking

@@ -28,6 +28,7 @@ in
     curl
     delta
     diffutils
+    direnv
     eza
     fd
     fzf

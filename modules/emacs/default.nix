@@ -49,12 +49,16 @@ in
     emacsPackages.vterm
     glibtool
     cmake
+    taplo
+    gopls
+    pyright
   ];
 
   home-manager.users.${username}.home = {
     packages = [
       pkgs.global
-    ] ++ homeManagerPackages;
+    ]
+    ++ homeManagerPackages;
 
     file.dot-emacs = {
       source = "${pkgs.dotfiles.emacs}/.config/emacs";
