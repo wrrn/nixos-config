@@ -39,6 +39,7 @@ in
     ../../modules/mongo
     ../../modules/networking
     ../../modules/shell
+    ../../modules/sketchybar
     ../../modules/system
     ../../modules/user
     ../../modules/zen-browser

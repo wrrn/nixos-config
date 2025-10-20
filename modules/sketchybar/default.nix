@@ -12,16 +12,17 @@ in
   services.sketchybar = {
     enable = true;
     extraPackages = [
-      lua5_4_compat
-      sbarlua
+      pkgs.lua5_4_compat
+      pkgs.sbarlua
     ];
   };
 
   nixpkgs.overlays = [ dotfiles.overlays.default ];
   home-manager.users.${username} = {
     home.packages = [
-      lua5_4_compat # We use lua to configure it
-      sbarlua # The lua library that we use to configure it
+      pkgs.lua5_4_compat # We use lua to configure it
+      pkgs.sbarlua # The lua library that we use to configure it
+      pkgs.nerd-fonts.hack
     ];
 
     home.file.dot-sketchybar = {
