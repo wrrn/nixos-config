@@ -22,7 +22,6 @@ in
     home.packages = [
       pkgs.lua5_4_compat # We use lua to configure it
       pkgs.sbarlua # The lua library that we use to configure it
-      pkgs.nerd-fonts.hack
     ];
 
     home.file.dot-sketchybar = {

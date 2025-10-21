@@ -15,7 +15,6 @@ let
     pkgs.ibm-plex
     pkgs.nerd-fonts.iosevka
     pkgs.nerd-fonts.zed-mono
-
   ];
 in
 {
