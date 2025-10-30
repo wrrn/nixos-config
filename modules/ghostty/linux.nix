@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.hostPlatform) isLinux;
+  inherit (pkgs.stdenv) isLinux;
   inherit (lib) mkIf;
   inherit (config.device-conf) username;
 in

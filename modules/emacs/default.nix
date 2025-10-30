@@ -8,7 +8,7 @@ let
   inherit (inputs) dotfiles wrrnpkgs;
   inherit (config.device-conf) username;
   inherit (pkgs.stdenv) isLinux;
-  inherit (pkgs.hostPlatform.uname) system;
+  inherit (pkgs.stdenv.hostPlatform.uname) system;
 
   emacsPackage =
     {

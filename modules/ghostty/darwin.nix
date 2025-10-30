@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (pkgs.hostPlatform) isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
   inherit (lib) mkIf;
 in
 mkIf isDarwin {

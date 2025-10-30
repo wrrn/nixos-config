@@ -5,12 +5,11 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    
-   nixpkgs-master = {
-      url = "github:NixOS/nixpkgs/staging-next";
-#     url = "github:NixOS/nixpkgs/master";
-    };
 
+    nixpkgs-staging = {
+      url = "github:NixOS/nixpkgs/staging";
+      #     url = "github:NixOS/nixpkgs/master";
+    };
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
@@ -40,6 +39,10 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    cl-nix-lite = {
+      url = "github:hraban/cl-nix-lite";
     };
 
     nur = {
@@ -82,7 +85,7 @@
     {
       self,
       nixpkgs,
-      nixpkgs-master,
+      nixpkgs-staging,
       nix-darwin,
       home-manager,
 
@@ -90,6 +93,7 @@
       gauntlet,
       niri,
       mac-app-util,
+      cl-nix-lite,
       nur,
       zen-browser,
 

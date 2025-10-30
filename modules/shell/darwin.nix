@@ -7,7 +7,7 @@
 let
   inherit (config.device-conf) username;
   inherit (lib) mkIf;
-  inherit (pkgs.hostPlatform) isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
 in
 mkIf isDarwin {
   home-manager.users.${username} = {

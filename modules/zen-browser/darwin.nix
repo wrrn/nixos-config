@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.hostPlatform) isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
   inherit (lib) mkIf;
   inherit (config.device-conf) username;
 in
