@@ -34,6 +34,11 @@ in
 
     taps = [
       "brettferdosi/tap"
+      "jonas-grgt/ktea"
+    ];
+
+    brews = [
+      "ktea" # Kafka message viewer TODO migrate this to a nix package
     ];
 
     masApps = {
@@ -63,6 +68,8 @@ in
       "meetingbar"
       "reader"
       "alfred" # Install via brew because the trampoline is not working
+      "flux"
+      "sol"
     ];
   };
 }
