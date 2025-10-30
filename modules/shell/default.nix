@@ -71,8 +71,6 @@ in
       stow
       tree-sitter
       wrrn.claude-code
-      # wrrn.wireman
-      wrrn.yaak
       xh
       yq-go
       yt-dlp

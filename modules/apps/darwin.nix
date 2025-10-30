@@ -68,8 +68,9 @@ in
       "meetingbar"
       "reader"
       "alfred" # Install via brew because the trampoline is not working
-      "flux"
+      "flux-app"
       "sol"
+      "halloy"
     ];
   };
 }
