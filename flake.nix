@@ -6,11 +6,6 @@
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
-    nixpkgs-staging = {
-      url = "github:NixOS/nixpkgs/staging";
-      #     url = "github:NixOS/nixpkgs/master";
-    };
-
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,23 +21,9 @@
       url = "github:numtide/flake-utils";
     };
 
-    gauntlet = {
-      url = "github:project-gauntlet/gauntlet";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    cl-nix-lite = {
-      url = "github:hraban/cl-nix-lite";
     };
 
     nur = {
@@ -85,15 +66,11 @@
     {
       self,
       nixpkgs,
-      nixpkgs-staging,
       nix-darwin,
       home-manager,
 
       flake-utils,
-      gauntlet,
       niri,
-      mac-app-util,
-      cl-nix-lite,
       nur,
       zen-browser,
 
