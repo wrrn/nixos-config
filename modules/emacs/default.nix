@@ -46,7 +46,7 @@ in
   environment.systemPackages = with pkgs; [
     ispell
     python3
-    emacsPackages.vterm
+    emacs.pkgs.vterm
     glibtool
     cmake
     taplo
