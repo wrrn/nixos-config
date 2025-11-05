@@ -71,6 +71,7 @@ in
       "flux-app"
       "sol"
       "halloy"
+      "leader-key"
     ];
   };
 }
