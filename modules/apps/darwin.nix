@@ -48,13 +48,15 @@ in
       "Capo" = 696977615;
       "Create Booklet 2" = 1350225911;
       "Gestimer" = 6447125648;
+      "Grila" = 6444335028;
       "HazeOver" = 430798174;
       "In Your Face" = 1476964367;
       "Instapaper" = 288545208;
       "Maccy" = 1527619437;
       "Stretch It" = 6670762193;
       "rcmd" = 1596283165;
-      "Grila" = 6444335028;
+      "Tailscale" = 1475387142;
+      "Overcast" = 888422857;
     };
 
     casks = [
