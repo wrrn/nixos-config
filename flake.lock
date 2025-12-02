@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761257033,
-        "narHash": "sha256-s902zL3pRvNt6KRgsuJEOyr28VNafWaU5J4jR6z2TvQ=",
+        "lastModified": 1763818213,
+        "narHash": "sha256-OUITnHlAVc0WlXR7MUiAUF5XijYTSrYnX0UEtlGIbM4=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "130279f304e8f91f42cfd6cd761a9199dd5117cf",
+        "rev": "8fee3c1ef7e91c1e9c5abdc1f5704d04543fa54f",
         "type": "sourcehut"
       },
       "original": {
@@ -162,11 +162,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729094216,
-        "narHash": "sha256-d6XBRKOPN8mYr4hyCX1hTF0RYQmcK/FPrhU0KR9QwRU=",
+        "lastModified": 1763817809,
+        "narHash": "sha256-N/ZnkfEjMTA7UvHonbzwOmzxSjQ6UWS3LeQiNUjPDT0=",
         "ref": "refs/heads/main",
-        "rev": "754edf2f37d33d03bfd4b0856b1cf1dc23296442",
-        "revCount": 8,
+        "rev": "03e6a7e1b4f352aa3673af7ca127ad4b826c2769",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/fonts"
       },
@@ -297,11 +297,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1761880412,
-        "narHash": "sha256-QoJjGd4NstnyOG4mm4KXF+weBzA2AH/7gn1Pmpfcb0A=",
+        "lastModified": 1764611609,
+        "narHash": "sha256-yU9BNcP0oadUKupw0UKmO9BKDOVIg9NStdJosEbXf8U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a7fc11be66bdfb5cdde611ee5ce381c183da8386",
+        "rev": "8c29968b3a942f2903f90797f9623737c215737c",
         "type": "github"
       },
       "original": {
