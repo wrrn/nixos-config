@@ -8,6 +8,6 @@ in
 {
   inherit profilesPath;
   module = {
-    home-manager.users.${username}.programs.firefox.package = pkgs.firefox-devedition-bin;
+    home-manager.users.${username}.programs.firefox.package = pkgs.firefox-bin;
   };
 }

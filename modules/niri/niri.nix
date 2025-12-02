@@ -27,9 +27,9 @@ in
     enable = true;
   };
 
-  services.logind = {
-    powerKey = "poweroff";
-    lidSwitch = "suspend";
+  services.logind.settings.Login = {
+    HandlePowerKey = "poweroff";
+    HandleLidSwitch = "suspend";
   };
 
   home-manager.users.${username} = {

@@ -9,7 +9,4 @@ in
 
   # For adding auth when an app needs to sudo.
   security.polkit.enable = true;
-  environment.systemPackages = [
-    pkgs.polkit-kde-agent
-  ];
 }
