@@ -83,6 +83,8 @@
     {
       nixosConfigurations = {
         alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
+
+        fly-guy = nixpkgs.lib.nixosSystem (import ./devices/fly-guy inputs);
       };
 
       darwinConfigurations = {

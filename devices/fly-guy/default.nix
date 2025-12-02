@@ -7,7 +7,7 @@
 }@inputs:
 let
   inherit (inputs) home-manager niri wrrnhosts;
-  device-conf = (import ./options.nix inputs);
+  device-conf = (import ./device-config.nix inputs);
 in
 {
 
@@ -40,7 +40,6 @@ in
     ../../modules/printing
     ../../modules/sddm
     ../../modules/shell
-    ../../modules/steam
     ../../modules/user
 
     {
@@ -50,15 +49,20 @@ in
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      # Enable the X11 windowing system.
-      services.xserver.enable = true;
-
       # Enable CUPS to print documents.
       services.printing.enable = true;
 
       # Enable bluetooth
       hardware.bluetooth.enable = true;
       services.blueman.enable = true;
+
+      # Enable the X11 windowing system.
+      services.xserver.enable = true;
+
+      # Enable the GNOME Desktop Environment.
+      services.xserver.displayManager.gdm.enable = true;
+      services.xserver.desktopManager.gnome.enable = true;
+
     }
   ];
 
