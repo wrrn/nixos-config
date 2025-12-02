@@ -70,7 +70,7 @@ in
       shfmt
       stow
       tree-sitter
-      wrrn.claude-code
+      claude-code
       xh
       yq-go
       yt-dlp
