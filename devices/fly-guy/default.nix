@@ -38,7 +38,7 @@ in
     ../../modules/networking
     ../../modules/niri
     ../../modules/printing
-    ../../modules/sddm
+    # ../../modules/sddm
     ../../modules/shell
     ../../modules/user
 

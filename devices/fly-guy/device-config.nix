@@ -7,6 +7,6 @@ in
   displayName = "Warren";
   hostname = "fly-guy";
   nixOS.stateVersion = "25.11";
-  platform = nixpkgs.lib.systems.elaborate x86_64-linux;
+  platform = nixpkgs.lib.systems.elaborate aarch64-linux;
   home-manager.stateVersion = "26.05";
 }
