@@ -1,12 +1,12 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
   ...
 }:
 let
   inherit (inputs) dotfiles;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
   # XXX: cargo-nextest fails to build on macOS, skip tests until the issue
   # is resolved.
   #

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ device-conf, ... }:
 {
-  system.stateVersion = config.device-conf.system.stateVersion;
+  system.stateVersion = device-conf.nixOS.stateVersion;
 }

@@ -1,9 +1,12 @@
-_: {
-  device-conf = {
-    username = "warren";
-    displayName = "Warren";
-    hostname = "alan-taylor";
-    system.stateVersion = "24.05";
-    home-manager.stateVersion = "24.11";
-  };
+{ flake-utils, nixpkgs, ... }:
+let
+  inherit (flake-utils.lib.system) x86_64-linux;
+in
+{
+  username = "warren";
+  displayName = "Warren";
+  hostname = "alan-taylor";
+  nixOS.stateVersion = "25.11";
+  platform = nixpkgs.lib.systems.elaborate x86_64-linux;
+  home-manager.stateVersion = "26.05";
 }

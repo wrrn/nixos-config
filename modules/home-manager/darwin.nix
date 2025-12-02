@@ -2,14 +2,14 @@
   inputs,
   lib,
   pkgs,
-  config,
+  device-conf,
   ...
 }:
 let
   inherit (inputs) mac-app-util;
   inherit (lib) mkIf;
   inherit (pkgs.stdenv) isDarwin;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 mkIf isDarwin {
   home-manager.users.${username}.targets.darwin = {

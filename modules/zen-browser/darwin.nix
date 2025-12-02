@@ -1,13 +1,13 @@
 {
   pkgs,
   lib,
-  config,
+  device-conf,
   ...
 }:
 let
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) mkIf;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 ## Install via homebrew so that we are able to get our passwords from
 ## 1password.

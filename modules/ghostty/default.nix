@@ -1,13 +1,16 @@
 {
-  inputs,
+  device-conf,
   ...
 }:
+let
+  kernel = device-conf.platform.parsed.kernel.name;
+  module =
+    {
+      darwin = ./darwin.nix;
+      linux = ./linux.nix;
+    }
+    .${kernel} or { };
+in
 {
-  ## Putting this here to prevent infinite recursion.
-  ## TODO: Is there a better way.
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
-  imports = [
-    ./darwin.nix
-    ./linux.nix
-  ];
+  imports = [ module ];
 }

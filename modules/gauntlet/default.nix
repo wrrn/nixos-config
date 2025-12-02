@@ -1,6 +1,6 @@
-{ inputs, config, ... }:
+{ device-conf, inputs, ... }:
 let
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 {
   homebrew = {

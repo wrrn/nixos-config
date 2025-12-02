@@ -1,14 +1,13 @@
 {
+  username,
   pkgs,
-  lib,
-  config,
-  ...
 }:
 let
-  inherit (pkgs.hostPlatform) isLinux;
-  inherit (lib) mkIf;
-  inherit (config.device-conf) username;
+  profilesPath = ".mozilla/firefox";
 in
-mkIf isLinux {
-  home-manager.users.${username}.programs.firefox.package = pkgs.firefox-devedition-bin;
+{
+  inherit profilesPath;
+  module = {
+    home-manager.users.${username}.programs.firefox.package = pkgs.firefox-devedition-bin;
+  };
 }

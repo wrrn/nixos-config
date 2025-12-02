@@ -1,12 +1,12 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
   ...
 }:
 let
   inherit (inputs) dotfiles;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 {
   nixpkgs.overlays = [ dotfiles.overlays.default ];

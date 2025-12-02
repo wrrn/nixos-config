@@ -1,14 +1,11 @@
 {
-  config,
+  device-conf,
   pkgs,
-  lib,
   ...
 }:
 let
-  inherit (pkgs.stdenv) isLinux;
-  inherit (lib) mkIf;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
-mkIf isLinux {
-  home-manager.users.${username}.home.packages = [ pkgs.wrrn.ghostty ];
+{
+  home-manager.users.${username}.home.packages = [ pkgs.ghostty ];
 }

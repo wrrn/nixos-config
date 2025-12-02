@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ device-conf, pkgs, ... }:
 let
-  inherit (config.device-conf) hostname;
+  inherit (device-conf) hostname;
 in
 {
   imports = [

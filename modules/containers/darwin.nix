@@ -1,14 +1,14 @@
 {
+  device-conf,
   lib,
   options,
-  config,
   pkgs,
   ...
 }:
 let
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) mkIf optionalAttrs;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 {
   config = mkIf isDarwin ({

@@ -1,11 +1,11 @@
 {
   pkgs,
   lib,
-  config,
+  device-conf,
   ...
 }:
 let
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
   inherit (lib) mkIf;
   inherit (pkgs.stdenv) isDarwin;
 in

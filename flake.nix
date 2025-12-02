@@ -80,19 +80,9 @@
       wrrnhosts,
 
     }@inputs:
-    let
-      inherit (flake-utils.lib) system;
-    in
     {
       nixosConfigurations = {
-        alan-taylor = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./devices/alan-taylor
-          ];
-          specialArgs = {
-            inherit inputs;
-          };
-        };
+        alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
       };
 
       darwinConfigurations = {
@@ -102,6 +92,7 @@
           ];
           specialArgs = {
             inherit inputs;
+            system = "aarch64-darwin";
           };
         };
 
@@ -111,6 +102,7 @@
           ];
           specialArgs = {
             inherit inputs;
+            system = "aarch64-darwin";
           };
         };
       };

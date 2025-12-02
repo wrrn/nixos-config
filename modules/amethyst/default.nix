@@ -1,5 +1,5 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
   ...
@@ -7,7 +7,7 @@
 
 let
   inherit (inputs) dotfiles wrrnpkgs;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 {
   nixpkgs.overlays = [

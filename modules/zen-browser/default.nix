@@ -1,12 +1,12 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
   ...
 }:
 let
   inherit (inputs) dotfiles wrrnpkgs nur;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
   inherit (pkgs.stdenv) isDarwin;
   inherit (pkgs.nur.repos.rycee) firefox-addons;
 in

@@ -1,11 +1,11 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
   ...
 }:
 let
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
   inherit (inputs) dotfiles niri;
 in
 {

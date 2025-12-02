@@ -1,22 +1,21 @@
-{ inputs, ... }:
+{
+  home-manager,
+  niri,
+  wrrnhosts,
+  flake-utils,
+  ...
+}@inputs:
 let
   inherit (inputs) home-manager niri wrrnhosts;
-  inherit (inputs.flake-utils.lib) system;
+  device-conf = (import ./options.nix inputs);
 in
 {
-  nixpkgs.hostPlatform = system.x86_64-linux;
 
-  imports = [
-    # options definitions
-    ../../options.nix
-
+  modules = [
     # Default modules
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
-
-    # Set device options
-    ./options.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -34,28 +33,37 @@ in
     ../../modules/ghostty
     ../../modules/go
     ../../modules/home-manager
-    ../../modules/keyboard
-    ../../modules/locale
-    ../../modules/networking
-    ../../modules/niri
-    ../../modules/printing
-    ../../modules/sddm
-    ../../modules/shell
-    ../../modules/steam
+    # ../../modules/keyboard
+    # ../../modules/locale
+    # ../../modules/networking
+    # ../../modules/niri
+    # ../../modules/printing
+    # ../../modules/sddm
+    # ../../modules/shell
+    # ../../modules/steam
     ../../modules/user
+
+    {
+      nixpkgs.hostPlatform = device-conf.platform.system;
+
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+
+      # Enable the X11 windowing system.
+      services.xserver.enable = true;
+
+      # Enable CUPS to print documents.
+      services.printing.enable = true;
+
+      # Enable bluetooth
+      hardware.bluetooth.enable = true;
+      services.blueman.enable = true;
+    }
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  specialArgs = {
+    inherit inputs;
+    inherit device-conf;
+  };
 }

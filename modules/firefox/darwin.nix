@@ -1,22 +1,23 @@
+### Generate the options that will be added to the firefox installation.
 {
-  pkgs,
-  lib,
-  config,
+  username,
   ...
 }:
 let
-  inherit (pkgs.hostPlatform) isDarwin;
-  inherit (lib) mkIf;
-  inherit (config.device-conf) username;
+  firefoxConfigPath = "Library/Application Support/Firefox";
+  profilesPath = "${firefoxConfigPath}/Profiles";
 in
-## Install firefox via homebrew so that we are able to get our passwords from
-## 1password.
-mkIf isDarwin {
-  homebrew = {
-    enable = true;
-    casks = [
-      "firefox@developer-edition"
-    ];
+{
+  inherit profilesPath;
+  ## Install firefox via homebrew so that we are able to get our passwords from
+  ## 1password.
+  module = {
+    homebrew = {
+      enable = true;
+      casks = [
+        "firefox@developer-edition"
+      ];
+    };
+    home-manager.users.${username}.programs.firefox.package = null;
   };
-  home-manager.users.${username}.programs.firefox.package = null;
 }

@@ -9,7 +9,7 @@ in
       type = str;
       description = "Username of the default user (single user setup).";
       default = "warren";
-      example = "burt";
+      example = "bert";
     };
 
     displayName = mkOption {

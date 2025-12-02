@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ device-conf, pkgs, ... }:
 let
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 
   holo-script = pkgs.writeShellApplication {
     name = "holo-script";

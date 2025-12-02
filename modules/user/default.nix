@@ -1,11 +1,11 @@
 {
-  config,
+  device-conf,
   lib,
   pkgs,
   ...
 }:
 let
-  inherit (config.device-conf) username displayName;
+  inherit (device-conf) username displayName;
   inherit (pkgs.stdenv) isLinux isDarwin;
   inherit (pkgs.stdenv.hostPlatform.uname) system;
   home =

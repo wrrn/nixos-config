@@ -1,24 +1,25 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
+  lib,
   ...
 }:
 let
   inherit (inputs) dotfiles wrrnpkgs nur;
-  inherit (config.device-conf) username;
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (device-conf) username;
   inherit (pkgs.nur.repos.rycee) firefox-addons;
+  platform = device-conf.platform.parsed.kernel.name;
 
-  mozillaConfigPath = if isDarwin then "Library/Application Support/Mozilla" else ".mozilla";
+  platformConfigs = {
+    darwin = ./darwin.nix;
+    linux = ./linux.nix;
+  };
 
-  firefoxConfigPath =
-    if isDarwin then "Library/Application Support/Firefox" else "${mozillaConfigPath}/firefox";
-
-  profilesPath = if isDarwin then "${firefoxConfigPath}/Profiles" else firefoxConfigPath;
-
+  platformConfig = import platformConfigs.${platform} {
+    inherit username pkgs;
+  };
 in
-
 {
 
   nixpkgs.overlays = [
@@ -28,8 +29,7 @@ in
   ];
 
   imports = [
-    ./darwin.nix
-    ./linux.nix
+    platformConfig.module
   ];
 
   home-manager.users.${username} = {
@@ -147,7 +147,7 @@ in
 
     home.file.firefox-theme = {
       source = pkgs.dotfiles.firefox-theme;
-      target = "${profilesPath}/dev-edition-default/chrome/theme";
+      target = "${platformConfig.profilesPath}/dev-edition-default/chrome/theme";
       recursive = true;
     };
 

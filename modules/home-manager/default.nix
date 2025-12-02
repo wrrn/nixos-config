@@ -1,9 +1,9 @@
 {
-  config,
+  device-conf,
   ...
 }:
 let
-  inherit (config.device-conf) username home-manager;
+  inherit (device-conf) username home-manager;
 in
 {
   imports = [

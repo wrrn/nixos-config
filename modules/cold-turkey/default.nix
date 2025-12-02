@@ -1,10 +1,10 @@
 {
-  config,
+  device-conf,
   lib,
   ...
 }:
 let
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
   filename = "01-cold-turkey";
   sudoerTemplate = builtins.readFile ./sudoers.tmpl;
   templateVars = {

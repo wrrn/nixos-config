@@ -1,12 +1,12 @@
 {
-  config,
+  device-conf,
   inputs,
   pkgs,
   ...
 }:
 let
   inherit (inputs) fonts;
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
   fontsToInstall = [
     pkgs.monalisa
     pkgs.ellograph_cf

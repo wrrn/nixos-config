@@ -1,6 +1,6 @@
-{ config, ... }:
+{ device-conf, ... }:
 let
-  inherit (config.device-conf) username;
+  inherit (device-conf) username;
 in
 {
   system.primaryUser = username;
