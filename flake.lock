@@ -342,6 +342,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-staging": {
+      "locked": {
+        "lastModified": 1764742005,
+        "narHash": "sha256-ABnXxCP7TmdFzLEAEj/h+dbuNhKbd50MROuPInK2pwY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "abd7271cf2bb697660df8c6382819b35b21ebd7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "staging-next",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1744536153,
@@ -429,6 +445,7 @@
         "niri": "niri",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-staging": "nixpkgs-staging",
         "nur": "nur",
         "wrrnhosts": "wrrnhosts",
         "wrrnpkgs": "wrrnpkgs",

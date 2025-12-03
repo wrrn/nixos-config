@@ -9,6 +9,7 @@ in
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
+    ../../modules/fixed-packages
 
     home-manager.darwinModules.home-manager
     ../../modules/darwin
