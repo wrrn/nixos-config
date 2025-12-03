@@ -9,6 +9,7 @@ let
   inherit (device-conf) username;
   fontsToInstall = [
     pkgs.monalisa
+    pkgs.triplicate
     pkgs.ellograph_cf
     pkgs.ellograph_cf_nerdfont
     pkgs.berkely_mono
