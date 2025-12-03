@@ -32,6 +32,7 @@ in
     ../../modules/shell
     ../../modules/sketchybar
     ../../modules/system
+    ../../modules/tailscale
     ../../modules/user
     ../../modules/zen-browser
     ../../modules/postscript

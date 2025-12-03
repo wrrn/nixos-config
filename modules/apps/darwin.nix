@@ -55,8 +55,6 @@ in
       "Maccy" = 1527619437;
       "Stretch It" = 6670762193;
       "rcmd" = 1596283165;
-      "Tailscale" = 1475387142;
-      "Overcast" = 888422857;
     };
 
     casks = [
