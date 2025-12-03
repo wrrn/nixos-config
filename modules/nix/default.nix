@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ device-conf, pkgs, ... }:
 let
   inherit (pkgs.stdenv) isDarwin;
 in
@@ -8,14 +8,15 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = device-conf.platform.system;
 
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
 
-    # Enable the Flakes feature and accompanying new nix cli.
     settings = {
       trusted-users = [ "@admin" ];
 
+      # Enable the Flakes feature and accompanying new nix cli.
       experimental-features = [
         "nix-command"
         "flakes"

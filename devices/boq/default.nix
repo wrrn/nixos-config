@@ -1,24 +1,14 @@
-{ inputs, ... }:
+{ home-manager, ... }@inputs:
 let
-  inherit (inputs) home-manager;
-  inherit (inputs.flake-utils.lib) system;
-
+  device-conf = (import ./options.nix inputs);
 in
 {
 
-  nixpkgs.hostPlatform = system.aarch64-darwin;
-
-  imports = [
-    # options definitions
-    ../../options.nix
-
+  modules = [
     # Default modules
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
-
-    # Set device options
-    ./options.nix
 
     home-manager.darwinModules.home-manager
     ../../modules/darwin
@@ -45,4 +35,6 @@ in
     ../../modules/zen-browser
     ../../modules/postscript
   ];
+
+  specialArgs = { inherit inputs device-conf; };
 }

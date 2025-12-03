@@ -83,7 +83,6 @@
     {
       nixosConfigurations = {
         alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
-
         fly-guy = nixpkgs.lib.nixosSystem (import ./devices/fly-guy inputs);
       };
 
@@ -98,15 +97,7 @@
           };
         };
 
-        boq = nix-darwin.lib.darwinSystem {
-          modules = [
-            ./devices/boq
-          ];
-          specialArgs = {
-            inherit inputs;
-            system = "aarch64-darwin";
-          };
-        };
+        boq = nix-darwin.lib.darwinSystem (import ./devices/boq inputs);
       };
     };
 }

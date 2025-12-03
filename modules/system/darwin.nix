@@ -32,6 +32,10 @@ let
   optional = a: a;
 
   modules = ([
+    {
+      system.startup.chime = false;
+    }
+
     (optional {
       system.defaults = {
 
@@ -60,7 +64,16 @@ let
           mouse-over-hilite-stack = true;
           magnification = true;
           autohide = true;
+          autohide-delay = 1000.0;
           appswitcher-all-displays = true;
+        };
+
+        spaces = {
+          spans-displays = true; # Disable "Displays have separate spaced"
+        };
+
+        trackpad = {
+          Clicking = true; # Turn on tap to click
         };
 
         NSGlobalDomain = {

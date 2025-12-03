@@ -14,6 +14,5 @@ mkIf isDarwin (
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-    system.defaults.trackpad.Clicking = true;
   }
 )

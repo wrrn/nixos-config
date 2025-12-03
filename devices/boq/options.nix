@@ -1,10 +1,12 @@
-{ ... }:
+{ flake-utils, nixpkgs, ... }:
+let
+  inherit (flake-utils.lib.system) aarch64-darwin;
+in
 {
-  device-conf = {
-    username = "warren.harper";
-    displayName = "Warren Harper";
-    hostname = "boq";
-    home-manager.stateVersion = "25.05";
-    system.stateVersion = 5;
-  };
+  username = "warren";
+  displayName = "Warren";
+  hostname = "boq";
+  platform = nixpkgs.lib.systems.elaborate aarch64-darwin;
+  nixOS.stateVersion = 6;
+  home-manager.stateVersion = "25.11";
 }
