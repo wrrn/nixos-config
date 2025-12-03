@@ -10,4 +10,5 @@ in
   ];
 
   networking.hostName = hostname;
+  networking.localHostName = hostname;
 }
