@@ -6,9 +6,10 @@
 }:
 let
   inherit (inputs) dotfiles wrrnpkgs nur;
-  inherit (device-conf) username;
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (device-conf) username platform;
   inherit (pkgs.nur.repos.rycee) firefox-addons;
+
+  module = if platform.isDarwin then ./darwin.nix else { };
 in
 
 {
@@ -24,7 +25,7 @@ in
   ];
 
   imports = [
-    ./darwin.nix
+    module
   ];
 
   home-manager.users.${username} = {
