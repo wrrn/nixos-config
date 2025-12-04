@@ -10,7 +10,7 @@ let
 in
 {
   nixpkgs.overlays = [
-    niri.overlays.niri
+    # niri.overlays.niri
     dotfiles.overlays.default
   ];
 
@@ -20,7 +20,7 @@ in
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-stable;
+    # package = pkgs.niri-stable;
   };
 
   services.upower = {
@@ -37,11 +37,11 @@ in
       swayidle
     ];
 
-    home.file.dot-niri = {
-      source = "${pkgs.dotfiles.niri}/.config/niri";
-      target = ".config/niri";
-      recursive = true;
-    };
+    # home.file.dot-niri = {
+    #   source = "${pkgs.dotfiles.niri}/.config/niri";
+    #   target = ".config/niri";
+    #   recursive = true;
+    # };
 
     programs.fuzzel = {
       enable = true;
