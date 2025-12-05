@@ -7,6 +7,6 @@ in
   displayName = "Warren";
   hostname = "lona";
   nixOS.stateVersion = "25.11";
-  platform = nixpkgs.lib.systems.elaborate aarch64-linux; # TODO: Change for laptop
+  platform = nixpkgs.lib.systems.elaborate x86_64-linux; # TODO: Change for laptop
   home-manager.stateVersion = "26.05";
 }
