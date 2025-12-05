@@ -29,6 +29,7 @@ in
     ../../modules/1password
     ../../modules/audio
     ../../modules/bluetooth
+    ../../modules/build-tools
     ../../modules/containers
     ../../modules/emacs
     ../../modules/email
@@ -44,6 +45,7 @@ in
     ../../modules/printing
     ../../modules/sddm
     ../../modules/shell
+    ../../modules/ssh
     ../../modules/sudo
     ../../modules/tailscale
     ../../modules/user
