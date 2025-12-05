@@ -3,6 +3,7 @@
   niri,
   wrrnhosts,
   flake-utils,
+  flaky-falcon,
   nixpkgs,
   ...
 }@inputs:
@@ -26,6 +27,7 @@ in
 
     home-manager.nixosModules.home-manager
     wrrnhosts.nixosModules.hosts
+        flaky-falcon.nixosModules.default
 
     ../../modules/1password
     ../../modules/audio
@@ -51,6 +53,8 @@ in
     ../../modules/tailscale
     ../../modules/user
     ../../modules/zen-browser
+
+    ../../modules/xona
   ];
 
   specialArgs = {

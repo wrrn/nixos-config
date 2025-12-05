@@ -42,6 +42,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # Work flakes
+    flaky-falcon = {
+    url = "path:/home/warren/flaky-falcon";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Personal flakes
     dotfiles = {
       url = "sourcehut:~warren/dotfiles/master";
@@ -78,6 +84,8 @@
       niri,
       nur,
       zen-browser,
+
+      flaky-falcon,
 
       dotfiles,
       fonts,

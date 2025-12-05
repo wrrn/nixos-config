@@ -154,6 +154,23 @@
         "type": "github"
       }
     },
+    "flaky-falcon": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764991158,
+        "narHash": "sha256-QsPEkURbKUk4j0+6pf+B4fd0Cukr+y2qNyXYD3igjRc=",
+        "path": "/home/warren/flaky-falcon",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/warren/flaky-falcon",
+        "type": "path"
+      }
+    },
     "fonts": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -440,6 +457,7 @@
       "inputs": {
         "dotfiles": "dotfiles",
         "flake-utils": "flake-utils_2",
+        "flaky-falcon": "flaky-falcon",
         "fonts": "fonts",
         "home-manager": "home-manager",
         "niri": "niri",
