@@ -37,11 +37,11 @@ in
       swayidle
     ];
 
-    # home.file.dot-niri = {
-    #   source = "${pkgs.dotfiles.niri}/.config/niri";
-    #   target = ".config/niri";
-    #   recursive = true;
-    # };
+    home.file.dot-niri = {
+      source = "${pkgs.dotfiles.niri}/.config/niri";
+      target = ".config/niri";
+      recursive = true;
+    };
 
     programs.fuzzel = {
       enable = true;

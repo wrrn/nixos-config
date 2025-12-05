@@ -31,6 +31,7 @@ in
     ../../modules/networking
     ../../modules/shell
     ../../modules/sketchybar
+    ../../modules/sudo
     ../../modules/system
     ../../modules/tailscale
     ../../modules/user

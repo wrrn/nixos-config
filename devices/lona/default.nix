@@ -45,6 +45,7 @@ in
     ../../modules/printing
     ../../modules/sddm
     ../../modules/shell
+    ../../modules/sudo
     ../../modules/tailscale
     ../../modules/user
     ../../modules/zen-browser

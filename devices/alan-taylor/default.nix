@@ -1,13 +1,15 @@
 {
   home-manager,
   niri,
+  nixpkgs,
   wrrnhosts,
   flake-utils,
   ...
 }@inputs:
 let
-  inherit (inputs) home-manager niri wrrnhosts;
   device-conf = (import ./options.nix inputs);
+  deviceLib = import ../../lib;
+  lib = deviceLib.extendLib nixpkgs.lib device-conf.platform;
 in
 {
 
@@ -16,6 +18,7 @@ in
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
+    ../../modules/fixed-packages
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -26,13 +29,14 @@ in
     ../../modules/1password
     ../../modules/audio
     ../../modules/bluetooth
+    ../../modules/containers
     ../../modules/emacs
-    ../../modules/firefox
+    ../../modules/email
     ../../modules/fonts
-    ../../modules/git
     ../../modules/ghostty
+    ../../modules/git
     ../../modules/go
-    ../../modules/home-manager
+    ../../modules/jujutsu
     ../../modules/keyboard
     ../../modules/locale
     ../../modules/networking
@@ -40,11 +44,12 @@ in
     ../../modules/printing
     ../../modules/sddm
     ../../modules/shell
-    ../../modules/steam
+    ../../modules/sudo
+    ../../modules/tailscale
     ../../modules/user
+    ../../modules/zen-browser
 
     {
-      nixpkgs.hostPlatform = device-conf.platform.system;
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
@@ -63,7 +68,6 @@ in
   ];
 
   specialArgs = {
-    inherit inputs;
-    inherit device-conf;
+    inherit inputs device-conf lib;
   };
 }

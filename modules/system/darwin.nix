@@ -106,13 +106,6 @@ let
         man.enable = true;
       };
     })
-
-    (optional {
-      security.pam.services.sudo_local = {
-        enable = true;
-        touchIdAuth = true;
-      };
-    })
   ]);
 
 in
