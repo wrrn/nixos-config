@@ -27,7 +27,7 @@ in
 
     home-manager.nixosModules.home-manager
     wrrnhosts.nixosModules.hosts
-        flaky-falcon.nixosModules.default
+    flaky-falcon.nixosModules.default
 
     ../../modules/1password
     ../../modules/audio

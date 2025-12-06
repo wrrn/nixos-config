@@ -44,8 +44,8 @@
 
     # Work flakes
     flaky-falcon = {
-    url = "path:/home/warren/flaky-falcon";
-    inputs.nixpkgs.follows = "nixpkgs";
+      url = "path:/home/warren/flaky-falcon";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Personal flakes
