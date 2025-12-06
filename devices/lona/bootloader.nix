@@ -2,7 +2,7 @@
 {
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_12;
+    kernelPackages = pkgs.linuxPackages_6_17;
     kernelParams = [ "bpf_jit_enable=1" ];
     loader = {
       systemd-boot.enable = true;
