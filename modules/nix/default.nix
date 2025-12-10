@@ -1,6 +1,7 @@
 { device-conf, pkgs, ... }:
 let
   inherit (pkgs.stdenv) isDarwin;
+  inherit (device-conf) username;
 in
 {
   imports = [
@@ -14,7 +15,10 @@ in
     package = pkgs.lixPackageSets.stable.lix;
 
     settings = {
-      trusted-users = [ "@admin" ];
+      trusted-users = [
+        "@admin"
+        username
+      ];
 
       # Enable the Flakes feature and accompanying new nix cli.
       experimental-features = [
