@@ -18,5 +18,6 @@ mkIf isLinux (
     };
 
     console.useXkbConfig = true;
+    services.udev.packages = [ pkgs.qmk-udev-rules ];
   }
 )

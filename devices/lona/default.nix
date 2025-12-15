@@ -51,6 +51,7 @@ in
     ../../modules/ssh
     ../../modules/sudo
     ../../modules/tailscale
+    ../../modules/usb
     ../../modules/user
     ../../modules/zen-browser
 

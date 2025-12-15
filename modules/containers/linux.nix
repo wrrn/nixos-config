@@ -11,9 +11,14 @@ in
 {
   config = mkIf isLinux (
     optionalAttrs (options ? virtualisation) ({
-      virtualisation.podman = {
+      virtualisation.docker = {
         enable = true;
-        dockerCompat = true;
+        daemon.settings = {
+          iptables = true;
+          features = {
+            containerd-snapshotter = true;
+          };
+        };
       };
     })
   );

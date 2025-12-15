@@ -20,5 +20,15 @@ in
   home-manager.users.${username}.home.packages = with pkgs; [
     teams-for-linux
     slack
+    openssl
   ];
+
+  security.pki.certificateFiles = [ /home/warren/workshop/pericles/devenv/dev-ca/dev_ca.crt ];
+
+  networking.hosts = {
+    "127.0.0.1" = [
+      "csg.xona"
+      "xcm.xona"
+    ];
+  };
 }

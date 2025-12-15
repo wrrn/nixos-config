@@ -26,6 +26,8 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
+      "plugdev"
     ];
   };
 }

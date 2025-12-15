@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763818213,
-        "narHash": "sha256-OUITnHlAVc0WlXR7MUiAUF5XijYTSrYnX0UEtlGIbM4=",
+        "lastModified": 1765837900,
+        "narHash": "sha256-8xZ6BLLNFPJ7awTInUSDCoopMf+ZDxJkmfmoM2p/Vck=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "8fee3c1ef7e91c1e9c5abdc1f5704d04543fa54f",
+        "rev": "d8464253d60188d6b842cf547e2324e3f72be85c",
         "type": "sourcehut"
       },
       "original": {
@@ -161,7 +161,7 @@
         ]
       },
       "locked": {
-        "lastModified": 1765379911,
+        "lastModified": 1765467881,
         "narHash": "sha256-uKqbLq6ytm7j/vKLQCN5okE4P3WcvHXTJohOOeR/GUg=",
         "path": "/home/warren/flaky-falcon",
         "type": "path"
