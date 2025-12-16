@@ -21,6 +21,7 @@ in
     teams-for-linux
     slack
     openssl
+    awscli2
   ];
 
   security.pki.certificateFiles = [ /home/warren/workshop/pericles/devenv/dev-ca/dev_ca.crt ];
