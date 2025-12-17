@@ -33,6 +33,7 @@ in
     ../../modules/audio
     ../../modules/bluetooth
     ../../modules/build-tools
+    ../../modules/clipboard
     ../../modules/containers
     ../../modules/emacs
     ../../modules/email
