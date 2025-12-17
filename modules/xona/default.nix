@@ -22,6 +22,7 @@ in
     slack
     openssl
     awscli2
+    dig
   ];
 
   security.pki.certificateFiles = [ /home/warren/workshop/pericles/devenv/dev-ca/dev_ca.crt ];
