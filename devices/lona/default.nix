@@ -46,6 +46,7 @@ in
     ../../modules/locale
     ../../modules/networking
     ../../modules/niri
+    ../../modules/obs
     ../../modules/printing
     ../../modules/sddm
     ../../modules/shell
