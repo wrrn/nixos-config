@@ -6,23 +6,20 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (inputs) flaky-falcon;
 in
 {
-  nixpkgs.overlays = [
-    flaky-falcon.overlays.default
+  imports = [
+    ./virtualisation.nix
+    ./complianceware.nix
   ];
-  services.falcon-sensor = {
-    enable = true;
-    cid = "D4ED41F6F18048D7A49C139A2FAC61AD-A2"; # Replace with your actual CrowdStrike Customer ID
-  };
 
   home-manager.users.${username}.home.packages = with pkgs; [
     teams-for-linux
     slack
     openssl
     awscli2
-    dig
+    dig # Used for spinning up vms in the cloud
+    remmina # Use this as an RDP client for accessing UI over the network.
   ];
 
   security.pki.certificateFiles = [ /home/warren/workshop/pericles/devenv/dev-ca/dev_ca.crt ];
