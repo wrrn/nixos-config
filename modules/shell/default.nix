@@ -52,8 +52,11 @@ in
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
+      claude-code
       dasht
+      devenv
       grpcurl
+      htop
       jrnl
       k9s
       kubectl
@@ -61,22 +64,18 @@ in
       mkcert
       nix-update
       nixfmt-rfc-style
-      ## Disable this because it's currently broken on darwin.
-      ## TODO: Check in a little while. 2025/09/02
-      # pgcli
+      opencode
+      pgcli
       pkgs.nodePackages_latest.prettier
       rsync
       shellcheck
       shfmt
       stow
       tree-sitter
-      claude-code
       xh
       yq-go
       yt-dlp
       zig
-      devenv
-      opencode
     ];
 
     programs.zoxide.enable = true;
