@@ -41,6 +41,7 @@ in
     ../../modules/ghostty
     ../../modules/git
     ../../modules/go
+    ../../modules/gpg
     ../../modules/jujutsu
     ../../modules/keyboard
     ../../modules/locale
