@@ -19,7 +19,7 @@ in
   };
 
   environment.systemPackages = [
-    pkgs.brightnessctrl
+    pkgs.brightnessctl
     pkgs.wl-kbptr
   ];
 
