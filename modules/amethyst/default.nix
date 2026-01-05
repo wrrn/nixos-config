@@ -11,7 +11,7 @@ let
 in
 {
   nixpkgs.overlays = [
-    wrrnpkgs.overlays.macApps
+    wrrnpkgs.overlays.default
     dotfiles.overlays.default
   ];
 

@@ -8,7 +8,7 @@ let
   inherit (device-conf) username;
 in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
   environment.systemPackages = with pkgs; [
     openssl
     readline

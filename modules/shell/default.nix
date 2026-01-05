@@ -9,7 +9,7 @@ let
 in
 {
 
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.macApps ];
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
 
   imports = [
     ./bat.nix
