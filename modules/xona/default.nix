@@ -11,6 +11,7 @@ in
   imports = [
     ./virtualisation.nix
     ./complianceware.nix
+    ./ai.nix
   ];
 
   home-manager.users.${username}.home.packages = with pkgs; [
