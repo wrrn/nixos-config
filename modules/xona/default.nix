@@ -21,6 +21,7 @@ in
     awscli2
     dig # Used for spinning up vms in the cloud
     remmina # Use this as an RDP client for accessing UI over the network.
+    typescript-language-server
   ];
 
   security.pki.certificateFiles = [ /home/warren/workshop/pericles/devenv/dev-ca/dev_ca.crt ];
