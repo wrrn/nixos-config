@@ -28,6 +28,7 @@ in
       "wheel"
       "dialout"
       "plugdev"
+      "video"
     ];
   };
 }
