@@ -57,7 +57,7 @@ in
       devenv
       grpcurl
       htop
-      jrnl
+      # jrnl
       k9s
       kubectl
       minikube
