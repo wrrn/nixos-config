@@ -51,7 +51,7 @@
 
     # Personal flakes
     dotfiles = {
-      url = "sourcehut:~warren/dotfiles/master";
+      url = "sourcehut:~warren/dotfiles/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

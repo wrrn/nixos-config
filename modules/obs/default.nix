@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
@@ -8,7 +9,7 @@
       obs-pipewire-audio-capture
       obs-vaapi # optional AMD hardware acceleration
       obs-composite-blur
-      droidcam-obs
+      pkgs.wrrn.obs-studio-plugins.droidcam-obs
     ];
   };
 
