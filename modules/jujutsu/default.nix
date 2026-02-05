@@ -5,13 +5,13 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
+  inherit (inputs) dotfiles wrrnpkgs;
   inherit (device-conf) username;
+
   # XXX: cargo-nextest fails to build on macOS, skip tests until the issue
   # is resolved.
   #
   # cf. https://github.com/NixOS/nixpkgs/issues/456113
-
   jujutsu =
     if pkgs.stdenv.hostPlatform.isDarwin then
       pkgs.jujutsu.override {
@@ -23,11 +23,15 @@ let
       pkgs.jujutsu;
 in
 {
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
+  nixpkgs.overlays = [
+    dotfiles.overlays.default
+    wrrnpkgs.overlays.default
+  ];
   environment.systemPackages = [
     pkgs.difftastic # Difftool that uses AST
     pkgs.mergiraf # Merge tool that is syntax aware
     jujutsu
+    pkgs.wrrn.jw
   ];
 
   home-manager.users.${username}.home.file.dot-jj = {
