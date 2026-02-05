@@ -25,7 +25,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
+  fileSystems."/" = lib.mkDefault {
     device = "/dev/mapper/luks-f8c59466-bf50-44b8-a78a-a3fd8bcfb5be";
     fsType = "ext4";
   };
@@ -33,7 +33,7 @@
   boot.initrd.luks.devices."luks-f8c59466-bf50-44b8-a78a-a3fd8bcfb5be".device =
     "/dev/disk/by-uuid/f8c59466-bf50-44b8-a78a-a3fd8bcfb5be";
 
-  fileSystems."/boot" = {
+  fileSystems."/boot" = lib.mkDefault {
     device = "/dev/disk/by-uuid/9497-8D36";
     fsType = "vfat";
     options = [
@@ -42,7 +42,7 @@
     ];
   };
 
-  swapDevices = [
+  swapDevices = lib.mkDefault [
     { device = "/dev/mapper/luks-9e4dc180-7843-4cf7-83fb-5f4f3cc7941f"; }
   ];
 

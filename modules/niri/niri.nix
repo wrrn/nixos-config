@@ -20,28 +20,17 @@ in
 
   environment.systemPackages = [
     pkgs.brightnessctl
+    pkgs.playerctl
     pkgs.wl-kbptr
   ];
 
-  programs.niri = {
-    enable = true;
-    # package = pkgs.niri-stable;
-  };
+  programs.niri.enable = true;
 
   services.upower = {
     enable = true;
   };
 
-  services.logind.settings.Login = {
-    HandlePowerKey = "poweroff";
-    HandleLidSwitch = "suspend";
-  };
-
   home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      swayidle
-    ];
-
     home.file.dot-niri = {
       source = "${pkgs.dotfiles.niri}/.config/niri";
       target = ".config/niri";
@@ -49,19 +38,6 @@ in
     };
 
     programs.fuzzel = {
-      enable = true;
-    };
-
-    programs.swaylock = {
-      enable = true;
-      package = (
-        pkgs.swaylock-effects.overrideAttrs (
-          final: prev: { buildInputs = prev.buildInputs ++ [ pkgs.wayland-scanner ]; }
-        )
-      );
-    };
-
-    services.mako = {
       enable = true;
     };
   };

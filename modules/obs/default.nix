@@ -5,11 +5,12 @@
     enable = true;
     enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
-      obs-backgroundremoval
       obs-pipewire-audio-capture
       obs-vaapi # optional AMD hardware acceleration
       obs-composite-blur
       pkgs.wrrn.obs-studio-plugins.droidcam-obs
+      pkgs.wrrn.obs-studio-plugins.obs-backgroundremoval
+
     ];
   };
 

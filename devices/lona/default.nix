@@ -48,6 +48,7 @@ in
     ../../modules/networking
     ../../modules/niri
     ../../modules/obs
+    ../../modules/power
     ../../modules/printing
     ../../modules/sddm
     ../../modules/shell

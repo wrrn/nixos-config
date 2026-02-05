@@ -1,12 +1,12 @@
 { inputs, pkgs, ... }:
-let
-in
 {
   imports = [
     ./niri.nix
+    ./waybar.nix
+    ./mako.nix
+    ./idle.nix
+    ./polkit.nix
     ./xwayland-satellite.service.nix
   ];
 
-  # For adding auth when an app needs to sudo.
-  security.polkit.enable = true;
 }
