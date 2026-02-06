@@ -35,12 +35,6 @@ in
     dotfiles.overlays.default
   ];
 
-  # Start emacs-server with systemd
-  services.emacs = {
-    enable = isLinux;
-    package = emacsPackage;
-  };
-
   environment.variables.EDITOR = "emacsclient";
 
   environment.systemPackages = with pkgs; [
@@ -60,6 +54,7 @@ in
       enable = true;
       package = emacsPackage;
       client.enable = true;
+      defaultEditor = true;
       startWithUserSession = "graphical";
     };
 
