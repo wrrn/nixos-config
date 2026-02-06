@@ -52,18 +52,28 @@ in
     taplo
     gopls
     pyright
+    typescript-language-server
   ];
 
-  home-manager.users.${username}.home = {
-    packages = [
-      pkgs.global
-    ]
-    ++ homeManagerPackages;
+  home-manager.users.${username} = {
+    services.emacs = {
+      enable = true;
+      package = emacsPackage;
+      client.enable = true;
+      startWithUserSession = "graphical";
+    };
 
-    file.dot-emacs = {
-      source = "${pkgs.dotfiles.emacs}/.config/emacs";
-      target = ".config/emacs";
-      recursive = true;
+    home = {
+      packages = [
+        pkgs.global
+      ]
+      ++ homeManagerPackages;
+
+      file.dot-emacs = {
+        source = "${pkgs.dotfiles.emacs}/.config/emacs";
+        target = ".config/emacs";
+        recursive = true;
+      };
     };
   };
 }
