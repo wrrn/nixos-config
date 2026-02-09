@@ -9,6 +9,6 @@ let
 in
 {
   imports = [ module ];
-  home-manager.users.${username}.home.packages = [ pkgs.bluetuith ];
+  home-manager.users.${username}.programs.bluetuith.enable = true;
 
 }
