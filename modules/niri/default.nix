@@ -6,6 +6,7 @@
     ./mako.nix
     ./idle.nix
     ./polkit.nix
+    ./wayland-ready.nix
     ./xwayland-satellite.service.nix
   ];
 
