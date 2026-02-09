@@ -2,6 +2,7 @@
   pkgs,
   device-conf,
   inputs,
+  lib,
   ...
 }:
 let
@@ -14,11 +15,27 @@ in
     dotfiles.overlays.default
   ];
 
-  programs.waybar.enable = true;
+  home-manager.users.${username} = {
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
+    };
 
-  home-manager.users.${username}.home.file.dot-waybar = {
-    source = "${pkgs.dotfiles.waybar}/.config/waybar";
-    target = ".config/waybar";
-    recursive = true;
+    systemd.user.services.waybar.Unit = {
+      Wants = [
+        "wayland-ready.service"
+      ];
+      After = [
+        "wayland-ready.service"
+        "niri.service"
+      ];
+      ConditionEnvironment = lib.mkForce [ ];
+    };
+
+    home.file.dot-waybar = {
+      source = "${pkgs.dotfiles.waybar}/.config/waybar";
+      target = ".config/waybar";
+      recursive = true;
+    };
   };
 }
