@@ -10,6 +10,10 @@
       url = "github:NixOS/nixpkgs/staging-next";
     };
 
+    nixpkgs-unstable = {
+      url = "github:NixOS/nixpkgs/staging-next";
+    };
+
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -78,6 +82,7 @@
       self,
       nixpkgs,
       nixpkgs-staging,
+      nixpkgs-unstable,
       nix-darwin,
       home-manager,
 

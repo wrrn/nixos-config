@@ -1,7 +1,17 @@
-{ device-conf, pkgs, ... }:
+{
+  device-conf,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isDarwin;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    allowUnfree = true;
+  };
 in
 {
   imports = [
@@ -9,7 +19,10 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = device-conf.platform.system;
+  nixpkgs.hostPlatform = system;
+  nixpkgs.overlays = [
+    (final: prev: { inherit unstable; })
+  ];
 
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
