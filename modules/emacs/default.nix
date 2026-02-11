@@ -25,6 +25,8 @@ let
       pkgs.wrrn.emacs-plus
       pkgs.wrrn.emacs-plus-client
     ];
+
+    Linux = [ emacsPackage.Linux ];
   };
 
   homeManagerPackages = homeManagerPackageLists.${system} or [ ];
@@ -58,11 +60,16 @@ in
       startWithUserSession = "graphical";
     };
 
+    programs.emacs = {
+      enable = true;
+      package = emacsPackage;
+    };
+
     home = {
       packages = [
         pkgs.global
-      ]
-      ++ homeManagerPackages;
+      ];
+      # ++ homeManagerPackages;
 
       file.dot-emacs = {
         source = "${pkgs.dotfiles.emacs}/.config/emacs";
