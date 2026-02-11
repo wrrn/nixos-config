@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles wrrnpkgs;
+  inherit (inputs) dotfiles wrrnpkgs nixpkgs-unstable;
   inherit (device-conf) username;
 
   # XXX: cargo-nextest fails to build on macOS, skip tests until the issue
@@ -20,13 +20,14 @@ let
         };
       }
     else
-      pkgs.jujutsu;
+      pkgs.unstable.jujutsu;
 in
 {
   nixpkgs.overlays = [
     dotfiles.overlays.default
     wrrnpkgs.overlays.default
   ];
+
   environment.systemPackages = [
     pkgs.difftastic # Difftool that uses AST
     pkgs.mergiraf # Merge tool that is syntax aware
@@ -34,9 +35,25 @@ in
     pkgs.wrrn.jw
   ];
 
-  home-manager.users.${username}.home.file.dot-jj = {
-    target = ".config/jj";
-    source = "${pkgs.dotfiles.jj}/.config/jj";
-    recursive = true;
+  home-manager.users.${username} = {
+    programs.jujutsu = {
+      enable = true;
+      package = jujutsu;
+    };
+
+    home = {
+      packages = [
+        pkgs.difftastic
+        pkgs.delta
+        pkgs.wrrn.jw
+      ];
+
+      file.dot-jj = {
+        target = ".config/jj";
+        source = "${pkgs.dotfiles.jj}/.config/jj";
+        recursive = true;
+      };
+    };
   };
+
 }
