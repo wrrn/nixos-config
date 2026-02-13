@@ -104,6 +104,7 @@
         alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
         fly-guy = nixpkgs.lib.nixosSystem (import ./devices/fly-guy inputs);
         lona = nixpkgs.lib.nixosSystem (import ./devices/lona inputs);
+        nix-builder = nixpkgs.lib.nixosSystem (import ./devices/nix-builder inputs);
       };
 
       darwinConfigurations = {

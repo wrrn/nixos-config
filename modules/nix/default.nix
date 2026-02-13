@@ -38,6 +38,10 @@ in
         "nix-command"
         "flakes"
       ];
+
+      max-jobs = "auto";
+      cores = 0;
+
     };
   };
 

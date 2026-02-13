@@ -1,5 +1,6 @@
 {
   device-conf,
+  pkgs,
   ...
 }:
 let
@@ -13,7 +14,8 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "bak";
+    backupFileExtension = ".bak";
+    backupCommand = "${pkgs.trash-cli}/bin/trash";
   };
 
   home-manager.users.${username}.home.stateVersion = home-manager.stateVersion;

@@ -60,6 +60,7 @@ in
     ../../modules/zen-browser
 
     ../../modules/xona
+    ../../modules/remote-builds
   ];
 
   specialArgs = {
