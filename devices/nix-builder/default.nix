@@ -15,7 +15,7 @@ in
 
   modules = [
     # Default modules
-    # ../../modules/gcp-image
+    ../../modules/gcp-image
     ../../modules/nix
 
     home-manager.nixosModules.home-manager
@@ -32,6 +32,14 @@ in
     ../../modules/ssh
     ../../modules/sudo
     ../../modules/user
+
+    # Override google-compute-config defaults that conflict with
+    # traditional SSH key auth via the guest agent.
+    # Enable serial getty for debugging via `gcloud compute connect-to-serial-port`.
+    {
+      security.googleOsLogin.enable = lib.mkForce false;
+      systemd.services."serial-getty@ttyS0".enable = true;
+    }
   ];
 
   specialArgs = {

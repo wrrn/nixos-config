@@ -687,14 +687,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1771262156,
-        "narHash": "sha256-tt22AEODpvKHmMFsxBE8pqJ4bzZa8rWds+ql+uyg9Yw=",
-        "path": "/home/warren/hosts",
-        "type": "path"
+        "lastModified": 1771262047,
+        "narHash": "sha256-h7mbYnDzb9WxFrateYxlp/cMargA1T8Ku2j2GwAIDNA=",
+        "ref": "refs/heads/main",
+        "rev": "66baa45a5b57318b9e3add1ce5960bc3df6549a7",
+        "revCount": 10,
+        "type": "git",
+        "url": "ssh://git@git.sr.ht/~warren/hosts"
       },
       "original": {
-        "path": "/home/warren/hosts",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@git.sr.ht/~warren/hosts"
       }
     },
     "wrrnpkgs": {

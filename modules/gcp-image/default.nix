@@ -1,4 +1,5 @@
-{ modulesPath, ... }:
-{
-  imports = [ "${modulesPath}/virtualisation/google-compute-image.nix" ];
+_: {
+  image.modules.google-compute = {
+    virtualisation.googleComputeImage.compressionLevel = 1;
+  };
 }
