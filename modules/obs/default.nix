@@ -10,7 +10,7 @@
       obs-composite-blur
       pkgs.wrrn.obs-studio-plugins.droidcam-obs
       pkgs.wrrn.obs-studio-plugins.obs-backgroundremoval
-
+      pkgs.wrrn.obs-studio-plugins.obs-live-backgroundremoval-lite
     ];
   };
 
