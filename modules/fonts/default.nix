@@ -17,6 +17,8 @@ let
     pkgs.nerd-fonts.iosevka
     pkgs.nerd-fonts.zed-mono
     pkgs.nerd-fonts.symbols-only
+    pkgs.openmoji-color
+    pkgs.openmoji-black
   ];
 in
 {
@@ -26,4 +28,14 @@ in
 
   home-manager.users.${username}.home.packages = fontsToInstall;
   fonts.packages = fontsToInstall;
+
+  fonts.fontconfig.defaultFonts = {
+    monospace = [
+      "Triplicate A Code"
+      "Symbols Nerd Font"
+    ];
+    sansSerif = [ "Ellograph CF" ];
+    serif = [ "Triplicate A" ];
+    emoji = [ "Openmoji Color" ];
+  };
 }
