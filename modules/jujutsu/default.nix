@@ -39,6 +39,7 @@ in
     programs.jujutsu = {
       enable = true;
       package = jujutsu;
+      ediff = false;
     };
 
     home = {
