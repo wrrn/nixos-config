@@ -10,7 +10,7 @@ let
   inherit (device-conf.platform) system;
   unstable = import inputs.nixpkgs-unstable {
     inherit system;
-    allowUnfree = true;
+    config.allowUnfree = true;
   };
 in
 {
