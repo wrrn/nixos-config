@@ -20,6 +20,8 @@ let
     (optionalAttrs (options ? services.dnsmasq.settings) {
       services.dnsmasq.settings = {
         inherit cname;
+        listen-address = "127.0.0.1";
+        bind-interfaces = true;
         server = [
           "1.1.1.3"
           "1.0.0.3"
@@ -32,6 +34,5 @@ let
     })
 
   ];
-
 in
 mkIf isLinux (foldl recursiveUpdate { } modules)

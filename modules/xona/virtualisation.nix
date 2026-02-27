@@ -6,41 +6,18 @@
 let
   inherit (device-conf) username;
 
-  periclesNetXml = pkgs.writeText "pericles-network.xml" ''
-    <network>
-      <name>pericles</name>
-      <forward mode='nat'>
-        <nat>
-          <port start='1024' end='65535'/>
-        </nat>
-      </forward>
-      <bridge name='perbr0' stp='on' delay='0'/>
-      <mac address='52:54:00:71:3b:10'/>
-      <ip address='192.168.127.1' netmask='255.255.255.0'>
-        <dhcp>
-          <range start='192.168.127.105' end='192.168.127.200'/>
-        </dhcp>
-      </ip>
-    </network>
-  '';
-
-  pxenetNetXml = pkgs.writeText "pxenet-network.xml" ''
-    <network>
-      <name>pxenet</name>
-      <bridge name='pxebr0' stp='on' delay='0'/>
-      <mac address='52:54:00:71:3b:11'/>
-      <ip address='192.168.2.1' netmask='255.255.255.0'>
-      </ip>
-    </network>
-  '';
+  periclesNetXml = ./pericles-network.xml;
+  pxenetNetXml = ./pxenet-network.xml;
 in
 {
-  environment.sessionVariables.LIBVIRT_DEFAULT_URI = "qemu:///system";
+  environment.variables = {
+    LIBVIRT_DEFAULT_URI = "qemu:///system"; # Define so that we can use the `make devvm` target.
+    VIRSH_DEFAULT_CONNECT_URI = "qemu:///system";
+  };
 
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
-    sshpass
   ];
 
   users.users.${username}.extraGroups = [ "libvirtd" ];
