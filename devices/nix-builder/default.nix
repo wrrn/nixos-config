@@ -40,6 +40,14 @@ in
       security.googleOsLogin.enable = lib.mkForce false;
       systemd.services."serial-getty@ttyS0".enable = true;
     }
+
+    {
+      fileSystems."/tmp/nixbuild" = {
+        device = "tmpfs";
+        fsType = "tmpfs";
+        options = [ "defaults" "mode=755" "size=50%" ];
+      };
+    }
   ];
 
   specialArgs = {
