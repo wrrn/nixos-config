@@ -12,6 +12,11 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+
+  staging = import inputs.nixpkgs-staging {
+    inherit system;
+    config.allowUnfree = true;
+  };
 in
 {
   imports = [
@@ -21,7 +26,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = system;
   nixpkgs.overlays = [
-    (final: prev: { inherit unstable; })
+    (final: prev: { inherit unstable staging; })
   ];
 
   nix = {
