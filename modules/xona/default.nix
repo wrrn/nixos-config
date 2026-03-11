@@ -48,4 +48,9 @@ in
     "192.168.127.242" = [ "xcm-vm-primary.xona" ];
     "192.168.127.243" = [ "xcm-vm-replica.xona" ];
   };
+
+  nix.settings = {
+    netrc-file = "/etc/nix/netrc";
+    extra-sandbox-paths = [ "/etc/nix/netrc" ];
+  };
 }
