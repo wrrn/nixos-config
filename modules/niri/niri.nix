@@ -25,6 +25,7 @@ in
   ];
 
   programs.niri.enable = true;
+  services.iio-niri.enable = true;
 
   services.upower = {
     enable = true;

@@ -57,10 +57,11 @@ in
     ../../modules/tailscale
     ../../modules/usb
     ../../modules/user
+    ../../modules/voxtype
     ../../modules/zen-browser
 
     ../../modules/xona
-    ../../modules/remote-builds
+    # ../../modules/remote-builds
   ];
 
   specialArgs = {
