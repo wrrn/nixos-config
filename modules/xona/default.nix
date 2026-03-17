@@ -28,7 +28,7 @@ in
     libxml2 # For spinning up local vms
   ];
 
-  security.pki.certificateFiles = [ /home/warren/workshop/pericles/devenv/dev-ca/dev_ca.crt ];
+  security.pki.certificateFiles = [ ./dev_ca.crt ];
 
   networking.hosts = {
     "127.0.0.1" = [
