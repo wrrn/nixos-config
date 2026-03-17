@@ -25,7 +25,10 @@ in
   ];
 
   programs.niri.enable = true;
-  services.iio-niri.enable = true;
+  services.iio-niri = {
+    enable = true;
+    extraArgs = [ "--monitor" "eDP-1" ];
+  };
 
   services.upower = {
     enable = true;
