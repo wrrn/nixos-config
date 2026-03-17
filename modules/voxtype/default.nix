@@ -24,7 +24,8 @@ in
         Description = "Voxtype push-to-talk voice-to-text daemon";
         Documentation = "https://voxtype.io";
         PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" "wayland-ready.service" ];
+        Wants = [ "wayland-ready.service" ];
       };
 
       Service = {
@@ -32,8 +33,9 @@ in
         ExecStart = "${voxtype}/bin/voxtype daemon";
         Restart = "on-failure";
         RestartSec = "5";
-        # Ensure we have access to the display
-        Environment = "XDG_RUNTIME_DIR=%t";
+        Environment = [
+          "XDG_RUNTIME_DIR=%t"
+        ];
       };
 
       Install = {
