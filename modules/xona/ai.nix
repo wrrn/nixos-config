@@ -13,6 +13,6 @@ in
     wrrnpkgs.overlays.default
   ];
   home-manager.users.${username}.home.packages = [
-    pkgs.wrrn.codex
+    pkgs.wrrn.codex-raw
   ];
 }
