@@ -43,6 +43,7 @@ in
     ../../modules/go
     ../../modules/gpg
     ../../modules/jujutsu
+    ../../modules/keyd
     ../../modules/keyboard
     ../../modules/locale
     ../../modules/networking
