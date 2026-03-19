@@ -13,6 +13,7 @@ in
   environment.variables = {
     LIBVIRT_DEFAULT_URI = "qemu:///system"; # Define so that we can use the `make devvm` target.
     VIRSH_DEFAULT_CONNECT_URI = "qemu:///system";
+    VIRSH_SESSION_URI = "qemu:///system";
   };
 
   environment.systemPackages = with pkgs; [
