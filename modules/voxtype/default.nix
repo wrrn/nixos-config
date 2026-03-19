@@ -13,10 +13,18 @@ in
 
   users.users.${username}.extraGroups = [ "input" ];
 
+  services.ollama = {
+    enable = true;
+    loadModels = [
+      "gemma3:1b"
+    ];
+  };
+
   home-manager.users.${username} = {
     home.packages = [
       voxtype
       pkgs.wtype
+      pkgs.ollama
     ];
 
     systemd.user.services.voxtype = {
@@ -24,7 +32,10 @@ in
         Description = "Voxtype push-to-talk voice-to-text daemon";
         Documentation = "https://voxtype.io";
         PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" "wayland-ready.service" ];
+        After = [
+          "graphical-session.target"
+          "wayland-ready.service"
+        ];
         Wants = [ "wayland-ready.service" ];
       };
 
