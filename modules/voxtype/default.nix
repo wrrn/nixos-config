@@ -23,6 +23,18 @@ in
     ];
   };
 
+  systemd.services.ollama-model-warmup = {
+    description = "Load Ollama models into memory";
+    after = [ "ollama-model-loader.service" ];
+    requires = [ "ollama-model-loader.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.ollama}/bin/ollama run gemma3:4b \"\"";
+      RemainAfterExit = true;
+    };
+  };
+
   home-manager.users.${username} = {
     home.packages = [
       voxtype
