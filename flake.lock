@@ -31,11 +31,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773881679,
-        "narHash": "sha256-TNDmcawPpiLKoy/PizycZLjczpa+qYx67Z1TIiAe37E=",
+        "lastModified": 1774027435,
+        "narHash": "sha256-j6z+NbcVg4rP5Fm3Ye/0E+WJYSBjz9vXWY/WSErB2RM=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "2f2375bd79a7a1bb6b61505bec294549b83ca322",
+        "rev": "71802e699d5f74a650b127e30c6126ce83a63b3f",
         "type": "sourcehut"
       },
       "original": {
