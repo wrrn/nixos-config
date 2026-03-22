@@ -65,63 +65,10 @@ in
       package = emacsPackage;
     };
 
-    xdg.desktopEntries.emacsclient = {
-      name = "Emacs (Client)";
-      genericName = "Text Editor";
-      comment = "Edit text with emacsclient";
-      exec = "emacsclient -c -a emacs %F";
-      icon = "emacs";
-      terminal = false;
-      categories = [ "Development" "TextEditor" ];
-      mimeType = [
-        "text/english"
-        "text/plain"
-        "text/x-makefile"
-        "text/x-c++hdr"
-        "text/x-c++src"
-        "text/x-chdr"
-        "text/x-csrc"
-        "text/x-java"
-        "text/x-moc"
-        "text/x-pascal"
-        "text/x-tcl"
-        "text/x-tex"
-        "application/x-shellscript"
-        "text/x-c"
-        "text/x-c++"
-      ];
-    };
-
     xdg.mimeApps = {
       enable = true;
-      associations.added = {
-        "application/x-extension-htm" = "zen-beta.desktop";
-        "application/x-extension-html" = "zen-beta.desktop";
-        "application/x-extension-shtml" = "zen-beta.desktop";
-        "application/x-extension-xht" = "zen-beta.desktop";
-        "application/x-extension-xhtml" = "zen-beta.desktop";
-        "application/xhtml+xml" = "zen-beta.desktop";
-        "text/html" = "zen-beta.desktop";
-        "video/mp4" = "zen.desktop";
-        "x-scheme-handler/chrome" = "zen-beta.desktop";
-        "x-scheme-handler/http" = "zen-beta.desktop";
-        "x-scheme-handler/https" = "zen-beta.desktop";
-      };
       defaultApplications = {
-        "application/x-extension-htm" = "zen-beta.desktop";
-        "application/x-extension-html" = "zen-beta.desktop";
-        "application/x-extension-shtml" = "zen-beta.desktop";
-        "application/x-extension-xht" = "zen-beta.desktop";
-        "application/x-extension-xhtml" = "zen-beta.desktop";
-        "application/xhtml+xml" = "zen-beta.desktop";
-        "text/html" = "zen-beta.desktop";
         "text/plain" = "emacsclient.desktop";
-        "video/mp4" = "zen.desktop";
-        "x-scheme-handler/chrome" = "zen-beta.desktop";
-        "x-scheme-handler/discord-455712169795780630" = "discord-455712169795780630.desktop";
-        "x-scheme-handler/http" = "zen-beta.desktop";
-        "x-scheme-handler/https" = "zen-beta.desktop";
-        "x-scheme-handler/msteams" = "teams-for-linux.desktop";
       };
     };
 
