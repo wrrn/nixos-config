@@ -22,9 +22,7 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    bat
     coreutils-full
-    curl
     curl
     delta
     diffutils
@@ -55,7 +53,7 @@ in
     home.packages = with pkgs; [
       unstable.claude-code
       dasht
-      devenv
+      unstable.devenv
       grpcurl
       htop
       # jrnl

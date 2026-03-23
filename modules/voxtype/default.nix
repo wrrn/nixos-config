@@ -2,6 +2,7 @@
   device-conf,
   inputs,
   pkgs,
+  config,
   ...
 }:
 let
@@ -28,6 +29,7 @@ in
     after = [ "ollama-model-loader.service" ];
     requires = [ "ollama-model-loader.service" ];
     wantedBy = [ "multi-user.target" ];
+    environment = config.systemd.services.ollama.environment;
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.ollama}/bin/ollama run gemma3:4b \"\"";
