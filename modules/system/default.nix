@@ -1,3 +1,5 @@
-_: {
-  imports = [ ./darwin.nix ];
+{ lib, ... }: {
+  imports = [
+    (lib.systemModule { darwin = ./darwin.nix; linux = { }; })
+  ];
 }

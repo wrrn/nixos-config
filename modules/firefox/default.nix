@@ -9,8 +9,7 @@ let
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
   dotfiles = inputs.dotfiles.packages.${system};
-  nur = inputs.nur.legacyPackages.${system};
-  inherit (nur.repos.rycee) firefox-addons;
+  inherit (pkgs.nur.repos.rycee) firefox-addons;
   platform = device-conf.platform.parsed.kernel.name;
 
   platformConfigs = {
@@ -23,6 +22,7 @@ let
   };
 in
 {
+  nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
   imports = [
     platformConfig.module

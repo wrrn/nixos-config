@@ -1,21 +1,25 @@
 {
   device-conf,
   inputs,
+  lib,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
+  platformModule = lib.systemModule {
+    linux = ./linux.nix;
+    darwin = ./darwin.nix;
+  };
 in
 {
   imports = [
     ./bat.nix
-    ./darwin.nix
     ./fish.nix
-    ./linux.nix
     ./ssh.nix
     ./starship.nix
     ./tmux.nix
+    platformModule
   ];
 
   environment.systemPackages = with pkgs; [

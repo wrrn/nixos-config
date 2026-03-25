@@ -1,14 +1,17 @@
 {
   device-conf,
+  lib,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
-  module = if device-conf.platform.isLinux then ./linux.nix else { };
+  module = lib.systemModule {
+    linux = ./linux.nix;
+    darwin = { };
+  };
 in
 {
   imports = [ module ];
   home-manager.users.${username}.programs.bluetuith.enable = true;
-
 }

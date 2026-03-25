@@ -1,5 +1,6 @@
 {
   device-conf,
+  lib,
   pkgs,
   ...
 }:
@@ -8,7 +9,7 @@ let
 in
 {
   imports = [
-    ./darwin.nix
+    (lib.systemModule { darwin = ./darwin.nix; linux = { }; })
   ];
 
   home-manager = {

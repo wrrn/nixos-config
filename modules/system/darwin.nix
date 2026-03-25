@@ -1,42 +1,14 @@
 {
   lib,
-  options,
-  pkgs,
   ...
 }:
 let
-  inherit (pkgs.stdenv) isDarwin;
-  inherit (lib) mkIf optionalAttrs attrsets;
-  inherit (attrsets) isAttrs;
-  attrPathsMatch =
-    pattern: attrs:
-    assert isAttrs pattern;
-    builtins.all (
-      # Compare equality between `pattern` & `attrs`.
-      attr:
-      # Missing attr, not equal.
-      attrs ? ${attr}
-      && (
-        let
-          lhs = pattern.${attr};
-          rhs = attrs.${attr};
-        in
-        # If attrset check recursively
-        if isAttrs lhs then isAttrs rhs && attrPathsMatch lhs rhs else true
-      )
-    ) (builtins.attrNames pattern);
-
-  # AttrSet -> AttrSet
-  # If the attrset is in options then we set it, otherwise, it's just an empty attrset.
-  # optional = a: optionalAttrs (attrPathsMatch a options) a;
-  optional = a: a;
-
-  modules = ([
+  modules = [
     {
       system.startup.chime = false;
     }
 
-    (optional {
+    {
       system.defaults = {
 
         menuExtraClock = {
@@ -96,17 +68,17 @@ let
           };
         };
       };
-    })
+    }
 
-    (optional {
+    {
       documentation = {
         enable = true;
         doc.enable = true;
         info.enable = true;
         man.enable = true;
       };
-    })
-  ]);
+    }
+  ];
 
 in
-mkIf isDarwin (lib.foldl lib.attrsets.recursiveUpdate { } modules)
+lib.foldl lib.attrsets.recursiveUpdate { } modules

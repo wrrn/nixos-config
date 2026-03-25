@@ -1,42 +1,22 @@
 {
-  inputs,
   lib,
-  pkgs,
   options,
   ...
 }:
-let
-  inherit (pkgs.stdenv) isLinux;
-  inherit (lib) mkIf optionalAttrs;
-  inherit (inputs) wrrnhosts;
-  modules = ([
+{
+  networking.networkmanager.enable = true;
 
-    (optionalAttrs (options ? networking.networkmanager.enable) {
-      networking.networkmanager.enable = true;
-    })
+  networking.stevenblack = {
+    enable = true;
+    block = [
+      "fakenews"
+      "gambling"
+      "porn"
+      "social"
+    ];
+  };
 
-    (optionalAttrs (options ? networking.stevenblack) {
-      networking.stevenblack = {
-        enable = true;
-        block = [
-          "fakenews"
-          "gambling"
-          "porn"
-          "social"
-        ];
-      };
-    })
+  networking.nameservers = [ "127.0.0.1" ];
 
-    (optionalAttrs (options ? networking.nameservers) {
-      networking.nameservers = [ "127.0.0.1" ];
-    })
-
-    (optionalAttrs (options ? networking.hostFiles) {
-      wrrn.hosts.enable = true;
-    })
-
-  ]);
-
-in
-
-mkIf isLinux (lib.foldl lib.attrsets.recursiveUpdate { } modules)
+  wrrn.hosts.enable = true;
+}

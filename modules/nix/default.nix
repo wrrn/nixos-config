@@ -1,11 +1,11 @@
 {
   device-conf,
   inputs,
+  lib,
   pkgs,
   ...
 }:
 let
-  inherit (pkgs.stdenv) isDarwin;
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
   unstable = import inputs.nixpkgs-unstable {
@@ -20,7 +20,7 @@ let
 in
 {
   imports = [
-    ./darwin.nix
+    (lib.systemModule { darwin = ./darwin.nix; linux = { }; })
   ];
 
   nixpkgs.config.allowUnfree = true;

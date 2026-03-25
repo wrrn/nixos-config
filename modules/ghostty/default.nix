@@ -1,15 +1,9 @@
-{
-  device-conf,
-  ...
-}:
+{ lib, ... }:
 let
-  kernel = device-conf.platform.parsed.kernel.name;
-  module =
-    {
-      darwin = ./darwin.nix;
-      linux = ./linux.nix;
-    }
-    .${kernel} or { };
+  module = lib.systemModule {
+    linux = ./linux.nix;
+    darwin = ./darwin.nix;
+  };
 in
 {
   imports = [ module ];

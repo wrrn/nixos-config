@@ -1,15 +1,11 @@
 {
   lib,
   options,
-  pkgs,
   ...
 }:
 let
-  inherit (pkgs.stdenv) isDarwin;
-  inherit (lib) mkIf optionalAttrs;
+  inherit (lib) optionalAttrs;
 in
-mkIf isDarwin (
-  optionalAttrs (options ? nix.enable) {
-    nix.enable = true;
-  }
-)
+optionalAttrs (options ? nix.enable) {
+  nix.enable = true;
+}

@@ -52,20 +52,12 @@ in
     ../../modules/zen-browser
 
     {
-
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
       # Enable the X11 windowing system.
       services.xserver.enable = true;
-
-      # Enable CUPS to print documents.
-      services.printing.enable = true;
-
-      # Enable bluetooth
-      hardware.bluetooth.enable = true;
-      services.blueman.enable = true;
     }
   ];
 

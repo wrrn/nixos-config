@@ -1,6 +1,7 @@
 {
   device-conf,
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -8,13 +9,16 @@ let
   inherit (device-conf) username platform;
   inherit (device-conf.platform) system;
   dotfiles = inputs.dotfiles.packages.${system};
-  nur = inputs.nur.legacyPackages.${system};
-  inherit (nur.repos.rycee) firefox-addons;
+  inherit (pkgs.nur.repos.rycee) firefox-addons;
 
-  module = if platform.isDarwin then ./darwin.nix else { };
+  module = lib.systemModule {
+    darwin = ./darwin.nix;
+    linux = { };
+  };
 in
 
 {
+  nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
   home-manager.sharedModules = [
     inputs.zen-browser.homeModules.beta
