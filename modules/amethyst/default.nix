@@ -6,19 +6,16 @@
 }:
 
 let
-  inherit (inputs) dotfiles wrrnpkgs;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
-  nixpkgs.overlays = [
-    wrrnpkgs.overlays.default
-    dotfiles.overlays.default
-  ];
-
   home-manager.users.${username} = {
-    home.packages = [ pkgs.wrrn.amethyst ];
+    home.packages = [ wrrnpkgs.amethyst ];
     home.file.dot-amethyst = {
-      source = "${pkgs.dotfiles.amethyst}/.amethyst.yml";
+      source = "${dotfiles.amethyst}/.amethyst.yml";
       target = ".amethyst.yml";
     };
   };

@@ -8,9 +8,6 @@ let
   inherit (device-conf) username;
 in
 {
-
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
-
   imports = [
     ./bat.nix
     ./darwin.nix

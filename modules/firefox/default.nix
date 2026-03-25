@@ -6,9 +6,11 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles wrrnpkgs nur;
   inherit (device-conf) username;
-  inherit (pkgs.nur.repos.rycee) firefox-addons;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
+  nur = inputs.nur.legacyPackages.${system};
+  inherit (nur.repos.rycee) firefox-addons;
   platform = device-conf.platform.parsed.kernel.name;
 
   platformConfigs = {
@@ -21,12 +23,6 @@ let
   };
 in
 {
-
-  nixpkgs.overlays = [
-    wrrnpkgs.overlays.default
-    dotfiles.overlays.default
-    nur.overlays.default
-  ];
 
   imports = [
     platformConfig.module
@@ -146,13 +142,13 @@ in
     };
 
     home.file.firefox-theme = {
-      source = pkgs.dotfiles.firefox-theme;
+      source = dotfiles.firefox-theme;
       target = "${platformConfig.profilesPath}/dev-edition-default/chrome/theme";
       recursive = true;
     };
 
     home.file.dot-tridactyl = {
-      source = "${pkgs.dotfiles.tridactyl}/.config/tridactyl";
+      source = "${dotfiles.tridactyl}/.config/tridactyl";
       target = ".config/tridactyl";
       recursive = true;
     };

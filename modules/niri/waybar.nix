@@ -7,13 +7,10 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (inputs) dotfiles;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [
-    # niri.overlays.niri
-    dotfiles.overlays.default
-  ];
 
   home-manager.users.${username} = {
     programs.waybar = {
@@ -33,7 +30,7 @@ in
     };
 
     home.file.dot-waybar = {
-      source = "${pkgs.dotfiles.waybar}/.config/waybar";
+      source = "${dotfiles.waybar}/.config/waybar";
       target = ".config/waybar";
       recursive = true;
     };

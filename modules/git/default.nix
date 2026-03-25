@@ -5,11 +5,11 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
   environment.systemPackages = with pkgs; [
     git
     delta
@@ -21,10 +21,10 @@ in
 
   home-manager.users.${username}.home.file = {
     ".gitconfig" = {
-      source = "${pkgs.dotfiles.git}/.gitconfig";
+      source = "${dotfiles.git}/.gitconfig";
     };
     ".gitattributes" = {
-      source = "${pkgs.dotfiles.git}/.gitattributes";
+      source = "${dotfiles.git}/.gitattributes";
     };
   };
 }

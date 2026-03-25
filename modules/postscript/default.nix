@@ -6,9 +6,10 @@
 }:
 let
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
   environment.systemPackages = with pkgs; [
     openssl
     readline
@@ -35,7 +36,7 @@ in
       terraform
       go-mockery
       mongosh
-      wrrn.mongodb-atlas-cli
+      wrrnpkgs.mongodb-atlas-cli
       mongodb-compass
       act
     ];

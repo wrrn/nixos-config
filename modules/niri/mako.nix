@@ -6,18 +6,16 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (inputs) dotfiles;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [
-    dotfiles.overlays.default
-  ];
 
   home-manager.users.${username} = {
     services.mako.enable = true;
 
     home.file.dot-mako = {
-      source = "${pkgs.dotfiles.mako}/.config/mako";
+      source = "${dotfiles.mako}/.config/mako";
       target = ".config/mako";
       recursive = true;
     };

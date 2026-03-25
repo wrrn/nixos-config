@@ -7,10 +7,11 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (pkgs.wrrn) voxtype;
+  inherit (device-conf.platform) system;
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
+  inherit (wrrnpkgs) voxtype;
 in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
 
   users.users.${username}.extraGroups = [ "input" ];
 

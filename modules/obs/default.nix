@@ -1,6 +1,9 @@
-{ inputs, pkgs, ... }:
+{ device-conf, inputs, pkgs, ... }:
+let
+  inherit (device-conf.platform) system;
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
+in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
@@ -8,9 +11,9 @@
       obs-pipewire-audio-capture
       obs-vaapi # optional AMD hardware acceleration
       obs-composite-blur
-      pkgs.wrrn.obs-studio-plugins.droidcam-obs
-      pkgs.wrrn.obs-studio-plugins.obs-backgroundremoval
-      pkgs.wrrn.obs-studio-plugins.obs-live-backgroundremoval-lite
+      wrrnpkgs.obs-studio-plugins.droidcam-obs
+      wrrnpkgs.obs-studio-plugins.obs-backgroundremoval
+      wrrnpkgs.obs-studio-plugins.obs-live-backgroundremoval-lite
     ];
   };
 

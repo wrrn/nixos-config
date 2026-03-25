@@ -6,13 +6,10 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (inputs) dotfiles niri;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [
-    # niri.overlays.niri
-    dotfiles.overlays.default
-  ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -36,7 +33,7 @@ in
 
   home-manager.users.${username} = {
     home.file.dot-niri = {
-      source = "${pkgs.dotfiles.niri}/.config/niri";
+      source = "${dotfiles.niri}/.config/niri";
       target = ".config/niri";
       recursive = true;
     };

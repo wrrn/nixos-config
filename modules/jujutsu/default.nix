@@ -5,8 +5,10 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles wrrnpkgs nixpkgs-unstable;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 
   # XXX: cargo-nextest fails to build on macOS, skip tests until the issue
   # is resolved.
@@ -23,16 +25,11 @@ let
       pkgs.unstable.jujutsu;
 in
 {
-  nixpkgs.overlays = [
-    dotfiles.overlays.default
-    wrrnpkgs.overlays.default
-  ];
-
   environment.systemPackages = [
     pkgs.difftastic # Difftool that uses AST
     pkgs.mergiraf # Merge tool that is syntax aware
     jujutsu
-    pkgs.wrrn.jw
+    wrrnpkgs.jw
   ];
 
   home-manager.users.${username} = {
@@ -46,12 +43,12 @@ in
       packages = [
         pkgs.difftastic
         pkgs.delta
-        pkgs.wrrn.jw
+        wrrnpkgs.jw
       ];
 
       file.dot-jj = {
         target = ".config/jj";
-        source = "${pkgs.dotfiles.jj}/.config/jj";
+        source = "${dotfiles.jj}/.config/jj";
         recursive = true;
       };
     };

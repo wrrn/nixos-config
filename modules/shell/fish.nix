@@ -6,19 +6,17 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
-
   programs.fish.enable = true;
   users.users.${username}.shell = pkgs.fish;
   environment.shells = [ pkgs.fish ];
   home-manager.users.${username} = {
     home.file.fish = {
-      source = "${pkgs.dotfiles.fish}/.config/fish";
+      source = "${dotfiles.fish}/.config/fish";
       target = ".config/fish";
       recursive = true;
     };

@@ -5,16 +5,15 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
-
   home-manager.users.${username} = {
     programs.starship.enable = true;
     home.file.starship = {
-      source = "${pkgs.dotfiles.starship}/.config/starship.toml";
+      source = "${dotfiles.starship}/.config/starship.toml";
       target = ".config/starship.toml";
     };
   };

@@ -6,9 +6,10 @@
 }:
 let
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       google-chrome
@@ -17,10 +18,10 @@ in
       net-news-wire
       ollama
       skhd
-      wrrn.amethyst
-      wrrn.hammerspoon
-      wrrn.monodraw
-      wrrn.shortcat
+      wrrnpkgs.amethyst
+      wrrnpkgs.hammerspoon
+      wrrnpkgs.monodraw
+      wrrnpkgs.shortcat
     ];
   };
 

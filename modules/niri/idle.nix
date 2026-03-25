@@ -7,12 +7,10 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (inputs) dotfiles;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [
-    dotfiles.overlays.default
-  ];
 
   home-manager.users.${username} = {
 
@@ -28,7 +26,7 @@ in
     services.swayidle.enable = true;
 
     home.file.dot-swayidle = {
-      source = "${pkgs.dotfiles.swayidle}/.config/swayidle";
+      source = "${dotfiles.swayidle}/.config/swayidle";
       target = ".config/swayidle";
       recursive = true;
     };

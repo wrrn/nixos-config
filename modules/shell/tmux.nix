@@ -5,16 +5,15 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
-
   home-manager.users.${username} = {
     home.packages = [ pkgs.tmux ];
     home.file.dot-tmux = {
-      source = "${pkgs.dotfiles.tmux}/.config/tmux";
+      source = "${dotfiles.tmux}/.config/tmux";
       target = ".config/tmux";
       recursive = true;
     };

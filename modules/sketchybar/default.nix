@@ -5,8 +5,9 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
   services.sketchybar = {
@@ -17,7 +18,6 @@ in
     ];
   };
 
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
   home-manager.users.${username} = {
     home.packages = [
       pkgs.lua5_4_compat # We use lua to configure it
@@ -26,7 +26,7 @@ in
 
     home.file.dot-sketchybar = {
       target = ".config/sketchybar";
-      source = "${pkgs.dotfiles.sketchybar}/.config/sketchybar";
+      source = "${dotfiles.sketchybar}/.config/sketchybar";
       recursive = true;
     };
   };

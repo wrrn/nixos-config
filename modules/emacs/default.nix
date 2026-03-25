@@ -5,14 +5,15 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles wrrnpkgs;
   inherit (device-conf) username;
   inherit (pkgs.stdenv) isLinux;
   inherit (pkgs.stdenv.hostPlatform.uname) system;
+  dotfiles = inputs.dotfiles.packages.${device-conf.platform.system};
+  wrrnpkgs = inputs.wrrnpkgs.packages.${device-conf.platform.system};
 
   emacsPackage =
     {
-      Darwin = pkgs.wrrn.emacs-plus;
+      Darwin = wrrnpkgs.emacs-plus;
       # Use the pure gtk version so that it works without xwayland
       Linux = pkgs.emacs30-pgtk;
     }
@@ -22,8 +23,8 @@ let
   # the emacs daemon story for darwin doesn't work as expected.
   homeManagerPackageLists = {
     Darwin = [
-      pkgs.wrrn.emacs-plus
-      pkgs.wrrn.emacs-plus-client
+      wrrnpkgs.emacs-plus
+      wrrnpkgs.emacs-plus-client
     ];
 
     Linux = [ emacsPackage.Linux ];
@@ -32,10 +33,6 @@ let
   homeManagerPackages = homeManagerPackageLists.${system} or [ ];
 in
 {
-  nixpkgs.overlays = [
-    wrrnpkgs.overlays.default
-    dotfiles.overlays.default
-  ];
 
   environment.variables.EDITOR = "emacsclient";
 
@@ -79,7 +76,7 @@ in
       # ++ homeManagerPackages;
 
       file.dot-emacs = {
-        source = "${pkgs.dotfiles.emacs}/.config/emacs";
+        source = "${dotfiles.emacs}/.config/emacs";
         target = ".config/emacs";
         recursive = true;
       };

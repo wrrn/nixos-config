@@ -5,20 +5,18 @@
   ...
 }:
 let
-  inherit (inputs) dotfiles;
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
-
-  nixpkgs.overlays = [ dotfiles.overlays.default ];
-
   home-manager.users.${username} = {
     home.packages = [
       pkgs.wezterm
     ];
 
     home.file.wezterm = {
-      source = "${pkgs.dotfiles.wezterm}/.wezterm.lua";
+      source = "${dotfiles.wezterm}/.wezterm.lua";
       target = ".config/wezterm/wezterm.lua";
     };
   };

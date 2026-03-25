@@ -6,13 +6,11 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (inputs) wrrnpkgs;
+  inherit (device-conf.platform) system;
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
-  nixpkgs.overlays = [
-    wrrnpkgs.overlays.default
-  ];
   home-manager.users.${username}.home.packages = [
-    pkgs.wrrn.codex-raw
+    wrrnpkgs.codex-raw
   ];
 }

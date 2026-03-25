@@ -6,13 +6,14 @@
 }:
 let
   inherit (device-conf) username;
+  inherit (device-conf.platform) system;
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
-  nixpkgs.overlays = [ inputs.wrrnpkgs.overlays.default ];
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       mongosh
-      wrrn.mongodb-atlas-cli
+      wrrnpkgs.mongodb-atlas-cli
       mongodb-tools
       mongodb-compass
     ];
