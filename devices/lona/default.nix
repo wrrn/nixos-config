@@ -58,10 +58,9 @@ in
     ../../modules/usb
     ../../modules/user
     ../../modules/voxtype
-    ../../modules/zen-browser
+    ../../modules/browsers/zen
 
     ../../modules/xona
-    # ../../modules/remote-builds
   ];
 
   specialArgs = {
