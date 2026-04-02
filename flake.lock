@@ -9,16 +9,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1773938949,
-        "narHash": "sha256-PTsKphg3gPlBUs5oMM34RhJJ4jxvD6hand5aVjXcuZ4=",
+        "lastModified": 1774973229,
+        "narHash": "sha256-FdtV+CIqTInnegcXrXBxw4aE0JnNDh4GdYKwUDjSk9Y=",
         "owner": "openai",
         "repo": "codex",
-        "rev": "38771c9082535aa16b4c4d0395d3532f32f656ff",
+        "rev": "b630ce9a4e754d35a1f33e4366ba638d18626142",
         "type": "github"
       },
       "original": {
         "owner": "openai",
-        "ref": "rust-v0.116.0",
+        "ref": "rust-v0.118.0",
         "repo": "codex",
         "type": "github"
       }
@@ -31,11 +31,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774467251,
-        "narHash": "sha256-4bUYTaaC0nAWKC2TkFiZTSjxmgADhF45tbENUl6DRPE=",
+        "lastModified": 1775070087,
+        "narHash": "sha256-bcBM2nejjywaS6un+vxgNtgYbIzf7Run5tU7e8IgoJQ=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "2b07d68b5ac6f8d5bbb678b2195721f19b3d9878",
+        "rev": "806ac5b720049fef342695913205c18bbe2c41af",
         "type": "sourcehut"
       },
       "original": {
@@ -768,11 +768,11 @@
         "voxtype": "voxtype"
       },
       "locked": {
-        "lastModified": 1774486034,
-        "narHash": "sha256-jDQWQfmLKiZXyZtjCAIZfCwKWaUHWRkJTnwCk0RYfBU=",
+        "lastModified": 1775094632,
+        "narHash": "sha256-0tV6Br62+7PWBeGyxJ1wo4BBX2ilmLEuBgzVfVHodyE=",
         "ref": "refs/heads/main",
-        "rev": "c7cc69a6ece6f879f38417ae0e30e84f665782c1",
-        "revCount": 108,
+        "rev": "511fd65899ff770a0ce16dc445d64a3625306d8b",
+        "revCount": 109,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
