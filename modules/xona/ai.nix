@@ -11,6 +11,6 @@ let
 in
 {
   home-manager.users.${username}.home.packages = [
-    wrrnpkgs.codex-raw
+    wrrnpkgs.codex
   ];
 }
