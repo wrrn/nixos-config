@@ -18,7 +18,7 @@ in
   services.ollama = {
     enable = true;
     environmentVariables = {
-      OLLAMA_KEEP_ALIVE = "30m";
+      OLLAMA_KEEP_ALIVE = "8h";
     };
     loadModels = [
       "gemma3:4b"
