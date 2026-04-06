@@ -11,7 +11,7 @@
     };
 
     nixpkgs-unstable = {
-      url = "github:NixOS/nixpkgs/staging-next";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
     nix-darwin = {
@@ -40,9 +40,9 @@
     };
 
     zen-browser = {
-      url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
-      # url = "path:/Users/warren.harper/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
+      url = "path:/home/warren/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
 
@@ -55,7 +55,8 @@
 
     # Personal flakes
     dotfiles = {
-      url = "sourcehut:~warren/dotfiles/main";
+      # url = "sourcehut:~warren/dotfiles/main";
+      url = "path:/home/warren/dotfiles";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
