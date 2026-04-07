@@ -14,7 +14,7 @@ let
 
   module = lib.systemModule {
     darwin = ./darwin.nix;
-    linux = { };
+    linux = ./linux.nix;
   };
 in
 
@@ -61,6 +61,7 @@ in
 
     programs.zen-browser = {
       enable = true;
+      setAsDefaultBrowser = true;
       inherit (browser) policies nativeMessagingHosts;
 
       profiles.default = {
