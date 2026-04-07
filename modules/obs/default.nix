@@ -1,4 +1,9 @@
-{ device-conf, inputs, pkgs, ... }:
+{
+  device-conf,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (device-conf.platform) system;
   wrrnpkgs = inputs.wrrnpkgs.packages.${system};
@@ -14,6 +19,13 @@ in
       wrrnpkgs.obs-studio-plugins.droidcam-obs
       wrrnpkgs.obs-studio-plugins.obs-backgroundremoval
       wrrnpkgs.obs-studio-plugins.obs-live-backgroundremoval-lite
+    ];
+  };
+
+  home-manager.users.${username} = {
+    home.packages = [
+      pkgs.ffmpeg # For converting screen recordings to screenshots
+      pkgs.mpv # For reviewing screen-recordings
     ];
   };
 
