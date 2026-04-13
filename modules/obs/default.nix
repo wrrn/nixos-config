@@ -5,6 +5,7 @@
   ...
 }:
 let
+  inherit (device-conf) username;
   inherit (device-conf.platform) system;
   wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
@@ -12,7 +13,8 @@ in
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
-    plugins = with pkgs.obs-studio-plugins; [
+    package = pkgs.unstable.obs-studio;
+    plugins = with pkgs.unstable.obs-studio-plugins; [
       obs-pipewire-audio-capture
       obs-vaapi # optional AMD hardware acceleration
       obs-composite-blur

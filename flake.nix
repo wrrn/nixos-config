@@ -69,6 +69,7 @@
       # url = "git+ssh://git@git.sr.ht/~warren/nixpkgs";
       url = "path:/home/warren/nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.unstable.follows = "nixpkgs-unstable";
     };
 
     wrrnhosts = {
