@@ -15,7 +15,7 @@
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,8 +40,8 @@
     };
 
     zen-browser = {
-      # url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
-      url = "path:/home/warren/zen-browser-flake";
+      url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
+      # url = "path:/home/warren/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
@@ -55,8 +55,8 @@
 
     # Personal flakes
     dotfiles = {
-      # url = "sourcehut:~warren/dotfiles/main";
-      url = "path:/home/warren/dotfiles";
+      url = "sourcehut:~warren/dotfiles/main";
+      # url = "path:/home/warren/dotfiles";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -66,8 +66,8 @@
     };
 
     wrrnpkgs = {
-      # url = "git+ssh://git@git.sr.ht/~warren/nixpkgs";
-      url = "path:/home/warren/nixpkgs";
+      url = "git+ssh://git@git.sr.ht/~warren/nixpkgs";
+      # url = "path:/home/warren/nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.unstable.follows = "nixpkgs-unstable";
     };
@@ -111,16 +111,7 @@
       };
 
       darwinConfigurations = {
-        bandit = nix-darwin.lib.darwinSystem {
-          modules = [
-            ./devices/bandit
-          ];
-          specialArgs = {
-            inherit inputs;
-            system = "aarch64-darwin";
-          };
-        };
-
+        bandit = nix-darwin.lib.darwinSystem (import ./devices/bandit inputs);
         boq = nix-darwin.lib.darwinSystem (import ./devices/boq inputs);
       };
     };

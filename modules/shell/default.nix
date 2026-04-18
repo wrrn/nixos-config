@@ -30,7 +30,7 @@ in
     curl
     delta
     diffutils
-    direnv
+    ## direnv
     eza
     fd
     fzf
@@ -42,7 +42,7 @@ in
     httpie
     hwatch
     jq
-    mise
+    ## :wqmise
     ripgrep
     tree
     vim

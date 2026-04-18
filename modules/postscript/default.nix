@@ -50,7 +50,7 @@ in
 
     # Installing these via brew so that they are in the expected locations.
     brews = [
-      "acli"
+      # "acli"
       # "awscli"
       "openssl"
       "postgresql@14"

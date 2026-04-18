@@ -13,7 +13,7 @@ in
   environment.systemPackages = with pkgs; [
     git
     delta
-    git-machete
+#    git-machete
     difftastic
 
     hut # Not really git related, but related to a forge.

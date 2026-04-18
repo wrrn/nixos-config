@@ -8,7 +8,7 @@ let
 in
 {
   home-manager.users.${username}.home.packages = [
-    pkgs.colima
+    pkgs.unstable.colima
   ];
 
   homebrew = {

@@ -1,45 +1,66 @@
-{ inputs, ... }:
+{ home-manager, nixpkgs, ... }@inputs:
 let
-  inherit (inputs) home-manager;
-  inherit (inputs.flake-utils.lib) system;
-
+  device-conf = (import ./device.nix inputs);
+  deviceLib = import ../../lib;
+  lib = deviceLib.extendLib nixpkgs.lib device-conf.platform;
 in
 {
 
-  nixpkgs.hostPlatform = system.aarch64-darwin;
+  modules = [
+    # Default modules
+    ../../modules/nixos
+    ../../modules/nix
+    ../../modules/home-manager
+    ../../modules/fixed-packages
 
-  imports = [
-    # options definitions
-    ../../options.nix
+    home-manager.darwinModules.home-manager
+    ../../modules/darwin
 
     # Default modules
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
+    ../../modules/fixed-packages
 
-    # Set device options
-    ./options.nix
-
-    home-manager.darwinModules.home-manager
-    ../../modules/darwin
+    
     ../../modules/1password
-    ../../modules/amethyst
-    ../../modules/sketchybar
-
-    ../../modules/jankyborders
-    ../../modules/apps
-    ../../modules/cold-turkey
+        ../../modules/apps
+        ../../modules/aerospace
+    ../../modules/build-tools
+    ## TODO: Use maccy as clipboard in macos
+    # ../../modules/clipboard
     ../../modules/containers
     ../../modules/emacs
-    ../../modules/zen-browser
+    ../../modules/email
     ../../modules/fonts
     ../../modules/ghostty
     ../../modules/git
     ../../modules/go
+    ../../modules/gpg
+    ../../modules/jujutsu
     ../../modules/keyboard
+    ## TODO: Add locale configs to macos
+    # ../../modules/locale
     ../../modules/networking
+    ## TODO: Figure out droidcam for macos
+    ## ../../modules/obs
     ../../modules/shell
+    ../../modules/sudo
+    ../../modules/sudo
     ../../modules/system
+    ../../modules/tailscale
     ../../modules/user
+    ## TODO: Figure out voxtype for macos
+    # ../../modules/voxtype
+    ../../modules/browsers/zen
+
+    ../../modules/1password
+
+
+
+
+
   ];
+
+  specialArgs = { inherit inputs device-conf lib; };
 }

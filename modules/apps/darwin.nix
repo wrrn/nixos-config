@@ -35,12 +35,8 @@ in
 
     taps = [
       "brettferdosi/tap"
-      "jonas-grgt/ktea"
     ];
 
-    brews = [
-      "ktea" # Kafka message viewer TODO migrate this to a nix package
-    ];
 
     masApps = {
       "Amphetamine" = 937984704;

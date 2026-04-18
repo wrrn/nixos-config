@@ -1,6 +1,7 @@
 {
   device-conf,
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -20,22 +21,16 @@ let
     pkgs.openmoji-color
     pkgs.openmoji-black
   ];
+  module = lib.systemModule { linux = ./linux.nix;
+    darwin = {};
+  };
 in
 {
   nixpkgs.overlays = [ inputs.fonts.overlay ];
+  imports = [ module ];
 
   environment.systemPackages = fontsToInstall;
 
   home-manager.users.${username}.home.packages = fontsToInstall;
   fonts.packages = fontsToInstall;
-
-  fonts.fontconfig.defaultFonts = {
-    monospace = [
-      "Triplicate A Code"
-      "Symbols Nerd Font"
-    ];
-    sansSerif = [ "Ellograph CF" ];
-    serif = [ "Triplicate A" ];
-    emoji = [ "Openmoji Color" ];
-  };
 }
