@@ -22,10 +22,10 @@ in
     ../../modules/home-manager
     ../../modules/fixed-packages
 
-    
     ../../modules/1password
-        ../../modules/apps
-        ../../modules/aerospace
+    ../../modules/apps
+    # ../../modules/aerospace
+    ../../modules/omniwm
     ../../modules/build-tools
     ## TODO: Use maccy as clipboard in macos
     # ../../modules/clipboard
@@ -55,10 +55,6 @@ in
     ../../modules/browsers/zen
 
     ../../modules/1password
-
-
-
-
 
   ];
 
