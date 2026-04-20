@@ -38,6 +38,8 @@ in
     ../../modules/go
     ../../modules/gpg
     ../../modules/jujutsu
+    ../../modules/llms
+
     ../../modules/keyboard
     ## TODO: Add locale configs to macos
     # ../../modules/locale

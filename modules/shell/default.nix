@@ -7,9 +7,6 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-
-  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
   platformModule = lib.systemModule {
     linux = ./linux.nix;
     darwin = ./darwin.nix;
@@ -54,8 +51,6 @@ in
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      wrrnpkgs.claude-code
-      wrrnpkgs.pi
       dasht
       unstable.devenv
       grpcurl
