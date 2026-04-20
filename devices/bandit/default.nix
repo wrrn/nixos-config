@@ -24,7 +24,7 @@ in
 
     ../../modules/1password
     ../../modules/apps
-    # ../../modules/aerospace
+    ../../modules/corpoware
     ../../modules/omniwm
     ../../modules/build-tools
     ## TODO: Use maccy as clipboard in macos
