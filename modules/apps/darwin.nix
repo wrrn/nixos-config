@@ -37,7 +37,6 @@ in
       "brettferdosi/tap"
     ];
 
-
     masApps = {
       "Amphetamine" = 937984704;
       "Apple Configurator" = 1037126344;
