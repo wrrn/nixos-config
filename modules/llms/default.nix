@@ -15,6 +15,7 @@ let
   };
 in
 {
+  imports = [ module ];
   home-manager.users.${username}.home.packages = [
     wrrnpkgs.claude-code
     wrrnpkgs.pi
