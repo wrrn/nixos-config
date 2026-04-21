@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    paneru = {
+      url = "github:karinushka/paneru";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
       # url = "path:/home/warren/zen-browser-flake";
@@ -92,6 +97,7 @@
       flake-utils,
       niri,
       nur,
+      paneru,
       zen-browser,
 
       flaky-falcon,

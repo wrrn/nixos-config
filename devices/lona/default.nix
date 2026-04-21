@@ -42,6 +42,7 @@ in
     ../../modules/git
     ../../modules/go
     ../../modules/gpg
+    ../../modules/llms
     ../../modules/jujutsu
     ../../modules/keyboard
     ../../modules/locale
