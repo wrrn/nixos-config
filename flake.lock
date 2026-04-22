@@ -96,11 +96,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776793539,
-        "narHash": "sha256-QWYs8H8Jkc5vVsFCe8fsi0HE7e3ma2S5JWmIGkK7+4E=",
+        "lastModified": 1776886427,
+        "narHash": "sha256-8z9tG6S5wwBTT9t9D10bpUi46LSsuDsVd4ZVPsILz6U=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "25c60c58e73bc403665bdcff10a3c483c56263ec",
+        "rev": "68b288ef3356f0a7017aa3d52acac2f420ac3d29",
         "type": "sourcehut"
       },
       "original": {
@@ -325,17 +325,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1764998696,
-        "narHash": "sha256-jYTEO68g/0ikJAUMQSnx9V58aJYaJV0dd3uHp5eKeuQ=",
+        "lastModified": 1769630626,
+        "narHash": "sha256-0PgiykV3pX+tdvpdahChD73dVuqp+RopxdfKMr+1pzc=",
         "ref": "refs/heads/main",
-        "rev": "8ddb41e938202256025bb01c4eb2ed3fd02977e4",
-        "revCount": 7,
+        "rev": "6db4231ea2d17b8899a91872d510e196419be643",
+        "revCount": 4,
         "type": "git",
-        "url": "ssh://git@git.sr.ht/~warren/flaky-falcon"
+        "url": "ssh://git@github.com/xonasystems/falcon-sensor-nix.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@git.sr.ht/~warren/flaky-falcon"
+        "url": "ssh://git@github.com/xonasystems/falcon-sensor-nix.git"
       }
     },
     "fonts": {
