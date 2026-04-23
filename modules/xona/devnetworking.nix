@@ -10,11 +10,14 @@ in
   services.caddy = {
     enable = true;
     virtualHosts.${hostnames.xcm}.extraConfig = ''
+      tls internal
       reverse_proxy https://localhost:8443 {
         transport http { tls_insecure_skip_verify }
       }
     '';
+
     virtualHosts.${hostnames.csg}.extraConfig = ''
+      tls internal
       reverse_proxy https://localhost:7443 {
         transport http { tls_insecure_skip_verify }
       }
@@ -36,4 +39,9 @@ in
     "192.168.127.242" = [ "xcm-vm-primary.xona" ];
     "192.168.127.243" = [ "xcm-vm-replica.xona" ];
   };
+
+  security.pki.certificateFiles = [
+    ./dev_ca.crt
+    ./caddy-root.crt
+  ];
 }
