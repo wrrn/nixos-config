@@ -1,4 +1,9 @@
-{ home-manager, nixpkgs, ... }@inputs:
+{
+  home-manager,
+  nixpkgs,
+  wrrnhosts,
+  ...
+}@inputs:
 let
   device-conf = (import ./device.nix inputs);
   deviceLib = import ../../lib;
@@ -14,6 +19,7 @@ in
     ../../modules/fixed-packages
 
     home-manager.darwinModules.home-manager
+    wrrnhosts.darwinModules.hosts
     ../../modules/darwin
 
     # Default modules

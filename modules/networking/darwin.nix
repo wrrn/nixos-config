@@ -10,4 +10,5 @@ in
     computerName = hostname;
     localHostName = hostname;
   };
+  wrrn.hosts.enable = true;
 }

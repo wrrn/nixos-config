@@ -1009,17 +1009,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1773412251,
-        "narHash": "sha256-nxLU43yNvUbPBFeJsZElFEHxq0YnLv2eRT+bKMaLGgw=",
-        "ref": "refs/heads/main",
-        "rev": "b1cdff8ff569d0b73c42574355fd93ee1a161424",
-        "revCount": 11,
-        "type": "git",
-        "url": "ssh://git@git.sr.ht/~warren/hosts"
+        "lastModified": 1776965955,
+        "narHash": "sha256-OyPnw0ohPehjbXU7PNvvdfq6xkA8gR5M/wLguyEx7ew=",
+        "path": "/Users/warrenharper/hosts",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@git.sr.ht/~warren/hosts"
+        "path": "/Users/warrenharper/hosts",
+        "type": "path"
       }
     },
     "wrrnpkgs": {
