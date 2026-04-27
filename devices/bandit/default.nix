@@ -31,8 +31,7 @@ in
     ../../modules/1password
     ../../modules/apps
     ../../modules/corpoware
-    # ../../modules/omniwm
-    ../../modules/paneru
+    ../../modules/productivity
     ../../modules/build-tools
     ## TODO: Use maccy as clipboard in macos
     # ../../modules/clipboard
@@ -61,6 +60,7 @@ in
     ../../modules/user
     ## TODO: Figure out voxtype for macos
     # ../../modules/voxtype
+    ../../modules/window-manager
     ../../modules/browsers/zen
 
     ../../modules/1password

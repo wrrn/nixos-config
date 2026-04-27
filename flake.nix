@@ -44,6 +44,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rift = {
+      url = "git+ssh://git@git.sr.ht/~warren/rift";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     zen-browser = {
       url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
       # url = "path:/home/warren/zen-browser-flake";
@@ -54,8 +59,8 @@
     # Work flakes
     flaky-falcon = {
       # url = "path:/home/warren/flaky-falcon";
-      # url = "git+ssh://git@git.sr.ht/~warren/flaky-falcon";
-      url = "git+ssh://git@github.com/xonasystems/falcon-sensor-nix.git";
+      url = "git+ssh://git@git.sr.ht/~warren/flaky-falcon";
+      # url = "git+ssh://git@github.com/xonasystems/falcon-sensor-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -100,6 +105,7 @@
       niri,
       nur,
       paneru,
+      rift,
       zen-browser,
 
       flaky-falcon,
