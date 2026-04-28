@@ -1,4 +1,8 @@
-{ firefox-addons, pkgs, dotfiles }:
+{
+  firefox-addons,
+  pkgs,
+  dotfiles,
+}:
 {
   policies = {
     DontCheckDefaultBrowser = true;
