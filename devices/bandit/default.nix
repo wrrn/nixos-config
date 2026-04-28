@@ -44,6 +44,7 @@ in
     ../../modules/go
     ../../modules/gpg
     ../../modules/jujutsu
+    ../../modules/kvm
     ../../modules/llms
 
     ../../modules/keyboard
@@ -54,7 +55,6 @@ in
     ## ../../modules/obs
     ../../modules/shell
     ../../modules/sudo
-    ../../modules/sudo
     ../../modules/system
     ../../modules/tailscale
     ../../modules/user
@@ -62,7 +62,6 @@ in
     # ../../modules/voxtype
     ../../modules/window-manager
     ../../modules/browsers/zen
-
     ../../modules/1password
 
   ];
