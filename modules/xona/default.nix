@@ -33,4 +33,5 @@ in
     netrc-file = "/etc/nix/netrc";
     extra-sandbox-paths = [ "/etc/nix/netrc" ];
   };
+
 }

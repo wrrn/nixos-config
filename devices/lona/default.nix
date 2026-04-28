@@ -45,6 +45,7 @@ in
     ../../modules/llms
     ../../modules/jujutsu
     ../../modules/keyboard
+    ../../modules/kvm
     ../../modules/locale
     ../../modules/networking
     ../../modules/niri

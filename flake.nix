@@ -77,16 +77,15 @@
     };
 
     wrrnpkgs = {
-      url = "git+ssh://git@git.sr.ht/~warren/nixpkgs";
-      # url = "path:/home/warren/nixpkgs";
+      # url = "git+ssh://git@git.sr.ht/~warren/nixpkgs";
+      url = "path:/home/warren/nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.unstable.follows = "nixpkgs-unstable";
     };
 
     wrrnhosts = {
-      # url = "git+ssh://git@git.sr.ht/~warren/hosts";
-      url = "path:/Users/warrenharper/hosts";
-
+      url = "git+ssh://git@git.sr.ht/~warren/hosts";
+      # url = "path:/Users/warrenharper/hosts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
