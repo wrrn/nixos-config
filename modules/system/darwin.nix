@@ -40,10 +40,6 @@ let
           appswitcher-all-displays = true;
         };
 
-        spaces = {
-          spans-displays = true; # Disable "Displays have separate spaced"
-        };
-
         trackpad = {
           Clicking = true; # Turn on tap to click
         };
@@ -55,7 +51,7 @@ let
           InitialKeyRepeat = 15;
           AppleShowScrollBars = "WhenScrolling";
           AppleICUForce24HourTime = true;
-          _HIHideMenuBar = true;
+          # _HIHideMenuBar = true; #Uncomment to autohide menubar
         };
         # Note this might not work. I might have to do something other than optional
         CustomUserPreferences = {

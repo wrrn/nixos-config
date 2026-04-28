@@ -18,4 +18,7 @@ in
       recursive = true;
     };
   };
+
+  # Enable "Displays have separate spaced". It's kind of backward
+  system.defaults.spaces.spans-displays = false;
 }
