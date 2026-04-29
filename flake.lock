@@ -1138,11 +1138,11 @@
         "voxtype": "voxtype"
       },
       "locked": {
-        "lastModified": 1777396729,
-        "narHash": "sha256-SX/cHzwApKDS5wrg23cPQ8sQutUuTKB3WHn2Xoux03Y=",
+        "lastModified": 1777420051,
+        "narHash": "sha256-lNzUcHMMzTw2VixfioK7J3EO/OeKD1T3i/ENoV93KiE=",
         "ref": "refs/heads/main",
-        "rev": "53fdfc65779a2c12deb33b4455c24040485663b6",
-        "revCount": 117,
+        "rev": "33b918f8aec09790e0df5c41e363c03d580bcce9",
+        "revCount": 118,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
