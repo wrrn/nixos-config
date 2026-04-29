@@ -64,7 +64,7 @@ in
       nixfmt-rfc-style
       opencode
       pgcli
-      pkgs.nodePackages_latest.prettier
+      prettier
       rsync
       shellcheck
       shfmt
