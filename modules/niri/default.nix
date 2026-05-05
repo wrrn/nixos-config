@@ -8,6 +8,7 @@
     ./polkit.nix
     ./wayland-ready.nix
     ./xwayland-satellite.service.nix
+    ./theme.nix
   ];
 
 }
