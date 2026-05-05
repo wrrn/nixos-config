@@ -43,6 +43,7 @@ in
     ../../modules/git
     ../../modules/go
     ../../modules/gpg
+    ../../modules/jankyborders
     ../../modules/jujutsu
     ../../modules/kvm
     ../../modules/llms
