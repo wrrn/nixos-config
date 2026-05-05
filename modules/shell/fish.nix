@@ -20,6 +20,9 @@ in
       target = ".config/fish";
       recursive = true;
     };
+    home.packages = [
+      pkgs.fishPlugins.tide
+    ];
   };
 
   ### Copied from https://github.com/LnL7/nix-darwin/issues/122#issuecomment-2272570087
