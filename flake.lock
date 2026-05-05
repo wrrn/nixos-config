@@ -95,11 +95,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777907113,
-        "narHash": "sha256-o0YMGvCuDZoaRs5a7A65k6RN5ZSDNL+6w0ErIiCAwk8=",
+        "lastModified": 1777993794,
+        "narHash": "sha256-L19drKnkkgsyZUoKC8Ia7+/lfJdub2FAlA53mf+U7Yo=",
         "owner": "~warren",
         "repo": "dotfiles",
-        "rev": "a72758dd613ca7cb80ee5d5f6c8945d6c8c35f9e",
+        "rev": "b77aa75fc9602816471fd70efdb3b431c18b81d1",
         "type": "sourcehut"
       },
       "original": {
@@ -342,17 +342,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1769630626,
-        "narHash": "sha256-0PgiykV3pX+tdvpdahChD73dVuqp+RopxdfKMr+1pzc=",
+        "lastModified": 1764998696,
+        "narHash": "sha256-jYTEO68g/0ikJAUMQSnx9V58aJYaJV0dd3uHp5eKeuQ=",
         "ref": "refs/heads/main",
-        "rev": "6db4231ea2d17b8899a91872d510e196419be643",
-        "revCount": 4,
+        "rev": "8ddb41e938202256025bb01c4eb2ed3fd02977e4",
+        "revCount": 7,
         "type": "git",
-        "url": "ssh://git@github.com/xonasystems/falcon-sensor-nix.git"
+        "url": "ssh://git@git.sr.ht/~warren/flaky-falcon"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/xonasystems/falcon-sensor-nix.git"
+        "url": "ssh://git@git.sr.ht/~warren/flaky-falcon"
       }
     },
     "fonts": {
@@ -658,11 +658,11 @@
     },
     "nixpkgs-staging": {
       "locked": {
-        "lastModified": 1777898142,
-        "narHash": "sha256-2hF0SVoEf4CHjnsomsrp4k9fFj8HdXErySefqnUwPFI=",
+        "lastModified": 1777919616,
+        "narHash": "sha256-x5S/0CS1o2uMiW5VIO8ZB/6ZkHu9ZUnbOv6k6aAxvfs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e306f1df1631de4c08423e78552ca11000228656",
+        "rev": "0da73a05143d38da038df61d3b6adc0967f06291",
         "type": "github"
       },
       "original": {
@@ -788,7 +788,7 @@
         "import-tree": "import-tree",
         "nix-darwin": "nix-darwin_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-staging"
         ]
       },
       "locked": {
@@ -813,11 +813,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777322800,
-        "narHash": "sha256-X+9pfatuLBSxapZmcJodU1LTvxyRG3HxuKdYbarJgVs=",
+        "lastModified": 1777930713,
+        "narHash": "sha256-D5nwc4ftqN0PqzpZt3uSvhxqpU34cbA4wFp6AxPRgz0=",
         "ref": "refs/heads/main",
-        "rev": "1499a31d4414c0cf04e877533779f8d5af3270ef",
-        "revCount": 528,
+        "rev": "4413ad1aedeb4778da7a26b061b777a757562db1",
+        "revCount": 535,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/rift"
       },
@@ -1122,11 +1122,11 @@
         "voxtype": "voxtype"
       },
       "locked": {
-        "lastModified": 1777908584,
-        "narHash": "sha256-VQD9ib12CxQKJAQsRti8VjSj2j0x2hr61Iq4vlYN4zc=",
+        "lastModified": 1777994439,
+        "narHash": "sha256-IseohxhYRCuZzqZlWldXaZBZqmTe9+qUB4r9DqpL4CU=",
         "ref": "refs/heads/main",
-        "rev": "087fd682eb2784d29952bbc449712ce5fe336ae2",
-        "revCount": 120,
+        "rev": "fb9dee6a614df4e6317cf163fdbeb97ef66c75d3",
+        "revCount": 121,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
