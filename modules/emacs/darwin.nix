@@ -2,14 +2,21 @@
 let
   inherit (device-conf) username;
   wrrnpkgs = inputs.wrrnpkgs.packages.${device-conf.platform.system};
+  package = wrrnpkgs.emacs-plus;
 in
 {
 
+  services.emacs = {
+    enable = true;
+    inherit package;
+  };
   home-manager.users.${username} = {
-    services.emacs.package = wrrnpkgs.emacs-plus;
-
+    services.emacs = {
+      inherit package;
+      enable = true;
+    };
     programs.emacs = {
-      package = wrrnpkgs.emacs-plus;
+      inherit package;
     };
 
     home.packages = [ wrrnpkgs.emacs-plus-client ];
