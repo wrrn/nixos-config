@@ -59,8 +59,8 @@
     # Work flakes
     flaky-falcon = {
       # url = "path:/home/warren/flaky-falcon";
-      # url = "git+ssh://git@git.sr.ht/~warren/flaky-falcon";
-      url = "git+ssh://git@github.com/xonasystems/falcon-sensor-nix.git";
+      url = "git+ssh://git@git.sr.ht/~warren/flaky-falcon";
+      # url = "git+ssh://git@github.com/xonasystems/falcon-sensor-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -348,11 +348,11 @@
         "rev": "6db4231ea2d17b8899a91872d510e196419be643",
         "revCount": 4,
         "type": "git",
-        "url": "ssh://git@github.com/xonasystems/falcon-sensor-nix.git"
+        "url": "ssh://git@git.sr.ht/~warren/flaky-falcon"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/xonasystems/falcon-sensor-nix.git"
+        "url": "ssh://git@git.sr.ht/~warren/flaky-falcon"
       }
     },
     "fonts": {
@@ -405,11 +405,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778606796,
-        "narHash": "sha256-P2krpSkFVYJ89bgsnAZ9RtQiGwiTW77sfSJp9SEDscM=",
+        "lastModified": 1778905220,
+        "narHash": "sha256-ox/5IHc8uwy6UTw6N7Shp6uCHIgu/S2PsWeuXsOHSo8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e1fd7350f4410972bcb8c42a697d8c924ffe642a",
+        "rev": "d1686dc7d36cbd1234cb226ad6ef97e882716acb",
         "type": "github"
       },
       "original": {
@@ -659,11 +659,11 @@
     },
     "nixpkgs-staging": {
       "locked": {
-        "lastModified": 1778891834,
-        "narHash": "sha256-dfg8Mn3xpdIZ5+eSchpp2IH/XzT4F4n2FHPBc0XrE2A=",
+        "lastModified": 1778934139,
+        "narHash": "sha256-Mby7iT4GSuppzD9XbYE/WHCYlRpEPiNv3uTizLwVEhs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "32f7670d28b79bdf101169bcecf8aa33aa58bfa6",
+        "rev": "90a9c80052993b7e99cd680c19cc2cad075d08b6",
         "type": "github"
       },
       "original": {
@@ -745,11 +745,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778899264,
-        "narHash": "sha256-y9goQ7Ts4VtIyBmiRoWsMCQHAtFSp1Hm1Whw8ivLrNY=",
+        "lastModified": 1778935355,
+        "narHash": "sha256-xkNNhzZB2QVT1cj5X5ZtbIvlrJsvLcUE9PbOZd00cGs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a41438800348ad50b74eaf4e2da838f6dae88330",
+        "rev": "cce9ab49427c01a146369674ef79e160c785ae4f",
         "type": "github"
       },
       "original": {
@@ -793,11 +793,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778865054,
-        "narHash": "sha256-KW+OhQ4g7qbdE2HvjS10Tvz3J84CVofI33yflwnlKyo=",
+        "lastModified": 1778930612,
+        "narHash": "sha256-P8A28erM9stMtuxY4UbjSNPNj5ADXAR7B2Ouk4JBUA8=",
         "owner": "karinushka",
         "repo": "paneru",
-        "rev": "92daa00c71b46b0472a06d19a393f968c10fe408",
+        "rev": "9792638bb5fae607a23d4e9ec76fb7c1c4fa0cd3",
         "type": "github"
       },
       "original": {
@@ -814,11 +814,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777930713,
-        "narHash": "sha256-D5nwc4ftqN0PqzpZt3uSvhxqpU34cbA4wFp6AxPRgz0=",
+        "lastModified": 1778931432,
+        "narHash": "sha256-0Lqk4yNsxLd0nELMItM7+Unf+2EMspVqLCVzBLdaAUQ=",
         "ref": "refs/heads/main",
-        "rev": "4413ad1aedeb4778da7a26b061b777a757562db1",
-        "revCount": 535,
+        "rev": "451d47bdf1fa8a9e06a6452c9edf1bf23cd1a6f6",
+        "revCount": 539,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/rift"
       },
