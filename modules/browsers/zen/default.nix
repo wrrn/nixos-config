@@ -43,6 +43,7 @@ in
         "x-scheme-handler/chrome" = "zen-beta.desktop";
         "x-scheme-handler/http" = "zen-beta.desktop";
         "x-scheme-handler/https" = "zen-beta.desktop";
+        "x-scheme-handler/onepassword" = "1password.desktop";
       };
       defaultApplications = {
         "application/x-extension-htm" = "zen-beta.desktop";
@@ -56,6 +57,7 @@ in
         "x-scheme-handler/chrome" = "zen-beta.desktop";
         "x-scheme-handler/http" = "zen-beta.desktop";
         "x-scheme-handler/https" = "zen-beta.desktop";
+        "x-scheme-handler/onepassword" = "1password.desktop";
       };
     };
 
