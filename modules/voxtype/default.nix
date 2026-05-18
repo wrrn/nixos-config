@@ -19,6 +19,7 @@ in
     enable = true;
     environmentVariables = {
       OLLAMA_KEEP_ALIVE = "8h";
+      OLLAMA_VULKAN = "1";
     };
     loadModels = [
       "gemma3:4b"

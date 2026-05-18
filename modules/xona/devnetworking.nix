@@ -27,11 +27,23 @@ in
   networking.hosts = {
     "127.0.0.1" = builtins.attrValues hostnames;
 
-    "192.168.127.250" = [ "csg-vm.xona" ];
-    "192.168.122.100" = [ "csg-vm-untrusted.xona" ];
+    "192.168.127.250" = [
+      "csg-vm.xona"
+      "vm.csg.xona"
+    ];
+    "192.168.122.100" = [
+      "csg-vm-untrusted.xona"
+      "untrusted.vm.csg.xona"
+    ];
 
-    "192.168.127.251" = [ "xcm-vm.xona" ];
-    "192.168.122.101" = [ "xcm-vm-untrusted.xona" ];
+    "192.168.127.251" = [
+      "xcm-vm.xona"
+      "vm.xcm.xona"
+    ];
+    "192.168.122.101" = [
+      "xcm-vm-untrusted.xona"
+      "untrusted.vm.xcm.xona"
+    ];
 
     "192.168.127.240" = [ "csg-vm-primary.xona" ];
     "192.168.127.241" = [ "csg-vm-replica.xona" ];

@@ -6,7 +6,7 @@ let
 
   overlay = (
     final: prev: {
-      ollama = master.ollama;
+      ollama = master.ollama-vulkan;
 
       direnv = prev.direnv.overrideAttrs (old: {
         doCheck = false;
