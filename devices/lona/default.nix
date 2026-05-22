@@ -50,6 +50,7 @@ in
     ../../modules/networking
     ../../modules/niri
     ../../modules/obs
+    ../../modules/pi
     ../../modules/power
     ../../modules/printing
     ../../modules/sddm

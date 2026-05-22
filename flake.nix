@@ -10,6 +10,10 @@
       url = "github:NixOS/nixpkgs/staging-next";
     };
 
+    nixpkgs-master = {
+      url = "github:NixOS/nixpkgs/master";
+    };
+
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
@@ -25,6 +29,11 @@
     };
 
     # Third party flakes
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -97,9 +106,11 @@
       nixpkgs,
       nixpkgs-staging,
       nixpkgs-unstable,
+      nixpkgs-master,
       nix-darwin,
       home-manager,
 
+      agenix,
       flake-utils,
       niri,
       nur,
