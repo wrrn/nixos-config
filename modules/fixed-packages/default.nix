@@ -1,20 +1,18 @@
 { inputs, pkgs, ... }:
 let
-  master = import inputs.nixpkgs-staging {
-    system = pkgs.stdenv.hostPlatform.system;
+  overrides = {
+    _1password = pkgs.master._1password-cli;
+    _1password-cli = pkgs.master._1password-cli;
+    _1password-gui = pkgs.master._1password-gui;
   };
 
-  overlay = (
-    final: prev: {
-      ollama = master.ollama-vulkan;
+  fixedPackageNames = pkgs.lib.concatStringsSep ", " (pkgs.lib.attrNames overrides);
 
-      direnv = prev.direnv.overrideAttrs (old: {
-        doCheck = false;
-      });
-    }
-  );
+  overlay = final: prev: overrides;
 in
 {
   nixpkgs.overlays = [ overlay ];
-  warnings = [ "The following packages are being fixed: ollama, direnv" ];
+  warnings = [
+    "The following packages are being fixed: ${fixedPackageNames}"
+  ];
 }

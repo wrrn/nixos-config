@@ -8,25 +8,28 @@
 let
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
-  unstable = import inputs.nixpkgs-unstable {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
-  staging = import inputs.nixpkgs-staging {
-    inherit system;
-    config.allowUnfree = true;
-  };
+  packages =
+    input:
+    import input {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  unstable = packages inputs.nixpkgs-unstable;
+  staging = packages inputs.nixpkgs-staging;
+  master = packages inputs.nixpkgs-master;
 in
 {
   imports = [
-    (lib.systemModule { darwin = ./darwin.nix; linux = { }; })
+    (lib.systemModule {
+      darwin = ./darwin.nix;
+      linux = { };
+    })
   ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = system;
   nixpkgs.overlays = [
-    (final: prev: { inherit unstable staging; })
+    (final: prev: { inherit unstable staging master; })
   ];
 
   nix = {
