@@ -52,6 +52,8 @@ in
     ## TODO: Add locale configs to macos
     # ../../modules/locale
     ../../modules/networking
+    ../../modules/ollama
+    ../../modules/pi
     ## TODO: Figure out droidcam for macos
     ## ../../modules/obs
     ../../modules/shell

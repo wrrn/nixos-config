@@ -16,8 +16,8 @@ in
   environment.shells = [ pkgs.fish ];
   home-manager.users.${username} = {
     home.file.fish = {
-      source = "${dotfiles.fish}/.config/fish";
-      target = ".config/fish";
+      source = "${dotfiles.fish}/dot-config/fish";
+      target = ".config/fish/";
       recursive = true;
     };
     home.packages = [

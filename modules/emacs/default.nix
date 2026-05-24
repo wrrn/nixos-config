@@ -49,7 +49,7 @@ in
       ];
 
       file.dot-emacs = {
-        source = "${dotfiles.emacs}/.config/emacs";
+        source = "${dotfiles.emacs}/dot-config/emacs";
         target = ".config/emacs";
         recursive = true;
       };

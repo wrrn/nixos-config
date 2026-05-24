@@ -34,7 +34,7 @@ in
 
       file.dot-jj = {
         target = ".config/jj";
-        source = "${dotfiles.jj}/.config/jj";
+        source = "${dotfiles.jj}/dot-config/jj";
         recursive = true;
       };
     };

@@ -30,34 +30,14 @@
   ...
 }:
 let
-  inherit (device-conf) username;
 in
 {
   imports = [ inputs.agenix.nixosModules.default ];
-
-  age.secrets.pi-search-keys = {
-    file = ./pi-search-keys.age;
-    owner = username;
-    mode = "0400";
-  };
 
   # Expose the decrypted file's path so shells outside bash/zsh (notably
   # fish, which does not source /etc/profile) can locate it. The matching
   # fish snippet lives at
   # dotfiles/fish/.config/fish/conf.d/05-pi-search.fish and reads each
   # KEY=value line from $PI_SEARCH_KEYS into the environment.
-  environment.sessionVariables.PI_SEARCH_KEYS =
-    config.age.secrets.pi-search-keys.path;
-
-  # System-wide shell init covers bash and zsh (and any POSIX shell that
-  # sources /etc/profile). `set -a` auto-exports every assignment in the
-  # sourced file. Fish is handled by the conf.d snippet referenced above,
-  # driven off the PI_SEARCH_KEYS env var set just above.
-  environment.shellInit = ''
-    if [ -r ${config.age.secrets.pi-search-keys.path} ]; then
-      set -a
-      . ${config.age.secrets.pi-search-keys.path}
-      set +a
-    fi
-  '';
+  environment.sessionVariables.PI_SEARCH_KEYS = config.age.secrets.pi-search-keys.path;
 }
