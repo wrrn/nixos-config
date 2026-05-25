@@ -25,8 +25,10 @@ in
   home-manager.users.${username}.home = {
     packages = [
     wrrnpkgs.pi
-    # nodejs is required for `pi install` (npm) and other Node-based LLM tooling
-    pkgs.nodejs_20
+    # nodejs is required for `pi install` (npm) and other Node-based LLM tooling.
+    # Bumped from nodejs_20 → nodejs_22 to satisfy @gotgenes/pi-subagents'
+    # `engines: ">=22"` (uses Promise.withResolvers / undici@8 webidl APIs).
+    pkgs.nodejs_22
   ];
 
   file.dot-pi = {
