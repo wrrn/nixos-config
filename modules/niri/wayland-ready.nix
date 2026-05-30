@@ -29,6 +29,8 @@ in
       Service = {
         Type = "oneshot";
         ExecStart = "${waylandReady}/bin/wayland-ready";
+        Restart = "on-failure";
+        RestartSec = 1;
       };
 
       Install.WantedBy = [ "graphical-session.target" ];

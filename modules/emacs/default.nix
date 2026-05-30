@@ -42,6 +42,13 @@ in
     programs.emacs = {
       enable = true;      
     };
+
+    systemd.user.services.emacs = {
+      Unit = {
+        After = [ "wayland-ready.service" ];
+        Wants = [ "wayland-ready.service" ];
+      };
+    };
     
     home = {
       packages = [
