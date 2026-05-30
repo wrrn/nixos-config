@@ -57,6 +57,7 @@ in
     ../../modules/shell
     ../../modules/ssh
     ../../modules/sudo
+    ../../modules/swww
     ../../modules/tailscale
     ../../modules/usb
     ../../modules/user

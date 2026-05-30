@@ -21,10 +21,17 @@ in
     pkgs.wl-kbptr
   ];
 
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.unstable.niri;
+  };
+
   services.iio-niri = {
     enable = true;
-    extraArgs = [ "--monitor" "eDP-1" ];
+    extraArgs = [
+      "--monitor"
+      "eDP-1"
+    ];
   };
 
   services.upower = {
