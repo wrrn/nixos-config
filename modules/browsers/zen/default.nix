@@ -73,6 +73,9 @@ in
         containersForce = true;
         containers = browser.containers;
         extensions.packages = browser.extensions;
+        # Native userChrome option from the Firefox-based hm module:
+        # writes to <profilesPath>/default/chrome/userChrome.css.
+        userChrome = builtins.readFile "${dotfiles.zen}/chrome/userChrome.css";
       };
     };
 
