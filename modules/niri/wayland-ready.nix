@@ -24,6 +24,7 @@ in
     services.wayland-ready = {
       Unit = {
         Description = "Wait for the Wayland socket and import env";
+        Before = [ "graphical-session.target" ];
       };
 
       Service = {
