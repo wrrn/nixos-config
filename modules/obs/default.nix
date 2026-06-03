@@ -31,20 +31,6 @@ in
     ];
   };
 
-  # xdg-desktop-portal is required for screen capture on Wayland
-  # niri specifically recommends xdg-desktop-portal-gnome for screencasting
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome # Provides ScreenCast portal for Niri
-      xdg-desktop-portal-gtk # Provides other portals (file chooser, etc.)
-    ];
-    config.common.default = [
-      "gnome"
-      "gtk"
-    ];
-  };
-
   # Enable the usbmuxd so that iphones work.
   services.usbmuxd.enable = true;
   programs.droidcam.enable = true;
