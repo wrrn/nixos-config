@@ -19,7 +19,7 @@ let
   gtkColorScheme = if dark then "dark" else "light";
   gtk3Theme = if dark then "adw-gtk3-dark" else "adw-gtk3";
   iconTheme = "Adwaita";
-  cursorTheme = if dark then "rose-pine" else "rose-pine-dawn";
+  cursorTheme = if dark then "BreezeX-RosePine-Linux" else "BreezeX-RosePineDawn-Linux";
   colorScheme = if dark then "prefer-dark" else "prefer-light";
 
 in
