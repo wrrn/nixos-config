@@ -16,10 +16,12 @@ let
   dark = cfg.dark;
 
   gtkTheme = if dark then "rose-pine-gtk" else "rose-pine-dawn-gtk";
+  gtkColorScheme = if dark then "dark" else "light";
   gtk3Theme = if dark then "adw-gtk3-dark" else "adw-gtk3";
   iconTheme = "Adwaita";
   cursorTheme = if dark then "rose-pine" else "rose-pine-dawn";
   colorScheme = if dark then "prefer-dark" else "prefer-light";
+
 in
 {
 
@@ -41,7 +43,6 @@ in
     # Note: GTK4/libadwaita apps largely ignore the theme name and instead
     # respect the color-scheme preference (light/dark) set via dconf below.
     # The gtk4 CSS file gives you the actual Rosé Pine colors in those apps.
-
     gtk = {
       enable = true;
 
@@ -70,18 +71,17 @@ in
         gtk-application-prefer-dark-theme = dark;
       };
 
-      gtk4.extraConfig = {
-        gtk-application-prefer-dark-theme = dark;
+      gtk4 = {
+        colorScheme = gtkColorScheme;
+        theme = {
+          name = gtkTheme;
+          package = pkgs.rose-pine-gtk-theme;
+        };
+        extraConfig = {
+          gtk-application-prefer-dark-theme = dark;
+        };
       };
     };
-
-    # ── GTK4 / libadwaita color override ─────────────────────────────────────────
-    #
-    # Libadwaita reads ~/.config/gtk-4.0/gtk.css at startup.
-    # This pulls in the Rosé Pine Dawn colors for GTK4 apps.
-    # The rose-pine-gtk-theme package ships this CSS for us.
-    xdg.configFile."gtk-4.0/gtk.css".source =
-      "${pkgs.rose-pine-gtk-theme}/share/themes/${gtkTheme}/gtk-4.0/gtk.css";
 
     # ── dconf (color-scheme preference) ──────────────────────────────────────────
     #

@@ -45,6 +45,31 @@
       Fingerprinting = true;
     };
 
+    Handlers = {
+      schemes = {
+        zoommtg = {
+          action = "useHelperApp";
+          ask = false;
+          handlers = [
+            {
+              name = "Zoom";
+              path = "${pkgs.zoom-us}/bin/zoom";
+            }
+          ];
+        };
+        zoomus = {
+          action = "useHelperApp";
+          ask = false;
+          handlers = [
+            {
+              name = "Zoom";
+              path = "${pkgs.zoom-us}/bin/zoom";
+            }
+          ];
+        };
+      };
+    };
+
     # Make new tab only show search
     FirefoxHome = {
       Search = false;
@@ -82,14 +107,14 @@
 
   containers = {
     personal = {
-      id = 0;
+      id = 1;
       color = "green";
       icon = "circle";
       name = "personal";
     };
 
     banking = {
-      id = 1;
+      id = 2;
       color = "purple";
       icon = "circle";
       name = "banking";

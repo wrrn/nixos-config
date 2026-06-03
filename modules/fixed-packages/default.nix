@@ -15,19 +15,20 @@ let
   # Replace the bare `rm` with `rm -f` so missing files are tolerated.
   ollamaPatchFix = final: prev: {
     ollama = prev.ollama.overrideAttrs (old: {
-      postPatch = builtins.replaceStrings
-        [ "rm model/models/nemotronh/model_omni_test.go" ]
-        [ "rm -f model/models/nemotronh/model_omni_test.go" ]
-        old.postPatch;
+      postPatch =
+        builtins.replaceStrings
+          [ "rm model/models/nemotronh/model_omni_test.go" ]
+          [ "rm -f model/models/nemotronh/model_omni_test.go" ]
+          old.postPatch;
     });
   };
 in
 {
   nixpkgs.overlays = [
-    overlay
-    ollamaPatchFix
+    # overlay
+    # ollamaPatchFix
   ];
   warnings = [
-    "The following packages are being fixed: ${fixedPackageNames}, ollama (patchPhase rm -f)"
+    # "The following packages are being fixed: ${fixedPackageNames}, ollama (patchPhase rm -f)"
   ];
 }

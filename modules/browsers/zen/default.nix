@@ -44,6 +44,8 @@ in
         "x-scheme-handler/http" = "zen-beta.desktop";
         "x-scheme-handler/https" = "zen-beta.desktop";
         "x-scheme-handler/onepassword" = "1password.desktop";
+        "x-scheme-handler/zoommtg" = "Zoom.desktop";
+        "x-scheme-handler/zoomus" = "Zoom.desktop";
       };
       defaultApplications = {
         "application/x-extension-htm" = "zen-beta.desktop";
@@ -58,6 +60,8 @@ in
         "x-scheme-handler/http" = "zen-beta.desktop";
         "x-scheme-handler/https" = "zen-beta.desktop";
         "x-scheme-handler/onepassword" = "1password.desktop";
+        "x-scheme-handler/zoommtg" = "Zoom.desktop";
+        "x-scheme-handler/zoomus" = "Zoom.desktop";
       };
     };
 
@@ -73,6 +77,12 @@ in
         containersForce = true;
         containers = browser.containers;
         extensions.packages = browser.extensions;
+        settings = {
+          "network.protocol-handler.expose.zoommtg" = false;
+          "network.protocol-handler.external.zoommtg" = true;
+          "network.protocol-handler.expose.zoomus" = false;
+          "network.protocol-handler.external.zoomus" = true;
+        };
         # Native userChrome option from the Firefox-based hm module:
         # writes to <profilesPath>/default/chrome/userChrome.css.
         userChrome = builtins.readFile "${dotfiles.zen}/chrome/userChrome.css";
