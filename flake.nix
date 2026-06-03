@@ -95,6 +95,7 @@
     wrrnhosts = {
       url = "git+ssh://git@git.sr.ht/~warren/hosts";
       # url = "path:/Users/warrenharper/hosts";
+      # url = "path:/home/warren/loft/hosts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

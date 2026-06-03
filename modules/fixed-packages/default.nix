@@ -22,11 +22,22 @@ let
           old.postPatch;
     });
   };
+
+  # dnsmasq: NixOS stdenv's _FORTIFY_SOURCE hardening trips over dnsmasq's
+  # union-based cache name storage when /etc/hosts contains hostnames longer
+  # than ~47 bytes, causing a SIGABRT in read_hostsfile.
+  # See: https://github.com/NixOS/nixpkgs/issues/... (TODO: file upstream)
+  dnsmasqFortifyFix = final: prev: {
+    dnsmasq = prev.dnsmasq.overrideAttrs (old: {
+      hardeningDisable = (old.hardeningDisable or [ ]) ++ [ "fortify" ];
+    });
+  };
 in
 {
   nixpkgs.overlays = [
     # overlay
     # ollamaPatchFix
+    dnsmasqFortifyFix
   ];
   warnings = [
     # "The following packages are being fixed: ${fixedPackageNames}, ollama (patchPhase rm -f)"
