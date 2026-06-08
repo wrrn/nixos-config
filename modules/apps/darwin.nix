@@ -27,10 +27,12 @@ in
 
   homebrew = {
     enable = true;
+    greedyCasks = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
+      cleanup = "zap";
       upgrade = true;
+      extraFlags = [ "--force-cleanup" ];
     };
 
     taps = [
@@ -56,7 +58,7 @@ in
     casks = [
       "brettferdosi/tap/grayscale"
       "cold-turkey-blocker"
-      "dayflow"
+      # "dayflow"
       "handy"
       "itsycal" # It needs to be installed in the /Applications directory
       "little-snitch" # It needs to be installed to the /Applications directory.
