@@ -19,13 +19,7 @@ in
     imports = [ inputs.wrrnpkgs.homeManagerModules.lan-mouse ];
     programs.lan-mouse = {
       enable = true;
-      Wants = [
-        "wayland-ready.service"
-      ];
-      After = [
-        "wayland-ready.service"
-        "niri.service"
-      ];
+      package = wrrnpkgs.lan-mouse;
     };
   };
 }
