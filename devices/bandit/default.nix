@@ -18,22 +18,17 @@ in
     ../../modules/home-manager
     ../../modules/fixed-packages
 
+    # Default Darwin modules
     home-manager.darwinModules.home-manager
     wrrnhosts.darwinModules.hosts
     ../../modules/darwin
-
-    # Default modules
-    ../../modules/nixos
-    ../../modules/nix
-    ../../modules/home-manager
-    ../../modules/fixed-packages
 
     ../../modules/1password
     ../../modules/apps
     ../../modules/corpoware
     ../../modules/productivity
     ../../modules/build-tools
-    ## TODO: Use maccy as clipboard in macos
+    # ## TODO: Use maccy as clipboard in macos
     # ../../modules/clipboard
     ../../modules/containers
     ../../modules/emacs
@@ -45,7 +40,7 @@ in
     ../../modules/gpg
     ../../modules/jankyborders
     ../../modules/jujutsu
-    ../../modules/kvm
+    # ../../modules/kvm
     ../../modules/llms
 
     ../../modules/keyboard
