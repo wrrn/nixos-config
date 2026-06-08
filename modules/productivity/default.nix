@@ -1,8 +1,8 @@
 _: {
   homebrew = {
     enable = true;
-    casks = [
-      "morgen"
-    ];
+    # casks = [
+    #   "morgen"
+    # ];
   };
 }
