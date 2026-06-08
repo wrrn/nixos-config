@@ -13,13 +13,13 @@ in
   };
 
   home-manager.users.${username}.home = {
-    file.dot-rift = {
+    file.dot-paneru = {
       source = "${dotfiles.paneru}/.config/paneru";
       target = ".config/paneru";
       recursive = true;
     };
   };
 
-  # Enable "Displays have separate spaced". It's kind of backward
-  system.defaults.spaces.spans-displays = true;
+  # enable "displays have separate spaced". It's kind of backward
+  system.defaults.spaces.spans-displays = false;
 }
