@@ -12,12 +12,15 @@ let
   inherit (pkgs.nur.repos.rycee) firefox-addons;
   browser = import ../policies.nix { inherit firefox-addons pkgs dotfiles; };
 
-  module = lib.systemModule {
+  platformConfigs = {
     darwin = ./darwin.nix;
     linux = ./linux.nix;
   };
-in
 
+  platformConfig = import platformConfigs.${platform.parsed.kernel.name} {
+    inherit username pkgs;
+  };
+in
 {
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
@@ -26,7 +29,7 @@ in
   ];
 
   imports = [
-    module
+    platformConfig.module
   ];
 
   home-manager.users.${username} = {
@@ -83,10 +86,19 @@ in
           "network.protocol-handler.expose.zoomus" = false;
           "network.protocol-handler.external.zoomus" = true;
         };
+
         # Native userChrome option from the Firefox-based hm module:
         # writes to <profilesPath>/default/chrome/userChrome.css.
-        userChrome = builtins.readFile "${dotfiles.zen}/chrome/userChrome.css";
+        userChrome = ''
+          @import "./theme/userChrome.css"
+        '';
+
       };
+    };
+
+    home.file.zen-theme = {
+      source = "${dotfiles.zen}/chrome/userChrome.css";
+      target = "${platformConfig.profilesPath}/default/chrome/themes/userChrome.css";
     };
 
     home.file.dot-tridactyl = browser.tridactylDotfile;
