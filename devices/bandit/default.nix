@@ -26,6 +26,7 @@ in
     ../../modules/1password
     ../../modules/apps
     ../../modules/corpoware
+    ../../modules/cold-turkey
     ../../modules/productivity
     ../../modules/build-tools
     # ## TODO: Use maccy as clipboard in macos
@@ -38,7 +39,6 @@ in
     ../../modules/git
     ../../modules/go
     ../../modules/gpg
-    ../../modules/jankyborders
     ../../modules/jujutsu
     # ../../modules/kvm
     ../../modules/llms
