@@ -1,5 +1,5 @@
 _: {
-  profilesPath = ".zen";
+  profilesPath = ".config/zen";
   module = {
     environment.etc = {
       "1password/custom_allowed_browsers" = {
