@@ -3,6 +3,13 @@ let
   hostnames = {
     xcm = "xcm.xona";
     csg = "csg.xona";
+    xcmVm = "vm.xcm.xona";
+    csgVm = "vm.csg.xona";
+  };
+
+  backendHostnames = {
+    xcmVm = "xcm-vm.xona";
+    csgVm = "csg-vm.xona";
   };
 in
 {
@@ -22,24 +29,36 @@ in
         transport http { tls_insecure_skip_verify }
       }
     '';
+
+    virtualHosts.${hostnames.xcmVm}.extraConfig = ''
+      tls internal
+      reverse_proxy https://${backendHostnames.xcmVm} {
+        transport http {
+          tls_server_name ${backendHostnames.xcmVm}
+        }
+      }
+    '';
+
+    virtualHosts.${hostnames.csgVm}.extraConfig = ''
+      tls internal
+      reverse_proxy https://${backendHostnames.csgVm} {
+        transport http {
+          tls_server_name ${backendHostnames.csgVm}
+        }
+      }
+    '';
   };
 
   networking.hosts = {
     "127.0.0.1" = builtins.attrValues hostnames;
 
-    "192.168.127.250" = [
-      "csg-vm.xona"
-      "vm.csg.xona"
-    ];
+    "192.168.127.250" = [ backendHostnames.csgVm ];
     "192.168.122.100" = [
       "csg-vm-untrusted.xona"
       "untrusted.vm.csg.xona"
     ];
 
-    "192.168.127.251" = [
-      "xcm-vm.xona"
-      "vm.xcm.xona"
-    ];
+    "192.168.127.251" = [ backendHostnames.xcmVm ];
     "192.168.122.101" = [
       "xcm-vm-untrusted.xona"
       "untrusted.vm.xcm.xona"

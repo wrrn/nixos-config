@@ -61,7 +61,7 @@ in
       minikube
       mkcert
       nix-update
-      nixfmt-rfc-style
+      nixfmt
       opencode
       pgcli
       prettier
