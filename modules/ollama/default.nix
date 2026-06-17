@@ -8,7 +8,7 @@ in
     environmentVariables = {
       OLLAMA_KEEP_ALIVE = "8h";
       # TODO: Add GPU specs to the device-conf
-      # OLLAMA_VULKAN = "1";
+      OLLAMA_VULKAN = "1";
     };
   };
 }
