@@ -49,6 +49,7 @@ in
     ../../modules/locale
     ../../modules/networking
     ../../modules/niri
+    ../../modules/nix-ld
     ../../modules/obs
     ../../modules/pi
     ../../modules/power
