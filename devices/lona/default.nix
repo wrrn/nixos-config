@@ -35,6 +35,7 @@ in
     ../../modules/build-tools
     ../../modules/clipboard
     ../../modules/containers
+    ../../modules/ddc
     ../../modules/emacs
     ../../modules/email
     ../../modules/fonts
