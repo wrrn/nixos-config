@@ -3,7 +3,7 @@ _: {
 
   services.logind.settings.Login = {
     HandlePowerKey = "poweroff";
-    HandleLidSwitch = "ignore";
-    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitch = "suspend";
+    # HandleLidSwitchExternalPower = "ignore";
   };
 }
