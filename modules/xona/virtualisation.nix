@@ -25,7 +25,9 @@ in
 
   virtualisation.libvirtd = {
     enable = true;
+    qemu.swtpm.enable = true;
     nss.enableGuest = true;
+
     allowedBridges = [
       "virbr0"
       "perbr0"
