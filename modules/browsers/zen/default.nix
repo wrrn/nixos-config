@@ -96,11 +96,6 @@ in
       };
     };
 
-    home.file.zen-theme = {
-      source = "${dotfiles.zen}/chrome/userChrome.css";
-      target = "${platformConfig.profilesPath}/default/chrome/themes/userChrome.css";
-    };
-
     home.file.dot-tridactyl = browser.tridactylDotfile;
   };
 }
