@@ -64,7 +64,7 @@ in
       nixfmt
       opencode
       pgcli
-      prettier
+      unstable.prettier
       rsync
       shellcheck
       shfmt
