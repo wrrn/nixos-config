@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./paneru.nix ];
+  imports = [ ./nehir.nix ];
 }
