@@ -19,6 +19,7 @@ in
     virtualHosts.${hostnames.xcm}.extraConfig = ''
       tls internal
       reverse_proxy https://localhost:8443 {
+        header_up Host {host}
         transport http { tls_insecure_skip_verify }
       }
     '';
@@ -26,6 +27,7 @@ in
     virtualHosts.${hostnames.csg}.extraConfig = ''
       tls internal
       reverse_proxy https://localhost:7443 {
+        header_up Host {host}
         transport http { tls_insecure_skip_verify }
       }
     '';
@@ -33,6 +35,7 @@ in
     virtualHosts.${hostnames.xcmVm}.extraConfig = ''
       tls internal
       reverse_proxy https://${backendHostnames.xcmVm} {
+        header_up Host {host}
         transport http {
           tls_server_name ${backendHostnames.xcmVm}
         }
@@ -42,6 +45,7 @@ in
     virtualHosts.${hostnames.csgVm}.extraConfig = ''
       tls internal
       reverse_proxy https://${backendHostnames.csgVm} {
+        header_up Host {host}
         transport http {
           tls_server_name ${backendHostnames.csgVm}
         }
