@@ -55,6 +55,7 @@ in
     ../../modules/pi
     ../../modules/power
     ../../modules/printing
+    ../../modules/browsers/qutebrowser
     ../../modules/sddm
     ../../modules/shell
     ../../modules/ssh

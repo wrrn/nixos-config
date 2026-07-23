@@ -49,7 +49,7 @@ in
     ../../modules/sudo
     ../../modules/tailscale
     ../../modules/user
-    ../../modules/zen-browser
+    ../../modules/browsers/qutebrowser
 
     {
       # Bootloader.
