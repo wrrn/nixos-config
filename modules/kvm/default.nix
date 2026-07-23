@@ -19,7 +19,7 @@ in
     imports = [ inputs.wrrnpkgs.homeManagerModules.lan-mouse ];
     programs.lan-mouse = {
       enable = true;
-      # package = wrrnpkgs.lan-mouse;
+      package = wrrnpkgs.lan-mouse;
     };
   };
 }
