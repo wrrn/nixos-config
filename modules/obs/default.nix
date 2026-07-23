@@ -18,9 +18,9 @@ in
       obs-pipewire-audio-capture
       obs-vaapi # optional AMD hardware acceleration
       obs-composite-blur
-      wrrnpkgs.obs-studio-plugins.droidcam-obs
-      wrrnpkgs.obs-studio-plugins.obs-backgroundremoval
-      wrrnpkgs.obs-studio-plugins.obs-live-backgroundremoval-lite
+      wrrnpkgs.obs-plugin-droidcam-obs
+      wrrnpkgs.obs-plugin-backgroundremoval
+      wrrnpkgs.obs-plugin-backgroundremoval-lite
     ];
   };
 
