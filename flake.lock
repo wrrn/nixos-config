@@ -1215,11 +1215,11 @@
         "voxtype": "voxtype"
       },
       "locked": {
-        "lastModified": 1784827211,
-        "narHash": "sha256-ROiOTb+6ExZ/38WAnsCzaX/ZeX79BvkHsOaFF4t7B0c=",
+        "lastModified": 1784835359,
+        "narHash": "sha256-Xz3d8ljiC4WFsxgP7wndvfGrCF1DNuifHPrYeFyszH8=",
         "ref": "refs/heads/main",
-        "rev": "0fe50461d55b67dfafb4f3789251fdfa3358b3da",
-        "revCount": 144,
+        "rev": "d0ff8a2479a30da0857e26df2bdf4fe7e40d6db0",
+        "revCount": 145,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs"
       },
