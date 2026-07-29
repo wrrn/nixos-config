@@ -1,4 +1,4 @@
-_:
+{ lib, ... }:
 let
   hostnames = {
     xcm = "xcm.xona";
@@ -11,68 +11,67 @@ let
     xcmVm = "xcm-vm.xona";
     csgVm = "csg-vm.xona";
   };
+
+  reverseProxy =
+    {
+      aliases ? [ ],
+      upstream,
+      extraConfig ? "",
+    }:
+    {
+      inherit aliases upstream extraConfig;
+    };
+
+  # i need to reason about this. I want to be able to indicate the upstream and the
+  # frontend. Right now I'm specifying the ip, could I just do that for now. Essentially for each ip and a host entry in caddy AND and entry in /etc/hosts. /etc/hosts points the request at caddy, caddy then looks then forwards it to the host. I think we want a separate port variable. I can't have separate port because the keys would differ. It might be worth stripping out the port from the key. I don't like that because it's non-obvious. What is another obvious way? Can I use objects as keys. Or should a hostname point at multiple ports. Then I pollute the whole thing, but it would allow me to create a separate thing.
+  hosts = {
+    "xcm.xona" = reverseProxy {
+      upstream = "https://localhost:8443";
+      extraConfig = "transport http { tls_insecure_skip_verify }";
+    };
+
+    "csg.xona" = reverseProxy {
+      upstream = "https://localhost:7443";
+      extraConfig = "transport http { tls_insecure_skip_verify }";
+    };
+
+    "csg.vm.xona" = reverseProxy { upstream = "https://192.168.127.250"; };
+
+    "untrusted.csg.vm.xona" = reverseProxy {
+      # TODO aliases don't currently get added to /etc/hosts
+      aliases = [ "csg-vm-untrusted.xona" ];
+      upstream = "https://192.168.122.100";
+    };
+
+    "xcm.vm.xona" = reverseProxy { upstream = "https://192.168.127.251"; };
+    "untrusted.xcm.vm.xona" = reverseProxy { upstream = "https://192.168.122.101"; };
+    "replica.csg.vm.xona" = reverseProxy { upstream = "https://192.168.127.240"; };
+    "replica.xcm.vm.xona" = reverseProxy { upstream = "https://192.168.127.241"; };
+  };
+
+  caddyEntry = hostname: reverseProxy: {
+    extraConfig = ''
+      tls internal
+      reverse_proxy ${reverseProxy.upstream} {
+        header_up Host {host}
+        ${reverseProxy.extraConfig}
+      }
+    '';
+  };
+
+  reverseProxys = lib.mapAttrs' (
+    hostname: reverseProxy: lib.nameValuePair hostname (caddyEntry hostname reverseProxy)
+  ) hosts;
 in
 {
   # Reverse proxy container ports so that we don't have to remember the ports
   services.caddy = {
     enable = true;
-    virtualHosts.${hostnames.xcm}.extraConfig = ''
-      tls internal
-      reverse_proxy https://localhost:8443 {
-        header_up Host {host}
-        transport http { tls_insecure_skip_verify }
-      }
-    '';
-
-    virtualHosts.${hostnames.csg}.extraConfig = ''
-      tls internal
-      reverse_proxy https://localhost:7443 {
-        header_up Host {host}
-        transport http { tls_insecure_skip_verify }
-      }
-    '';
-
-    virtualHosts.${hostnames.xcmVm}.extraConfig = ''
-      tls internal
-      reverse_proxy https://${backendHostnames.xcmVm} {
-        header_up Host {host}
-        transport http {
-          tls_server_name ${backendHostnames.xcmVm}
-        }
-      }
-    '';
-
-    virtualHosts.${hostnames.csgVm}.extraConfig = ''
-      tls internal
-      reverse_proxy https://${backendHostnames.csgVm} {
-        header_up Host {host}
-        transport http {
-          tls_server_name ${backendHostnames.csgVm}
-        }
-      }
-    '';
+    virtualHosts = reverseProxys;
   };
 
   networking.hosts = {
-    "127.0.0.1" = builtins.attrValues hostnames;
-
-    "192.168.127.250" = [ backendHostnames.csgVm ];
-    "192.168.122.100" = [
-      "csg-vm-untrusted.xona"
-      "untrusted.vm.csg.xona"
-    ];
-
-    "192.168.127.251" = [ backendHostnames.xcmVm ];
-    "192.168.122.101" = [
-      "xcm-vm-untrusted.xona"
-      "untrusted.vm.xcm.xona"
-    ];
-
-    "192.168.127.240" = [ "csg-vm-primary.xona" ];
-    "192.168.127.241" = [ "csg-vm-replica.xona" ];
-
-    "192.168.127.242" = [ "xcm-vm-primary.xona" ];
-    "192.168.127.243" = [ "xcm-vm-replica.xona" ];
+    "127.0.0.1" = builtins.attrNames hosts;
   };
 
   security.pki.certificateFiles = [
