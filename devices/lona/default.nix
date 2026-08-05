@@ -24,6 +24,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./bootloader.nix
+    ./external-keyboard.nix
 
     home-manager.nixosModules.home-manager
     wrrnhosts.nixosModules.hosts
