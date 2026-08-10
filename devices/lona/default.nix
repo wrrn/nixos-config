@@ -25,6 +25,7 @@ in
     ./hardware-configuration.nix
     ./bootloader.nix
     ./external-keyboard.nix
+    ./wifi.nix
 
     home-manager.nixosModules.home-manager
     wrrnhosts.nixosModules.hosts
