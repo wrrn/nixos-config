@@ -26,6 +26,7 @@ let
     # _1password-gui = pkgs.master._1password-gui;
     dnsmasq = dnsmasqFortifyFix;
     ollama = ollamaPatchFix;
+    xdg-desktop-portal = pkgs.unstable.xdg-desktop-portal;
   };
 
   overlay = final: prev: overrides;
