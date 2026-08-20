@@ -9,6 +9,7 @@ let
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
   dotfiles = inputs.dotfiles.packages.${system};
+  wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
   programs.fish.enable = true;
@@ -22,6 +23,7 @@ in
     };
     home.packages = [
       pkgs.fishPlugins.tide
+      wrrnpkgs.tide-item-jj
     ];
   };
 
