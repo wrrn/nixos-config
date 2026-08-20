@@ -54,6 +54,7 @@ in
     ../../modules/niri
     ../../modules/nix-ld
     ../../modules/obs
+    ../../modules/openlogi
     ../../modules/pi
     ../../modules/power
     ../../modules/printing

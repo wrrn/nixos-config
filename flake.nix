@@ -65,6 +65,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    openlogi = {
+      url = "github:AprilNEA/OpenLogi";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # Work flakes
     flaky-falcon = {
       # url = "path:/home/warren/flaky-falcon";
@@ -118,6 +123,7 @@
       paneru,
       rift,
       zen-browser,
+      openlogi,
 
       flaky-falcon,
 

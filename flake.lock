@@ -399,7 +399,7 @@
           "wrrnpkgs",
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1786890428,
@@ -499,7 +499,7 @@
           "wrrnpkgs",
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay_2"
+        "rust-overlay": "rust-overlay_3"
       },
       "locked": {
         "lastModified": 1782656559,
@@ -839,7 +839,7 @@
           "wrrnpkgs",
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay_3",
+        "rust-overlay": "rust-overlay_4",
         "systems": "systems_9"
       },
       "locked": {
@@ -854,6 +854,27 @@
         "owner": "mahlquistj",
         "ref": "main",
         "repo": "octotype",
+        "type": "github"
+      }
+    },
+    "openlogi": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1787319109,
+        "narHash": "sha256-bpFmftwGIplr8r8VHfVmWGwUURTCTxDPSmAPM6YNLWk=",
+        "owner": "AprilNEA",
+        "repo": "OpenLogi",
+        "rev": "57db38dd39ed11d7c050f4d0826c1eb900981496",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AprilNEA",
+        "repo": "OpenLogi",
         "type": "github"
       }
     },
@@ -916,6 +937,7 @@
         "nixpkgs-staging": "nixpkgs-staging",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
+        "openlogi": "openlogi",
         "paneru": "paneru",
         "rift": "rift",
         "wrrnhosts": "wrrnhosts",
@@ -924,6 +946,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "openlogi",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787246814,
+        "narHash": "sha256-pEd4/iPY3Zm/EhhHmeB1QnIWXJSLx7gJzD/05mm2MCo=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "c84e121aaede7ef8c7bd9fb5154ccc1599e07816",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
       },
@@ -941,7 +984,7 @@
         "type": "github"
       }
     },
-    "rust-overlay_2": {
+    "rust-overlay_3": {
       "inputs": {
         "nixpkgs": [
           "wrrnpkgs",
@@ -963,7 +1006,7 @@
         "type": "github"
       }
     },
-    "rust-overlay_3": {
+    "rust-overlay_4": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
       },
