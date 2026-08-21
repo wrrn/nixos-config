@@ -23,6 +23,7 @@ in
     };
     home.packages = [
       pkgs.fishPlugins.tide
+      pkgs.fishPlugins.done
       wrrnpkgs.tide-item-jj
     ];
   };
