@@ -32,6 +32,7 @@ in
   home-manager.users.${username} = {
     programs.qutebrowser = {
       enable = true;
+      package = pkgs.unstable.qutebrowser;
       loadAutoconfig = true;
     };
 
