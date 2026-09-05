@@ -1,13 +1,14 @@
 { device-conf, pkgs, ... }:
 let
   inherit (device-conf) username;
+  emacs = pkgs.unstable.emacs31-pgtk;
 in
 {
   home-manager.users.${username} = {
-    services.emacs.package = pkgs.emacs30-pgtk;
+    services.emacs.package = emacs;
 
     programs.emacs = {
-      package = pkgs.emacs30-pgtk;
+      package = emacs;
     };
 
     xdg.mimeApps = {
