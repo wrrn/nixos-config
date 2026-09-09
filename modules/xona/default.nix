@@ -12,7 +12,6 @@ in
     ./virtualisation.nix
     ./complianceware.nix
     ./communication.nix
-    ./ai.nix
     ./devnetworking.nix
   ];
 
