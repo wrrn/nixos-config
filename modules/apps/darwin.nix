@@ -56,20 +56,13 @@ in
     };
 
     casks = [
-      "brettferdosi/tap/grayscale"
       "cold-turkey-blocker"
       # "dayflow"
-      "handy"
-      "itsycal" # It needs to be installed in the /Applications directory
       "little-snitch" # It needs to be installed to the /Applications directory.
       "lunar"
-      "meetingbar"
-      "reader"
-      "alfred" # Install via brew because the trampoline is not working
-      "flux-app"
-      "sol"
-      "halloy"
+      # "sol"
       "leader-key"
+      "calibre"
     ];
   };
 }
