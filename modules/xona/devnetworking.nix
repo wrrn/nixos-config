@@ -72,6 +72,9 @@ in
 
   networking.hosts = {
     "127.0.0.1" = builtins.attrNames hosts;
+    "192.168.127.250" = [ "csg-vm.xona" ];
+    "192.168.127.251" = [ "xcm-vm.xona" ];
+
   };
 
   security.pki.certificateFiles = [
