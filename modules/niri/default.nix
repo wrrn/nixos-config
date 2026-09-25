@@ -10,6 +10,7 @@
     ./xwayland-satellite.service.nix
     ./theme.nix
     ./portals.nix
+    ./wallpaper.nix
   ];
 
 }

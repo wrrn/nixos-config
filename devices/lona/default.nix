@@ -62,7 +62,6 @@ in
     ../../modules/shell
     ../../modules/ssh
     ../../modules/sudo
-    ../../modules/hyprlax
     ../../modules/tailscale
     ../../modules/usb
     ../../modules/user
