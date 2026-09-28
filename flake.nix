@@ -73,6 +73,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    xonapkgs = {
+      url = "git+ssh://git@git.sr.ht/~warren/nixpkgs.xona";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Personal flakes
     dotfiles = {
       url = "sourcehut:~warren/dotfiles/main";
@@ -120,17 +125,16 @@
       zen-browser,
 
       flaky-falcon,
+      xonapkgs,
 
       dotfiles,
       fonts,
       wrrnpkgs,
       wrrnhosts,
-
     }@inputs:
     {
       nixosConfigurations = {
         alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
-        fly-guy = nixpkgs.lib.nixosSystem (import ./devices/fly-guy inputs);
         lona = nixpkgs.lib.nixosSystem (import ./devices/lona inputs);
         nix-builder = nixpkgs.lib.nixosSystem (import ./devices/nix-builder inputs);
       };

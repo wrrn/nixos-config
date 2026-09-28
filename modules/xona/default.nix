@@ -13,6 +13,7 @@ in
     ./complianceware.nix
     ./communication.nix
     ./devnetworking.nix
+    ./systems-test-bench.nix
   ];
 
   home-manager.users.${username}.home.packages = with pkgs; [
