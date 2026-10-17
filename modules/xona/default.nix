@@ -13,6 +13,7 @@ in
     ./complianceware.nix
     ./communication.nix
     ./devnetworking.nix
+    ./shell.nix
     ./systems-test-bench.nix
   ];
 
