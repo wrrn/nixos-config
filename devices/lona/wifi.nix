@@ -31,9 +31,10 @@
   #       802-11-wireless-security.key-mgmt wpa-psk \
   #       802-11-wireless-security.pmf 1        # 1 = disable PMF
   #   Revert to `sae` once a newer kernel/iwlwifi firmware fixes iwlmld SAE.
-  networking.networkmanager.wifi.powersave = false;
+  # networking.networkmanager.wifi.powersave = false;
 
-  boot.extraModprobeConfig = ''
-    options iwlwifi power_save=0 bt_coex_active=0
-  '';
+  # boot.extraModprobeConfig = ''
+  #   options iwlwifi power_save=0 bt_coex_active=0
+  # '';
+  networking.networkmanager.wifi.backend = "iwd";
 }
