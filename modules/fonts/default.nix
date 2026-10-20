@@ -11,6 +11,7 @@ let
   fontsToInstall = [
     pkgs.monalisa
     pkgs.triplicate
+    pkgs.century_supra
     pkgs.ellograph_cf
     pkgs.ellograph_cf_nerdfont
     pkgs.berkely_mono
@@ -21,8 +22,9 @@ let
     pkgs.openmoji-color
     pkgs.openmoji-black
   ];
-  module = lib.systemModule { linux = ./linux.nix;
-    darwin = {};
+  module = lib.systemModule {
+    linux = ./linux.nix;
+    darwin = { };
   };
 in
 {

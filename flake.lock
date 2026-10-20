@@ -371,11 +371,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764776989,
-        "narHash": "sha256-2+ukBUxWWdRYoghCe45Vt8+c2dYiJfWwJzWqv8YJEzg=",
+        "lastModified": 1792521104,
+        "narHash": "sha256-i8wJMdApByytk1/LNlMNPYl5w857UEVP72v9QM6PGWQ=",
         "ref": "refs/heads/main",
-        "rev": "0646474c8d9f5162f3e42a65efdcf41b4601af6c",
-        "revCount": 10,
+        "rev": "dea206d1bc23ce7b9085dd07143f4e0a563e8a24",
+        "revCount": 12,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/fonts"
       },
