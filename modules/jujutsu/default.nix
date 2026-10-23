@@ -15,7 +15,6 @@ in
     pkgs.difftastic # Difftool that uses AST
     pkgs.mergiraf # Merge tool that is syntax aware
     pkgs.unstable.jujutsu
-    wrrnpkgs.jw
   ];
 
   home-manager.users.${username} = {
@@ -29,7 +28,6 @@ in
       packages = [
         pkgs.difftastic
         pkgs.delta
-        wrrnpkgs.jw
       ];
 
       file.dot-jj = {
