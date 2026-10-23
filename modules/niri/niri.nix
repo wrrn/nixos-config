@@ -25,6 +25,7 @@ in
   programs.niri = {
     enable = true;
     package = pkgs.unstable.niri;
+    useNautilus = true;
   };
 
   services.iio-niri = {

@@ -1,6 +1,5 @@
 {
   home-manager,
-  niri,
   wrrnhosts,
   flake-utils,
   flaky-falcon,

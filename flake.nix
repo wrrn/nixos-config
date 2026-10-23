@@ -38,11 +38,6 @@
       url = "github:numtide/flake-utils";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -118,7 +113,6 @@
 
       agenix,
       flake-utils,
-      niri,
       nur,
       paneru,
       rift,
