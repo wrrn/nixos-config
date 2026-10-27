@@ -128,7 +128,7 @@
   ];
 
   tridactylDotfile = {
-    source = "${dotfiles.tridactyl}/.config/tridactyl";
+    source = "${dotfiles.tridactyl}/dot-config/tridactyl";
     target = ".config/tridactyl";
     recursive = true;
   };
