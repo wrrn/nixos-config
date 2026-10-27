@@ -60,6 +60,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    betterfox = {
+      url = "github:yokoffing/Betterfox";
+      flake = false;
+    };
+
     # Work flakes
     flaky-falcon = {
       # url = "path:/home/warren/flaky-falcon";
@@ -117,6 +122,7 @@
       paneru,
       rift,
       zen-browser,
+      betterfox,
 
       flaky-falcon,
       xonapkgs,
