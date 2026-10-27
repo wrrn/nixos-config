@@ -123,7 +123,6 @@
 
   extensions = [
     firefox-addons.ublock-origin
-    firefox-addons.privacy-badger
     firefox-addons.onepassword-password-manager
   ];
 
