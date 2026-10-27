@@ -1,8 +1,8 @@
 {
   device-conf,
   inputs,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -10,48 +10,38 @@ let
   inherit (device-conf.platform) system;
   dotfiles = inputs.dotfiles.packages.${system};
   inherit (pkgs.nur.repos.rycee) firefox-addons;
-  browser = import ../browser-policies.nix { inherit firefox-addons pkgs dotfiles; };
-  platform = device-conf.platform.parsed.kernel.name;
+  browser = import ../policies.nix { inherit firefox-addons pkgs dotfiles; };
 
-  platformConfigs = {
-    darwin = ./darwin.nix;
+  module = lib.systemModule {
     linux = ./linux.nix;
-  };
-
-  platformConfig = import platformConfigs.${platform} {
-    inherit username pkgs;
+    darwin = ./darwin.nix;
   };
 in
 {
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
-  imports = [
-    platformConfig.module
-  ];
+  imports = [ module ];
 
   home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
       inherit (browser) policies nativeMessagingHosts;
 
-      profiles.dev-edition-default = {
+      profiles.default = {
         id = 0;
         isDefault = true;
         containersForce = true;
-        containers = browser.containers;
-
-        userChrome = ''
-          @import "./theme/userChrome.css"
-        '';
-
+        inherit (browser) containers;
         extensions.packages = browser.extensions;
-      };
-    };
 
-    home.file.firefox-theme = {
-      source = dotfiles.firefox-theme;
-      target = "${platformConfig.profilesPath}/dev-edition-default/chrome/theme";
-      recursive = true;
+        # Betterfox is the base user.js; personal overrides must come after it.
+        extraConfig = lib.concatStringsSep "\n" [
+          (builtins.readFile "${inputs.betterfox}/user.js")
+          (builtins.readFile "${dotfiles.firefox}/user-overrides.js")
+        ];
+
+        userChrome = builtins.readFile "${dotfiles.firefox}/userChrome.css";
+      };
     };
 
     home.file.dot-tridactyl = browser.tridactylDotfile;

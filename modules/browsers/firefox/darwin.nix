@@ -1,23 +1,13 @@
-### Generate the options that will be added to the firefox installation.
-{
-  username,
-  ...
-}:
+{ device-conf, ... }:
 let
-  firefoxConfigPath = "Library/Application Support/Firefox";
-  profilesPath = "${firefoxConfigPath}/Profiles";
+  inherit (device-conf) username;
 in
 {
-  inherit profilesPath;
-  ## Install firefox via homebrew so that we are able to get our passwords from
-  ## 1password.
-  module = {
-    homebrew = {
-      enable = true;
-      casks = [
-        "firefox@developer-edition"
-      ];
-    };
-    home-manager.users.${username}.programs.firefox.package = null;
+  # Install Firefox via Homebrew so that 1Password can fill passwords in it.
+  homebrew = {
+    enable = true;
+    casks = [ "firefox@developer-edition" ];
   };
+
+  home-manager.users.${username}.programs.firefox.package = null;
 }
