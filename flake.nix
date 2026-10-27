@@ -141,7 +141,6 @@
 
       darwinConfigurations = {
         bandit = nix-darwin.lib.darwinSystem (import ./devices/bandit inputs);
-        boq = nix-darwin.lib.darwinSystem (import ./devices/boq inputs);
       };
     };
 }
