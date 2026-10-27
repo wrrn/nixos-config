@@ -38,17 +38,17 @@ in
   home-manager.users.${username} =
     { config, ... }:
     {
-    programs.firefox = {
-      package = pkgs.firefox-bin;
-      # Opt in to home-manager's new XDG default (the legacy default is
-      # ~/.mozilla/firefox while home.stateVersion < 26.05).
-      configPath = "${config.xdg.configHome}/mozilla/firefox";
-    };
+      programs.firefox = {
+        package = pkgs.firefox-bin;
+        # Opt in to home-manager's new XDG default (the legacy default is
+        # ~/.mozilla/firefox while home.stateVersion < 26.05).
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
+      };
 
-    xdg.mimeApps = {
-      enable = true;
-      associations.added = mimeAssociations // otherHandlers;
-      defaultApplications = mimeAssociations // otherHandlers;
+      xdg.mimeApps = {
+        enable = true;
+        associations.added = mimeAssociations // otherHandlers;
+        defaultApplications = mimeAssociations // otherHandlers;
+      };
     };
-  };
 }
