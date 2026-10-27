@@ -51,7 +51,6 @@ in
     ../../modules/pi
     ## TODO: Figure out droidcam for macos
     ## ../../modules/obs
-    ../../modules/browsers/qutebrowser
     ../../modules/shell
     ../../modules/sudo
     ../../modules/system
