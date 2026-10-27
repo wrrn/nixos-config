@@ -58,7 +58,7 @@ in
     ../../modules/pi
     ../../modules/power
     ../../modules/printing
-    ../../modules/browsers/qutebrowser
+    ../../modules/browsers/firefox
     ../../modules/sddm
     ../../modules/shell
     ../../modules/ssh
@@ -67,7 +67,6 @@ in
     ../../modules/usb
     ../../modules/user
     ../../modules/voxtype
-    ../../modules/browsers/zen
 
     ../../modules/xona
   ];
