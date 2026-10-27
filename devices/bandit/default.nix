@@ -60,7 +60,7 @@ in
     ## TODO: Figure out voxtype for macos
     # ../../modules/voxtype
     ../../modules/window-manager
-    ../../modules/browsers/zen
+    ../../modules/browsers/firefox
     ../../modules/1password
 
   ];
