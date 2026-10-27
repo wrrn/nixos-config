@@ -53,13 +53,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    zen-browser = {
-      url = "git+ssh://git@git.sr.ht/~warren/zen-browser-flake";
-      # url = "path:/home/warren/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     betterfox = {
       url = "github:yokoffing/Betterfox";
       flake = false;
@@ -121,7 +114,6 @@
       nur,
       paneru,
       rift,
-      zen-browser,
       betterfox,
 
       flaky-falcon,

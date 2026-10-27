@@ -850,8 +850,7 @@
         "rift": "rift",
         "wrrnhosts": "wrrnhosts",
         "wrrnpkgs": "wrrnpkgs",
-        "xonapkgs": "xonapkgs",
-        "zen-browser": "zen-browser"
+        "xonapkgs": "xonapkgs"
       }
     },
     "rust-overlay": {
@@ -1163,29 +1162,6 @@
       "original": {
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs.xona"
-      }
-    },
-    "zen-browser": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1780897889,
-        "narHash": "sha256-+MeF3tMeeo2gw16AUr0Tk1JnIwu9e5v6ri4OGOXLM2A=",
-        "ref": "refs/heads/main",
-        "rev": "a7bea35003ffc9cfa914c53338eff754e1b9f7b8",
-        "revCount": 1158,
-        "type": "git",
-        "url": "ssh://git@git.sr.ht/~warren/zen-browser-flake"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@git.sr.ht/~warren/zen-browser-flake"
       }
     }
   },
