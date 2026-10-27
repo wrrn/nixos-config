@@ -68,6 +68,20 @@ in
           ];
 
           userChrome = builtins.readFile "${dotfiles.firefox}/userChrome.css";
+
+          # Kagi as the default engine. Tridactyl's searchengine is unset, so
+          # it follows this too. force = true replaces Firefox's search
+          # settings on every rebuild; engines added in the browser are lost.
+          search = {
+            force = true;
+            default = "kagi";
+            engines.kagi = {
+              name = "Kagi";
+              urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+              iconMapObj."16" = "https://kagi.com/favicon.ico";
+              definedAliases = [ "@k" ];
+            };
+          };
         };
       };
 
