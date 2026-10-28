@@ -1151,11 +1151,11 @@
         "pericles": "pericles"
       },
       "locked": {
-        "lastModified": 1791210768,
-        "narHash": "sha256-x/MOcaPpmOAYEl/H1pHX0aKLlE5V5AxPC6MNGSV+C4o=",
+        "lastModified": 1793200174,
+        "narHash": "sha256-Lsi9ZIB17K750xJ1jTAcUvsqd64m2zxeMCBoObL/dQ0=",
         "ref": "refs/heads/main",
-        "rev": "db1082cdc788c6921b58af30fe2fec471435bf25",
-        "revCount": 6,
+        "rev": "af7bb97563f433d4a3f2650fd6ed03ada4772e80",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@git.sr.ht/~warren/nixpkgs.xona"
       },

@@ -26,7 +26,6 @@ in
     ./external-keyboard.nix
     ./wifi.nix
     ./http.nix
-    ./bench-nic.nix
 
     home-manager.nixosModules.home-manager
     wrrnhosts.nixosModules.hosts
