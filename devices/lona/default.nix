@@ -63,6 +63,7 @@ in
     ../../modules/ssh
     ../../modules/sudo
     ../../modules/tailscale
+    ../../modules/tui-apps
     ../../modules/usb
     ../../modules/user
     ../../modules/voxtype
