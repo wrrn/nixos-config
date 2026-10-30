@@ -14,7 +14,6 @@ let
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
   wrrnpkgs = inputs.wrrnpkgs.packages.${system};
-  dotfiles = inputs.dotfiles.packages.${system};
   module = lib.systemModule {
     linux = ./linux.nix;
     darwin = ./darwin.nix;
@@ -23,7 +22,17 @@ in
 {
   imports = [ module ];
   home-manager.users.${username} =
-    { config, ... }:
+    { config, lib, ... }:
+    let
+      dotfilesCheckout = "${config.home.homeDirectory}/burrow/dotfiles";
+      # Every regular file in dotfiles' pi/dot-pi/agent/, read from the locked
+      # dotfiles input. A new config file there gets linked after
+      # `nix flake update dotfiles`.
+      piConfigDir = "${inputs.dotfiles}/pi/dot-pi/agent";
+      piConfigFiles = builtins.attrNames (
+        lib.filterAttrs (_: type: type == "regular") (builtins.readDir piConfigDir)
+      );
+    in
     {
       # pi content (agent definitions, Two's protocol skills, prompt templates,
       # the global AGENTS.md) comes from the pi-agents flake. `checkout` links
@@ -44,11 +53,26 @@ in
         pkgs.nodejs_22
       ];
 
-      home.file.dot-pi = {
-        source = "${dotfiles.pi}/dot-config/pi";
-        target = ".config/pi/";
-        recursive = true;
-      };
+      # pi config (settings, models, keybindings, subagent settings) from the
+      # dotfiles checkout. Out-of-store links, not store copies: pi writes to
+      # settings.json (lastChangelogVersion, `pi install` packages), so the
+      # files must stay writable. Replaces `make pi.stow` in dotfiles.
+      home.file = lib.listToAttrs (
+        map (name: {
+          name = "pi-config-${name}";
+          value = {
+            source = config.lib.file.mkOutOfStoreSymlink "${dotfilesCheckout}/pi/dot-pi/agent/${name}";
+            target = ".pi/agent/${name}";
+            force = true;
+          };
+        }) piConfigFiles
+      );
+
+      home.activation.piConfigCheckout = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [ ! -d ${lib.escapeShellArg dotfilesCheckout} ]; then
+          echo "pi config: ${dotfilesCheckout} is missing; the ~/.pi/agent/*.json links dangle until it's cloned" >&2
+        fi
+      '';
     };
 
   age.secrets.pi-search-keys = {
