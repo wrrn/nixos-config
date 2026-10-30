@@ -39,10 +39,21 @@ in
       # ~/.pi/agent/{agents,skills,prompts,AGENTS.md} to the working clone, so
       # edits take effect without a rebuild; the clone is made by hand.
       # Drop `checkout` to use the flake's read-only store copy instead.
-      imports = [ inputs.pi-agents.homeManagerModules.default ];
-      programs.pi-agents = {
+      imports = [
+        inputs.pi-agents.homeManagerModules.default
+        inputs.agent-skills.homeManagerModules.default
+      ];
+      wrrn.pi-agents = {
         enable = true;
         checkout = "${config.home.homeDirectory}/burrow/pi-agents";
+      };
+
+      # Tool skills shared with Codex and Claude (~/.agents/skills), from the
+      # skills flake (~/burrow/skills). Linked to the working clone, like
+      # pi-agents.
+      wrrn.agent-skills = {
+        enable = true;
+        checkout = "${config.home.homeDirectory}/burrow/skills";
       };
 
       home.packages = [

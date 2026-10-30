@@ -20,6 +20,21 @@
         "type": "github"
       }
     },
+    "agent-skills": {
+      "locked": {
+        "lastModified": 1793392318,
+        "narHash": "sha256-F1yA/0YN7/FwPB4IU4jV9Mh6ewkaB12BO+kjg0nNZVA=",
+        "ref": "refs/heads/main",
+        "rev": "c6f03d1737c4cbd8044f57ed1ba30e787689b454",
+        "revCount": 17,
+        "type": "git",
+        "url": "ssh://git@git.sr.ht/~warren/ai.skills"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@git.sr.ht/~warren/ai.skills"
+      }
+    },
     "betterfox": {
       "flake": false,
       "locked": {
@@ -812,11 +827,11 @@
     },
     "pi-agents": {
       "locked": {
-        "lastModified": 1793391600,
-        "narHash": "sha256-jEXusUOjFWMz/hn8HbDX78rqZzll7spc39Doa/ObTOw=",
+        "lastModified": 1793392318,
+        "narHash": "sha256-3lxnanwfhborHHRgD09tbKqHv0PvqUnUvHaygNHATu0=",
         "ref": "refs/heads/main",
-        "rev": "f1bc02150673ddc25b8c09c45801b4dbe4a7d235",
-        "revCount": 4,
+        "rev": "ba27a4dc6535d3e0fb5d24e65df6841104b9e834",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@wrrn.sr.ht/~wrrn/pi-agents.git"
       },
@@ -849,6 +864,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "agent-skills": "agent-skills",
         "betterfox": "betterfox",
         "dotfiles": "dotfiles",
         "flake-utils": "flake-utils_2",

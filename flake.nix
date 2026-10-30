@@ -83,6 +83,11 @@
       # url = "path:/home/warren/burrow/pi-agents";
     };
 
+    agent-skills = {
+      url = "git+ssh://git@git.sr.ht/~warren/ai.skills";
+      # url = "path:/home/warren/burrow/skills";
+    };
+
     fonts = {
       url = "git+ssh://git@git.sr.ht/~warren/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -127,6 +132,7 @@
       dotfiles,
       fonts,
       pi-agents,
+      agent-skills,
       wrrnpkgs,
       wrrnhosts,
     }@inputs:
