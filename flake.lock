@@ -810,6 +810,21 @@
         "url": "ssh://git@github.com/xonasystems/pericles.git"
       }
     },
+    "pi-agents": {
+      "locked": {
+        "lastModified": 1793391600,
+        "narHash": "sha256-jEXusUOjFWMz/hn8HbDX78rqZzll7spc39Doa/ObTOw=",
+        "ref": "refs/heads/main",
+        "rev": "f1bc02150673ddc25b8c09c45801b4dbe4a7d235",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@wrrn.sr.ht/~wrrn/pi-agents.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@wrrn.sr.ht/~wrrn/pi-agents.git"
+      }
+    },
     "rift": {
       "inputs": {
         "flake-utils": "flake-utils_4",
@@ -847,6 +862,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "paneru": "paneru",
+        "pi-agents": "pi-agents",
         "rift": "rift",
         "wrrnhosts": "wrrnhosts",
         "wrrnpkgs": "wrrnpkgs",

@@ -78,6 +78,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pi-agents = {
+      url = "git+ssh://git@wrrn.sr.ht/~wrrn/pi-agents.git";
+      # url = "path:/home/warren/burrow/pi-agents";
+    };
+
     fonts = {
       url = "git+ssh://git@git.sr.ht/~warren/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -121,6 +126,7 @@
 
       dotfiles,
       fonts,
+      pi-agents,
       wrrnpkgs,
       wrrnhosts,
     }@inputs:

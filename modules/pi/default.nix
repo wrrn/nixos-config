@@ -22,20 +22,33 @@ let
 in
 {
   imports = [ module ];
-  home-manager.users.${username}.home = {
-    packages = [
-    wrrnpkgs.pi
-    # nodejs is required for `pi install` (npm) and other Node-based LLM tooling.
-    # Bumped from nodejs_20 → nodejs_22 to satisfy @gotgenes/pi-subagents'
-    # `engines: ">=22"` (uses Promise.withResolvers / undici@8 webidl APIs).
-    pkgs.nodejs_22
-  ];
+  home-manager.users.${username} =
+    { config, ... }:
+    {
+      # pi content (agent definitions, Two's protocol skills, prompt templates,
+      # the global AGENTS.md) comes from the pi-agents flake. `checkout` links
+      # ~/.pi/agent/{agents,skills,prompts,AGENTS.md} to the working clone, so
+      # edits take effect without a rebuild; the clone is made by hand.
+      # Drop `checkout` to use the flake's read-only store copy instead.
+      imports = [ inputs.pi-agents.homeManagerModules.default ];
+      programs.pi-agents = {
+        enable = true;
+        checkout = "${config.home.homeDirectory}/burrow/pi-agents";
+      };
 
-  file.dot-pi = {
-    source = "${dotfiles.pi}/dot-config/pi";
-    target = ".config/pi/";
-    recursive = true;
-  };
+      home.packages = [
+        wrrnpkgs.pi
+        # nodejs is required for `pi install` (npm) and other Node-based LLM tooling.
+        # Bumped from nodejs_20 → nodejs_22 to satisfy @gotgenes/pi-subagents'
+        # `engines: ">=22"` (uses Promise.withResolvers / undici@8 webidl APIs).
+        pkgs.nodejs_22
+      ];
+
+      home.file.dot-pi = {
+        source = "${dotfiles.pi}/dot-config/pi";
+        target = ".config/pi/";
+        recursive = true;
+      };
     };
 
   age.secrets.pi-search-keys = {
