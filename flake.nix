@@ -141,6 +141,7 @@
         alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
         lona = nixpkgs.lib.nixosSystem (import ./devices/lona inputs);
         nix-builder = nixpkgs.lib.nixosSystem (import ./devices/nix-builder inputs);
+        hildes-library = nixpkgs.lib.nixosSystem (import ./devices/hildes-library inputs);
       };
 
       darwinConfigurations = {
