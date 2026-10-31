@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:items xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!-- Seed for emma's LibreOffice profile, captured 2026-10-31 by diffing the
+     profile before and after the writer-deck strip-down, then trimmed to the
+     deliberate settings. Only copied in when the file doesn't exist. -->
+
+<!-- No first-run tip dialog -->
+<item oor:path="/org.openoffice.Office.Common/Misc"><prop oor:name="ShowTipOfTheDay" oor:op="fuse"><value>false</value></prop></item>
+
+<!-- No animations -->
+<item oor:path="/org.openoffice.Office.Common/Accessibility"><prop oor:name="IsAllowAnimatedGraphics" oor:op="fuse"><value>false</value></prop></item>
+<item oor:path="/org.openoffice.Office.Common/Accessibility"><prop oor:name="IsAllowAnimatedText" oor:op="fuse"><value>false</value></prop></item>
+
+<!-- Saving: backup copy on every save, no non-ODF warning -->
+<item oor:path="/org.openoffice.Office.Common/Save/Document"><prop oor:name="CreateBackup" oor:op="fuse"><value>true</value></prop></item>
+<item oor:path="/org.openoffice.Office.Common/Save/Document"><prop oor:name="WarnAlienFormat" oor:op="fuse"><value>false</value></prop></item>
+
+<!-- AutoRecovery every 2 minutes, and save the document itself too -->
+<item oor:path="/org.openoffice.Office.Recovery/AutoSave"><prop oor:name="Enabled" oor:op="fuse"><value>true</value></prop></item>
+<item oor:path="/org.openoffice.Office.Recovery/AutoSave"><prop oor:name="TimeIntervall" oor:op="fuse"><value>2</value></prop></item>
+<item oor:path="/org.openoffice.Office.Recovery/AutoSave"><prop oor:name="UserAutoSaveEnabled" oor:op="fuse"><value>true</value></prop></item>
+
+<!-- Macros: very high security, so document macros never run. Not
+     DisableMacrosExecution: it shows a "Macros disabled" bar on every document. -->
+<item oor:path="/org.openoffice.Office.Common/Security/Scripting"><prop oor:name="MacroSecurityLevel" oor:op="fuse"><value>3</value></prop></item>
+
+<!-- No word-completion popup -->
+<item oor:path="/org.openoffice.Office.Writer/AutoFunction/Completion"><prop oor:name="Enable" oor:op="fuse"><value>false</value></prop></item>
+
+<!-- No rulers; single-page layout -->
+<item oor:path="/org.openoffice.Office.Writer/Layout/Window"><prop oor:name="ShowRulers" oor:op="fuse"><value>false</value></prop></item>
+<item oor:path="/org.openoffice.Office.Writer/Layout/ViewLayout"><prop oor:name="BookMode" oor:op="fuse"><value>false</value></prop></item>
+<item oor:path="/org.openoffice.Office.Writer/Layout/ViewLayout"><prop oor:name="Columns" oor:op="fuse"><value>1</value></prop></item>
+
+<!-- Single toolbar -->
+<item oor:path="/org.openoffice.Office.UI.ToolbarMode"><prop oor:name="ActiveWriter" oor:op="fuse"><value>Single</value></prop></item>
+<item oor:path="/org.openoffice.Office.UI.ToolbarMode/Applications/org.openoffice.Office.UI.ToolbarMode:Application['Writer']"><prop oor:name="Active" oor:op="fuse"><value>Single</value></prop></item>
+<item oor:path="/org.openoffice.Office.UI.WriterWindowState/UIElements/States/org.openoffice.Office.UI.WindowState:WindowStateType['private:resource/toolbar/singlemode']"><prop oor:name="Visible" oor:op="fuse"><value>true</value></prop></item>
+<item oor:path="/org.openoffice.Office.UI.WriterWindowState/UIElements/States/org.openoffice.Office.UI.WindowState:WindowStateType['private:resource/toolbar/standardbar']"><prop oor:name="Visible" oor:op="fuse"><value>false</value></prop></item>
+<item oor:path="/org.openoffice.Office.UI.WriterWindowState/UIElements/States/org.openoffice.Office.UI.WindowState:WindowStateType['private:resource/toolbar/textobjectbar']"><prop oor:name="Visible" oor:op="fuse"><value>false</value></prop></item>
+
+<!-- No status bar -->
+<item oor:path="/org.openoffice.Office.UI.WriterWindowState/UIElements/States"><node oor:name="private:resource/statusbar/statusbar" oor:op="replace"><prop oor:name="Pos" oor:op="fuse"><value>2147483647,2147483647</value></prop><prop oor:name="Size" oor:op="fuse"><value>0,0</value></prop><prop oor:name="Style" oor:op="fuse"><value>0</value></prop><prop oor:name="Docked" oor:op="fuse"><value>true</value></prop><prop oor:name="Locked" oor:op="fuse"><value>true</value></prop><prop oor:name="UIName" oor:op="fuse"><value xml:lang="en-US"></value></prop><prop oor:name="DockPos" oor:op="fuse"><value>2147483647,2147483647</value></prop><prop oor:name="HelpURL" oor:op="fuse"><value></value></prop><prop oor:name="NoClose" oor:op="fuse"><value>false</value></prop><prop oor:name="Visible" oor:op="fuse"><value>false</value></prop><prop oor:name="DockSize" oor:op="fuse"><value xsi:nil="true"/></prop><prop oor:name="ImageURL" oor:op="fuse"><value></value></prop><prop oor:name="SoftClose" oor:op="fuse"><value>false</value></prop><prop oor:name="DockingArea" oor:op="fuse"><value>0</value></prop><prop oor:name="ContextActive" oor:op="fuse"><value>true</value></prop><prop oor:name="InternalState" oor:op="fuse"><value xsi:nil="true"/></prop><prop oor:name="ContextSensitive" oor:op="fuse"><value>false</value></prop><prop oor:name="HideFromToolbarMenu" oor:op="fuse"><value>false</value></prop></node></item>
+
+<!-- No sidebar (10336 = SID_SIDEBAR; "H" = hidden) -->
+<item oor:path="/org.openoffice.Office.Views/Windows/org.openoffice.Office.Views:WindowType['swriter/10336']/UserData"><prop oor:name="Data" oor:op="fuse" oor:type="xs:string"><value>V2,H,0,AL:(5,16,0/0/48/450,48;807)</value></prop></item>
+</oor:items>

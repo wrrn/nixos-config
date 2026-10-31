@@ -16,6 +16,7 @@ in
     ./system.nix
     ./session.nix
     ./wifi.nix
+    ./libreoffice
   ];
 
   specialArgs = {
