@@ -20,10 +20,15 @@ The following details are the ones you need most often:
   version of each file in `/home/emma/.config/libreoffice/4/user/backup/`.
 - **Disk:** `nvme0n1`, with an EFI system partition labeled `boot` (vfat) and a
   root partition labeled `nixos` (ext4).
-- **Builder:** any x86_64-linux Nix host. `warren@gcp-exit-node` works without
-  being a trusted user.
+- **Builder:** bandit can't build x86_64-linux, so builds run on a remote
+  host. Any x86_64-linux host with Nix and SSH access works. Your account on
+  it doesn't need to be a Nix trusted user.
 
-In the commands in this runbook, replace `DECK_IP` with the deck's IP address.
+In the commands in this runbook, replace the following placeholders:
+
+- `DECK_IP`: the deck's IP address.
+- `BUILDER`: the SSH destination of the builder, for example
+  `warren@builder.example.com`.
 
 ## Deploy a change
 
@@ -32,7 +37,7 @@ commands from `~/nixos-config` on bandit:
 
 ```sh
 DECK=root@DECK_IP
-B=ssh-ng://warren@gcp-exit-node
+B=ssh-ng://BUILDER
 T=$(nix build --eval-store auto --store $B --print-out-paths --no-link \
   .#nixosConfigurations.hildes-library.config.system.build.toplevel)
 nix copy --no-check-sigs --from $B --to ssh-ng://$DECK --substitute-on-destination $T
