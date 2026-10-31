@@ -1,27 +1,37 @@
 # hildes-library runbook
 
-Emma's writing deck: a Dell XPS 13 9360 that boots straight into LibreOffice
-Writer. There's no terminal, browser or login prompt on the deck; all
-maintenance goes over SSH from bandit. Design and history:
-`~/honeycomb/threads/writer-deck/`.
+This runbook explains how to maintain and rebuild Emma's writing deck: a Dell
+XPS 13 9360 that starts directly in LibreOffice Writer. The deck has no
+terminal, browser, or login prompt, so you do all maintenance over SSH from
+bandit. For the design and the decisions behind it, see the writer-deck thread
+in `~/honeycomb/threads/writer-deck/`.
 
-## Facts
+## Deck details
 
-| | |
-|---|---|
-| SSH | `root@<deck-ip>`, bandit's `~/.ssh/id_ed25519` only, no passwords |
-| Host key | `SHA256:pJncnseHFGzYP5ET/d5pkTHvn3FdVLmYpe4UMLQdbDY` (private key in 1Password) |
-| Wifi MAC | `9c:b6:d0:f6:b0:c5` (find the IP on the Firewalla) |
-| Her files | `/home/emma/*.odt`; previous-save copies in `~/.config/libreoffice/4/user/backup/` |
-| Disk | `nvme0n1`: ESP labelled `boot` (vfat), root labelled `nixos` (ext4) |
-| Builder | Any x86_64-linux Nix host; `warren@gcp-exit-node` works without being trusted |
+The following details are the ones you need most often:
+
+- **SSH:** `root@DECK_IP`, using bandit's `~/.ssh/id_ed25519`. The deck
+  accepts no passwords.
+- **Host key fingerprint:** `SHA256:pJncnseHFGzYP5ET/d5pkTHvn3FdVLmYpe4UMLQdbDY`.
+  The private key is in 1Password.
+- **Wi-Fi MAC address:** `9c:b6:d0:f6:b0:c5`. To find `DECK_IP`, look up this
+  MAC address on the Firewalla.
+- **Emma's files:** `/home/emma/*.odt`. LibreOffice keeps the previously saved
+  version of each file in `/home/emma/.config/libreoffice/4/user/backup/`.
+- **Disk:** `nvme0n1`, with an EFI system partition labeled `boot` (vfat) and a
+  root partition labeled `nixos` (ext4).
+- **Builder:** any x86_64-linux Nix host. `warren@gcp-exit-node` works without
+  being a trusted user.
+
+In the commands in this runbook, replace `DECK_IP` with the deck's IP address.
 
 ## Deploy a change
 
-From `~/nixos-config` on bandit:
+To build the configuration and install it on the deck, run the following
+commands from `~/nixos-config` on bandit:
 
 ```sh
-DECK=root@<deck-ip>
+DECK=root@DECK_IP
 B=ssh-ng://warren@gcp-exit-node
 T=$(nix build --eval-store auto --store $B --print-out-paths --no-link \
   .#nixosConfigurations.hildes-library.config.system.build.toplevel)
@@ -30,40 +40,100 @@ ssh $DECK "nix-env -p /nix/var/nix/profiles/system --set $T && $T/bin/switch-to-
 ssh $DECK systemctl reboot
 ```
 
-- Use `boot` + reboot rather than `switch`: `switch` doesn't restart greetd, so
-  session changes wouldn't take effect until the next boot anyway.
-- `--no-check-sigs` because paths built on the builder are unsigned.
-- **Once the Firewalla block is on**, the deck can't reach cache.nixos.org, so
-  drop `--substitute-on-destination`; everything then streams through bandit
-  (slow for a nixpkgs bump, since LibreOffice alone is about 1.5 GB). Otherwise,
-  lift the rule for the duration of the update.
-- To roll back: pick the previous generation in the boot menu (shown for 5 s
-  at power-on), or `ssh $DECK "nix-env -p /nix/var/nix/profiles/system --rollback
-  && /nix/var/nix/profiles/system/bin/switch-to-configuration boot"`.
+The commands work as follows:
 
-## Common fixes
+- The `--no-check-sigs` flag is required because paths built on the builder
+  are unsigned.
+- `switch-to-configuration boot` followed by a reboot applies every change.
+  Don't use `switch` instead: `switch` doesn't restart greetd, so session
+  changes don't take effect until the next boot.
+- The `--substitute-on-destination` flag makes the deck download packages from
+  cache.nixos.org itself.
 
-- **Writer frozen or gone**: Ctrl+Q. Writer restarts inside cage within a
-  second; if cage itself died, greetd restarts the whole session.
-- **Help filled the screen**: Ctrl+W. Windows have no title bars (`cage -d`).
-- **Dialog in the top-left corner on a black screen** (Document Recovery,
-  "no dictionary"): normal under cage; it still works.
-- **Settings got messed up**: re-seed them from the flake. Her documents are
-  untouched:
-  `ssh $DECK "systemctl stop greetd; rm /home/emma/.config/libreoffice/4/user/registrymodifications.xcu; systemctl reboot"`
-- **Copy her work off**: `scp "$DECK:/home/emma/*.odt" .`
-- **New wifi network or password**: edit the secret, then deploy, **before**
-  changing the router. Once the deck can't join, SSH is gone too.
-  `sudo nix run --inputs-from . agenix -- -i /etc/ssh/ssh_host_ed25519_key -e devices/hildes-library/wifi.age`
+After the Firewalla rule blocks the deck's internet access, the deck can't
+reach cache.nixos.org. Remove `--substitute-on-destination` from the `nix copy`
+command so that every path streams from the builder through bandit. A nixpkgs
+update can take a long time this way, because LibreOffice alone is about
+1.5 GB.
 
-## Reinstall from scratch
+### Roll back a change
 
-1. Boot any NixOS 26.05 x86_64 installer from USB (F12 at the Dell logo,
-   choose the stick under UEFI). **Keep the stick in until the end**: the
-   live system reads its store from it.
-2. On the deck: `nmtui` to join wifi, `passwd` to give `nixos` a password,
-   `ip -4 a` for the IP. On bandit: `ssh-copy-id nixos@<ip>`.
-3. Wipe and partition (**erases the disk**):
+If a change breaks the deck, do one of the following:
+
+- At power-on, select the previous generation in the boot menu. The menu is
+  shown for 5 seconds.
+- Run the following command from bandit, and then restart the deck:
+
+  ```sh
+  ssh $DECK "nix-env -p /nix/var/nix/profiles/system --rollback && /nix/var/nix/profiles/system/bin/switch-to-configuration boot"
+  ```
+
+## Fix common problems
+
+The following table lists problems that Emma might report and how to fix them:
+
+| Problem | Fix |
+|---|---|
+| Writer stops responding or disappears. | Press <kbd>Control+Q</kbd>. Writer restarts within a second. If cage itself exits, greetd restarts the whole session. |
+| Help fills the screen and has no close button. | Press <kbd>Control+W</kbd>. Windows have no title bars because cage runs with `-d`. |
+| A dialog appears in the upper-left corner on a black screen. | No fix needed. The **Document Recovery** dialog and some message boxes appear there under cage, and they work normally. |
+| Writer's toolbars or settings changed. | Reset the settings from the flake. See [Reset Writer's settings](#reset-writers-settings). |
+
+### Reset Writer's settings
+
+Resetting the settings deletes the profile's settings file and lets the system
+copy in the version from the flake at the next boot. Emma's documents aren't
+affected.
+
+- Run the following command from bandit:
+
+  ```sh
+  ssh $DECK "systemctl stop greetd; rm /home/emma/.config/libreoffice/4/user/registrymodifications.xcu; systemctl reboot"
+  ```
+
+### Copy Emma's files to bandit
+
+- Run the following command from bandit:
+
+  ```sh
+  scp "$DECK:/home/emma/*.odt" .
+  ```
+
+### Change the Wi-Fi network or password
+
+The deck reads its Wi-Fi network name and password from an agenix secret.
+Update the secret and deploy it before you change the router. If the deck
+can't join the network, you lose SSH access to it.
+
+1. From `~/nixos-config` on bandit, edit the secret:
+
+   ```sh
+   sudo nix run --inputs-from . agenix -- -i /etc/ssh/ssh_host_ed25519_key -e devices/hildes-library/wifi.age
+   ```
+
+   The secret contains two lines: `WIFI_SSID=NETWORK_NAME` and
+   `WIFI_PSK=PASSWORD`. Enter the password as plain text.
+
+1. Deploy the change. For instructions, see [Deploy a change](#deploy-a-change).
+1. Change the router settings.
+
+## Reinstall the deck
+
+Reinstall the deck if its disk fails or its system can't start.
+
+> **Warning:** Step 5 erases everything on the deck's disk, including Emma's
+> files. If the disk is still readable, copy her files off first.
+
+1. On the deck, start a NixOS 26.05 x86_64 installer from a USB drive. To pick
+   the drive, press F12 at the Dell logo and select it under **UEFI**. Leave
+   the USB drive connected until the installation finishes, because the live
+   system reads its files from the drive.
+1. On the deck, run `nmtui` and join the Wi-Fi network.
+1. On the deck, run `passwd` to set a password for the `nixos` user, and then
+   run `ip -4 a` to find the deck's IP address.
+1. On bandit, run `ssh-copy-id nixos@DECK_IP`.
+1. On the deck, erase the disk, partition it, and mount it:
+
    ```sh
    sudo wipefs -a /dev/nvme0n1
    sudo parted -s /dev/nvme0n1 -- mklabel gpt mkpart ESP fat32 1MiB 1GiB set 1 esp on mkpart nixos ext4 1GiB 100%
@@ -72,13 +142,38 @@ ssh $DECK systemctl reboot
    sudo mount /dev/disk/by-label/nixos /mnt
    sudo mount --mkdir -o umask=077 /dev/disk/by-label/boot /mnt/boot
    ```
-4. Put the host key from 1Password at `/mnt/etc/ssh/ssh_host_ed25519_key`
-   (root, 0600) and `.pub` (0644). Without it agenix can't decrypt the wifi
-   secret. If the key is lost: generate a new one, put its public key in
-   `secrets.nix` as `hildes-library`, re-encrypt with
-   `sudo nix run --inputs-from . agenix -- -i /etc/ssh/ssh_host_ed25519_key -r`,
-   and update the fingerprint above.
-5. Build as in *Deploy a change*, but copy to `ssh-ng://nixos@<ip>` (the
-   live system's store), then on the deck:
-   `sudo nixos-install --system <T> --no-root-passwd --no-channel-copy`
-6. Remove the stick and reboot. SSH is now `root@<ip>`.
+
+1. Copy the host key from 1Password to `/mnt/etc/ssh/ssh_host_ed25519_key`,
+   owned by root with mode `0600`, and its public key to
+   `/mnt/etc/ssh/ssh_host_ed25519_key.pub` with mode `0644`. The deck needs
+   this key to decrypt the Wi-Fi secret. If the key is lost, see
+   [Replace a lost host key](#replace-a-lost-host-key).
+1. On bandit, build the system and copy it to the live system's store. Follow
+   [Deploy a change](#deploy-a-change) through the `nix copy` command, but use
+   `DECK=nixos@DECK_IP`.
+1. On the deck, install the system:
+
+   ```sh
+   sudo nixos-install --system STORE_PATH --no-root-passwd --no-channel-copy
+   ```
+
+   Replace `STORE_PATH` with the value of `$T` from the previous step.
+
+1. Remove the USB drive and restart the deck. The deck starts in Writer, and
+   SSH access is `root@DECK_IP` again.
+
+### Replace a lost host key
+
+If the host key isn't in 1Password, create a new key and re-encrypt the
+secrets for it:
+
+1. Create a key pair with `ssh-keygen -t ed25519 -N "" -C root@hildes-library -f ssh_host_ed25519_key`.
+1. In `secrets.nix`, replace the `hildes-library` public key with the new one.
+1. From `~/nixos-config` on bandit, re-encrypt the secrets:
+
+   ```sh
+   sudo nix run --inputs-from . agenix -- -i /etc/ssh/ssh_host_ed25519_key -r
+   ```
+
+1. Store the new private key in 1Password, and update the fingerprint in
+   [Deck details](#deck-details).
