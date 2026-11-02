@@ -55,6 +55,7 @@ in
     ../../modules/sudo
     ../../modules/system
     ../../modules/tailscale
+    ../../modules/tui-apps
     ../../modules/user
     ## TODO: Figure out voxtype for macos
     # ../../modules/voxtype

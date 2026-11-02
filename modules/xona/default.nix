@@ -28,6 +28,7 @@ in
     xmlstarlet # For spinning up local vms
     net-tools # For spinning up local vms
     libxml2 # For spinning up local vms
+    acli # For managing tickets
   ];
 
   nix.settings = {
