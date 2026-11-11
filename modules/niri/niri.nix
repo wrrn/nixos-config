@@ -1,13 +1,10 @@
 {
   device-conf,
-  inputs,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
 
@@ -40,11 +37,7 @@ in
   };
 
   home-manager.users.${username} = {
-    home.file.dot-niri = {
-      source = "${dotfiles.niri}/.config/niri";
-      target = ".config/niri";
-      recursive = true;
-    };
+    wrrn.dotfiles.niri.enable = true;
 
     programs.fuzzel = {
       enable = true;

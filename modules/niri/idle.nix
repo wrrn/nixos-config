@@ -2,13 +2,10 @@
   device-conf,
   config,
   pkgs,
-  inputs,
   ...
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
 
@@ -25,11 +22,7 @@ in
 
     services.swayidle.enable = true;
 
-    home.file.dot-swayidle = {
-      source = "${dotfiles.swayidle}/.config/swayidle";
-      target = ".config/swayidle";
-      recursive = true;
-    };
+    wrrn.dotfiles.swayidle.enable = true;
   };
 
 }

@@ -1,13 +1,10 @@
 {
   device-conf,
-  inputs,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
   home-manager.users.${username} = {
@@ -15,9 +12,8 @@ in
       pkgs.wezterm
     ];
 
-    home.file.wezterm = {
-      source = "${dotfiles.wezterm}/.wezterm.lua";
-      target = ".config/wezterm/wezterm.lua";
-    };
+    # Links ~/.wezterm.lua, which wezterm reads when
+    # ~/.config/wezterm/wezterm.lua doesn't exist.
+    wrrn.dotfiles.wezterm.enable = true;
   };
 }

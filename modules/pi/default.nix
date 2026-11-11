@@ -22,17 +22,7 @@ in
 {
   imports = [ module ];
   home-manager.users.${username} =
-    { config, lib, ... }:
-    let
-      dotfilesCheckout = "${config.home.homeDirectory}/burrow/dotfiles";
-      # Every regular file in dotfiles' pi/dot-pi/agent/, read from the locked
-      # dotfiles input. A new config file there gets linked after
-      # `nix flake update dotfiles`.
-      piConfigDir = "${inputs.dotfiles}/pi/dot-pi/agent";
-      piConfigFiles = builtins.attrNames (
-        lib.filterAttrs (_: type: type == "regular") (builtins.readDir piConfigDir)
-      );
-    in
+    { config, ... }:
     {
       # pi content (agent definitions, Two's protocol skills, prompt templates,
       # the global AGENTS.md) comes from the pi-agents flake. `checkout` links
@@ -64,26 +54,14 @@ in
         pkgs.nodejs_22
       ];
 
-      # pi config (settings, models, keybindings, subagent settings) from the
-      # dotfiles checkout. Out-of-store links, not store copies: pi writes to
+      # pi config (settings, models, keybindings, subagent settings) from
+      # dotfiles. Always the working clone, never the store copy: pi writes to
       # settings.json (lastChangelogVersion, `pi install` packages), so the
-      # files must stay writable. Replaces `make pi.stow` in dotfiles.
-      home.file = lib.listToAttrs (
-        map (name: {
-          name = "pi-config-${name}";
-          value = {
-            source = config.lib.file.mkOutOfStoreSymlink "${dotfilesCheckout}/pi/dot-pi/agent/${name}";
-            target = ".pi/agent/${name}";
-            force = true;
-          };
-        }) piConfigFiles
-      );
-
-      home.activation.piConfigCheckout = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        if [ ! -d ${lib.escapeShellArg dotfilesCheckout} ]; then
-          echo "pi config: ${dotfilesCheckout} is missing; the ~/.pi/agent/*.json links dangle until it's cloned" >&2
-        fi
-      '';
+      # files must stay writable. Needs modules/dotfiles on the host.
+      wrrn.dotfiles.pi = {
+        enable = true;
+        source = "localPath";
+      };
     };
 
   age.secrets.pi-search-keys = {

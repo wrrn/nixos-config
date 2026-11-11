@@ -1,7 +1,6 @@
 {
   firefox-addons,
   pkgs,
-  dotfiles,
 }:
 {
   policies = {
@@ -125,10 +124,4 @@
     firefox-addons.ublock-origin
     firefox-addons.onepassword-password-manager
   ];
-
-  tridactylDotfile = {
-    source = "${dotfiles.tridactyl}/dot-config/tridactyl";
-    target = ".config/tridactyl";
-    recursive = true;
-  };
 }

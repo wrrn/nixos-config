@@ -1,5 +1,6 @@
 {
   device-conf,
+  inputs,
   lib,
   pkgs,
   ...
@@ -17,6 +18,10 @@ in
     useUserPackages = true;
     backupFileExtension = ".bak";
     backupCommand = "${pkgs.trash-cli}/bin/trash";
+
+    # wrrn.dotfiles.<package>.enable links a dotfiles package into $HOME.
+    # modules/dotfiles points the links at the working clone.
+    sharedModules = [ inputs.dotfiles.homeManagerModules.default ];
   };
 
   home-manager.users.${username}.home.stateVersion = home-manager.stateVersion;

@@ -1,13 +1,11 @@
 {
   device-conf,
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
-  dotfiles = inputs.dotfiles.packages.${device-conf.platform.system};
 
   module = lib.systemModule {
     linux = ./linux.nix;
@@ -39,6 +37,8 @@ in
       startWithUserSession = "graphical";
     };
 
+    wrrn.dotfiles.emacs.enable = true;
+
     programs.emacs = {
       enable = true;      
     };
@@ -54,12 +54,6 @@ in
       packages = [
         pkgs.global
       ];
-
-      file.dot-emacs = {
-        source = "${dotfiles.emacs}/dot-config/emacs";
-        target = ".config/emacs";
-        recursive = true;
-      };
     };
   };
 }

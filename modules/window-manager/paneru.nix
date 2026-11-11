@@ -1,8 +1,6 @@
 { device-conf, inputs, ... }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${device-conf.platform.system};
 in
 {
   imports = [
@@ -14,13 +12,7 @@ in
     extraLuaPackages = luaPs: [ luaPs.fennel ];
   };
 
-  home-manager.users.${username}.home = {
-    file.dot-paneru = {
-      source = "${dotfiles.paneru}/.config/paneru";
-      target = ".config/paneru";
-      recursive = true;
-    };
-  };
+  home-manager.users.${username}.wrrn.dotfiles.paneru.enable = true;
 
   # enable "displays have separate spaced". It's kind of backward
   system.defaults.spaces.spans-displays = false;

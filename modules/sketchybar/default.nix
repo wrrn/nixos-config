@@ -1,13 +1,10 @@
 {
   device-conf,
-  inputs,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
   services.sketchybar = {
@@ -24,10 +21,6 @@ in
       pkgs.sbarlua # The lua library that we use to configure it
     ];
 
-    home.file.dot-sketchybar = {
-      target = ".config/sketchybar";
-      source = "${dotfiles.sketchybar}/.config/sketchybar";
-      recursive = true;
-    };
+    wrrn.dotfiles.sketchybar.enable = true;
   };
 }

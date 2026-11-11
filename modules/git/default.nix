@@ -1,13 +1,10 @@
 {
   device-conf,
-  inputs,
   pkgs,
   ...
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
   environment.systemPackages = with pkgs; [
@@ -19,12 +16,5 @@ in
     hut # Not really git related, but related to a forge.
   ];
 
-  home-manager.users.${username}.home.file = {
-    ".gitconfig" = {
-      source = "${dotfiles.git}/.gitconfig";
-    };
-    ".gitattributes" = {
-      source = "${dotfiles.git}/.gitattributes";
-    };
-  };
+  home-manager.users.${username}.wrrn.dotfiles.git.enable = true;
 }

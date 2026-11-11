@@ -16,6 +16,7 @@ in
     ../../modules/nixos
     ../../modules/nix
     ../../modules/home-manager
+    ../../modules/dotfiles
     ../../modules/fixed-packages
 
     # Default Darwin modules

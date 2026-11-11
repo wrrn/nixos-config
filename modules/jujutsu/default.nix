@@ -7,7 +7,6 @@
 let
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
   wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
@@ -18,6 +17,8 @@ in
   ];
 
   home-manager.users.${username} = {
+    wrrn.dotfiles.jj.enable = true;
+
     programs.jujutsu = {
       enable = true;
       package = pkgs.unstable.jujutsu;
@@ -29,12 +30,6 @@ in
         pkgs.difftastic
         pkgs.delta
       ];
-
-      file.dot-jj = {
-        target = ".config/jj";
-        source = "${dotfiles.jj}/dot-config/jj";
-        recursive = true;
-      };
     };
   };
 

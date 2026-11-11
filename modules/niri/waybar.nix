@@ -1,14 +1,11 @@
 {
   pkgs,
   device-conf,
-  inputs,
   lib,
   ...
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
 in
 {
 
@@ -29,10 +26,6 @@ in
       ConditionEnvironment = lib.mkForce [ ];
     };
 
-    home.file.dot-waybar = {
-      source = "${dotfiles.waybar}/.config/waybar";
-      target = ".config/waybar";
-      recursive = true;
-    };
+    wrrn.dotfiles.waybar.enable = true;
   };
 }

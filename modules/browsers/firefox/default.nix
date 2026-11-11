@@ -7,10 +7,8 @@
 }:
 let
   inherit (device-conf) username;
-  inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
   inherit (pkgs.nur.repos.rycee) firefox-addons;
-  browser = import ../policies.nix { inherit firefox-addons pkgs dotfiles; };
+  browser = import ../policies.nix { inherit firefox-addons pkgs; };
 
   module = lib.systemModule {
     linux = ./linux.nix;
@@ -62,9 +60,8 @@ in
           };
 
           # Betterfox is the base user.js; personal overrides must come after it.
-          # dotfiles files are read from the flake source, not
-          # dotfiles.packages.<system>.firefox: reading a derivation's output is
-          # import-from-derivation, which stops a Linux host evaluating on macOS.
+          # firefox isn't a linkable dotfiles package, so read its files
+          # from the flake source.
           extraConfig = lib.concatStringsSep "\n" [
             (builtins.readFile "${inputs.betterfox}/user.js")
             (builtins.readFile "${inputs.dotfiles}/firefox/user-overrides.js")
@@ -88,7 +85,7 @@ in
         };
       };
 
-      home.file.dot-tridactyl = browser.tridactylDotfile;
+      wrrn.dotfiles.tridactyl.enable = true;
 
       # Sourced by the tridactylrc in dotfiles. On Linux Tridactyl only looks for
       # profiles in ~/.mozilla/firefox, so tell it where ours is. Generated on

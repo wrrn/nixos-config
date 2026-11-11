@@ -8,7 +8,6 @@
 let
   inherit (device-conf) username;
   inherit (device-conf.platform) system;
-  dotfiles = inputs.dotfiles.packages.${system};
   wrrnpkgs = inputs.wrrnpkgs.packages.${system};
 in
 {
@@ -16,11 +15,7 @@ in
   users.users.${username}.shell = pkgs.fish;
   environment.shells = [ pkgs.fish ];
   home-manager.users.${username} = {
-    home.file.fish = {
-      source = "${dotfiles.fish}/dot-config/fish";
-      target = ".config/fish/";
-      recursive = true;
-    };
+    wrrn.dotfiles.fish.enable = true;
     home.packages = [
       pkgs.fishPlugins.tide
       pkgs.fishPlugins.done
