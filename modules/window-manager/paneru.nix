@@ -10,6 +10,8 @@ in
   ];
   services.paneru = {
     enable = true;
+    # init.lua loads config.fnl through Fennel
+    extraLuaPackages = luaPs: [ luaPs.fennel ];
   };
 
   home-manager.users.${username}.home = {
