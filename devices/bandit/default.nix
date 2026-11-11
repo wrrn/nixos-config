@@ -44,6 +44,7 @@ in
     ../../modules/llms
 
     ../../modules/keyboard
+    ../../modules/mouse
     ## TODO: Add locale configs to macos
     # ../../modules/locale
     ../../modules/networking

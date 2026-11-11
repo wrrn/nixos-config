@@ -53,6 +53,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    neru = {
+      url = "github:y3owk1n/neru";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     betterfox = {
       url = "github:yokoffing/Betterfox";
       flake = false;
@@ -124,6 +129,7 @@
       nur,
       paneru,
       rift,
+      neru,
       betterfox,
 
       flaky-falcon,
@@ -138,7 +144,6 @@
     }@inputs:
     {
       nixosConfigurations = {
-        alan-taylor = nixpkgs.lib.nixosSystem (import ./devices/alan-taylor inputs);
         lona = nixpkgs.lib.nixosSystem (import ./devices/lona inputs);
         nix-builder = nixpkgs.lib.nixosSystem (import ./devices/nix-builder inputs);
         hildes-library = nixpkgs.lib.nixosSystem (import ./devices/hildes-library inputs);

@@ -18,7 +18,6 @@ in
   environment.systemPackages = [
     pkgs.brightnessctl
     pkgs.playerctl
-    pkgs.wl-kbptr
     pkgs.unstable.nirius
   ];
 
