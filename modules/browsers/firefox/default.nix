@@ -62,12 +62,15 @@ in
           };
 
           # Betterfox is the base user.js; personal overrides must come after it.
+          # dotfiles files are read from the flake source, not
+          # dotfiles.packages.<system>.firefox: reading a derivation's output is
+          # import-from-derivation, which stops a Linux host evaluating on macOS.
           extraConfig = lib.concatStringsSep "\n" [
             (builtins.readFile "${inputs.betterfox}/user.js")
-            (builtins.readFile "${dotfiles.firefox}/user-overrides.js")
+            (builtins.readFile "${inputs.dotfiles}/firefox/user-overrides.js")
           ];
 
-          userChrome = builtins.readFile "${dotfiles.firefox}/userChrome.css";
+          userChrome = builtins.readFile "${inputs.dotfiles}/firefox/userChrome.css";
 
           # Kagi as the default engine. Tridactyl's searchengine is unset, so
           # it follows this too. force = true replaces Firefox's search
