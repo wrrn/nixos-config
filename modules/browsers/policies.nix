@@ -118,6 +118,13 @@
       icon = "circle";
       name = "banking";
     };
+
+    work = {
+      id = 3;
+      color = "yellow";
+      icon = "briefcase";
+      name = "work";
+    };
   };
 
   extensions = [
