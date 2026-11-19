@@ -31,7 +31,12 @@
   #       802-11-wireless-security.key-mgmt wpa-psk \
   #       802-11-wireless-security.pmf 1        # 1 = disable PMF
   #   Revert to `sae` once a newer kernel/iwlwifi firmware fixes iwlmld SAE.
-  # networking.networkmanager.wifi.powersave = false;
+  # Power saving off (fix 1 above).  NetworkManager's wifi.powersave does
+  # nothing with the iwd backend: only its wpa_supplicant code sets power
+  # save.  Tell iwd instead; it matches these globs against the driver
+  # name (iwlwifi) and turns power save off when it sets up the interface.
+  # Check with `iw dev wlan0 get power_save`.
+  networking.wireless.iwd.settings.DriverQuirks.PowerSaveDisable = "*";
 
   # boot.extraModprobeConfig = ''
   #   options iwlwifi power_save=0 bt_coex_active=0
