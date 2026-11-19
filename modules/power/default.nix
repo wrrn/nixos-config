@@ -7,7 +7,7 @@ in
   services.logind.settings.Login = {
     HandlePowerKey = "poweroff";
     HandleLidSwitch = "suspend";
-    # HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
   };
 
   systemd.services.battery-charge-limit = {

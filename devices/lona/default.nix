@@ -63,6 +63,7 @@ in
     ../../modules/sddm
     ../../modules/shell
     ../../modules/ssh
+    ../../modules/sunshine
     ../../modules/sudo
     ../../modules/tailscale
     ../../modules/tui-apps
